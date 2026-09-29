@@ -2,15 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Projeto Veterinário</title>
+    <title>ConectaVet</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -23,602 +20,557 @@
             color: #263238;
         }
 
-        /* =========================
-           LOGIN
-        ========================== */
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
 
-        #telaLogin {
+        button {
+            cursor: pointer;
+        }
+
+        /* LOGIN */
+
+        #loginPage {
             min-height: 100vh;
-
             display: flex;
-
-            justify-content: center;
-
             align-items: center;
-
+            justify-content: center;
+            background: linear-gradient(135deg, #0f766e, #134e4a);
             padding: 30px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0f766e,
-                    #134e4a
-                );
         }
 
-        .login-container {
-
-            background: white;
-
+        .login-box {
             width: 100%;
-
-            max-width: 470px;
-
+            max-width: 480px;
+            background: white;
             padding: 40px;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,0.25);
+            border-radius: 22px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
         }
 
-        .login-logo {
+        .logo {
             text-align: center;
             margin-bottom: 30px;
         }
 
-        .login-logo h1 {
-            color: #0f766e;
+        .logo-icon {
+            font-size: 45px;
             margin-bottom: 8px;
         }
 
-        .login-logo p {
-            color: #78909c;
+        .logo h1 {
+            color: #0f766e;
+            font-size: 30px;
         }
 
-        .tipos-login {
+        .logo p {
+            color: #64748b;
+            margin-top: 7px;
+        }
+
+        .login-types {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-
             margin-bottom: 25px;
         }
 
-        .tipo-login {
-
-            border: 2px solid #e2e8f0;
-
+        .login-type {
             background: white;
-
+            border: 2px solid #e2e8f0;
+            border-radius: 13px;
             padding: 15px 8px;
-
-            border-radius: 12px;
-
-            cursor: pointer;
-
-            text-align: center;
-
-            transition: 0.2s;
+            transition: .2s;
         }
 
-        .tipo-login:hover {
-            border-color: #0f766e;
-        }
-
-        .tipo-login.selecionado {
-
-            background: #ecfdf5;
-
-            border-color: #0f766e;
-
-            color: #0f766e;
-        }
-
-        .tipo-login span {
+        .login-type span {
             display: block;
             font-size: 25px;
             margin-bottom: 5px;
         }
 
-        .login-campo {
-            margin-bottom: 18px;
-        }
-
-        .login-campo label {
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-weight: bold;
-        }
-
-        .login-campo input {
-
-            width: 100%;
-
-            padding: 13px;
-
-            border-radius: 9px;
-
-            border: 1px solid #cfd8dc;
-
-            outline: none;
-
-            font-size: 15px;
-        }
-
-        .login-campo input:focus {
-
+        .login-type.active {
             border-color: #0f766e;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(15,118,110,0.12);
+            color: #0f766e;
+            background: #ecfdf5;
         }
 
-        .btn-login {
+        .field {
+            margin-bottom: 17px;
+        }
 
-            width: 100%;
-
-            padding: 14px;
-
-            border: none;
-
-            border-radius: 9px;
-
-            background: #0f766e;
-
-            color: white;
-
-            font-size: 16px;
-
+        .field label {
+            display: block;
             font-weight: bold;
-
-            cursor: pointer;
+            margin-bottom: 7px;
         }
 
-        .btn-login:hover {
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            padding: 12px 13px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: #0f766e;
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, .12);
+        }
+
+        .primary {
+            border: none;
+            background: #0f766e;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .primary:hover {
             background: #115e59;
         }
 
-        .erro-login {
-
-            color: #b91c1c;
-
-            margin-top: 15px;
-
-            text-align: center;
-
-            min-height: 20px;
+        .login-button {
+            width: 100%;
+            font-size: 16px;
+            padding: 14px;
         }
 
-        .contas-teste {
+        #loginError {
+            min-height: 20px;
+            color: #b91c1c;
+            text-align: center;
+            margin-top: 13px;
+        }
 
+        .test-accounts {
+            margin-top: 20px;
             background: #f8fafc;
-
-            margin-top: 25px;
-
-            padding: 15px;
-
             border-radius: 10px;
-
-            font-size: 12px;
-
+            padding: 14px;
             color: #64748b;
-
+            font-size: 12px;
             line-height: 1.7;
         }
 
-        /* =========================
-           SISTEMA
-        ========================== */
+        /* APP */
 
-        #sistema {
+        #app {
             display: none;
         }
 
         header {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0f766e,
-                    #115e59
-                );
-
+            background: linear-gradient(135deg, #0f766e, #115e59);
             color: white;
-
-            padding: 25px 8%;
-
+            padding: 21px 6%;
             display: flex;
-
-            align-items: center;
-
             justify-content: space-between;
-
+            align-items: center;
             gap: 20px;
-
-            box-shadow:
-                0 3px 12px
-                rgba(0,0,0,0.15);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
         }
 
         header h1 {
-            font-size: 27px;
-            margin-bottom: 5px;
+            font-size: 25px;
         }
 
         header p {
-            opacity: 0.9;
+            margin-top: 5px;
+            opacity: .85;
         }
 
-        .usuario-area {
-
+        .header-user {
             text-align: right;
         }
 
-        .usuario-area strong {
-
+        .header-user strong {
             display: block;
-
             margin-bottom: 7px;
         }
 
-        .btn-sair {
-
-            background: rgba(255,255,255,0.15);
-
-            color: white;
-
-            border: 1px solid
-                rgba(255,255,255,0.4);
-
-            padding: 8px 14px;
-
-            cursor: pointer;
-
+        .logout {
+            padding: 8px 13px;
             border-radius: 8px;
-        }
-
-        .btn-sair:hover {
-
-            background:
-                rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,.4);
+            background: rgba(255,255,255,.12);
+            color: white;
         }
 
         main {
-
             width: 90%;
-
-            max-width: 1200px;
-
-            margin: 35px auto;
+            max-width: 1250px;
+            margin: 32px auto;
         }
 
-        /* =========================
-           PERFIL
-        ========================== */
+        .view {
+            display: none;
+        }
 
-        .perfil {
+        .view.active {
+            display: block;
+        }
 
+        .welcome {
             background: #ecfdf5;
-
-            border-left:
-                5px solid #0f766e;
-
-            padding: 18px;
-
+            border-left: 5px solid #0f766e;
+            padding: 19px;
             border-radius: 10px;
-
             margin-bottom: 25px;
         }
 
-        .perfil h3 {
+        .welcome h2 {
             color: #134e4a;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
-        /* =========================
-           CARDS
-        ========================== */
-
         .cards {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap: 20px;
-
-            margin-bottom: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
         }
 
         .card {
-
             background: white;
-
-            padding: 22px;
-
+            padding: 21px;
             border-radius: 14px;
-
-            box-shadow:
-                0 3px 15px
-                rgba(0,0,0,0.07);
+            box-shadow: 0 3px 15px rgba(0,0,0,.07);
         }
 
         .card p {
-            color: #607d8b;
+            color: #64748b;
+            font-size: 14px;
             margin-bottom: 8px;
         }
 
         .card h2 {
-            font-size: 30px;
+            font-size: 29px;
             color: #0f766e;
         }
 
-        /* =========================
-           BOX
-        ========================== */
-
         .box {
-
             background: white;
-
-            padding: 28px;
-
             border-radius: 16px;
+            padding: 27px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 15px rgba(0,0,0,.07);
+        }
 
-            margin-bottom: 30px;
-
-            box-shadow:
-                0 3px 15px
-                rgba(0,0,0,0.07);
+        .box-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 22px;
         }
 
         .box h2 {
-
-            margin-bottom: 22px;
-
             color: #134e4a;
         }
 
-        /* =========================
-           FORMULÁRIO
-        ========================== */
-
-        form {
-
+        .grid-two {
             display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
+            grid-template-columns: 1fr 1fr;
             gap: 18px;
         }
 
-        .campo {
+        /* ONG */
 
+        .ong-summary {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .ong-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: #ccfbf1;
             display: flex;
-
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
         }
 
-        .campo-completo {
-            grid-column: 1 / -1;
-        }
-
-        label {
-
-            font-weight: bold;
-
+        .ong-summary h2 {
             margin-bottom: 7px;
-
-            color: #37474f;
         }
 
-        input,
-        select,
-        textarea {
-
-            padding: 12px 14px;
-
-            border:
-                1px solid #cfd8dc;
-
-            border-radius: 9px;
-
-            font-size: 15px;
-
-            outline: none;
-
-            transition: 0.2s;
+        .ong-summary p {
+            color: #64748b;
+            margin-bottom: 4px;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
+        /* TABELAS */
 
-            border-color: #0f766e;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(15,118,110,0.12);
-        }
-
-        textarea {
-
-            min-height: 90px;
-
-            resize: vertical;
-        }
-
-        button {
-            border: none;
-
-            cursor: pointer;
-
-            border-radius: 9px;
-
-            transition: 0.2s;
-        }
-
-        .btn-principal {
-
-            padding: 13px 25px;
-
-            background: #0f766e;
-
-            color: white;
-
-            font-weight: bold;
-        }
-
-        .btn-principal:hover {
-            background: #115e59;
-        }
-
-        /* =========================
-           FILTROS
-        ========================== */
-
-        .filtros {
-
-            display: flex;
-
-            gap: 15px;
-
-            margin-bottom: 22px;
-        }
-
-        .filtros input {
-            flex: 1;
-        }
-
-        /* =========================
-           TABELA
-        ========================== */
-
-        .tabela-container {
-
+        .table-container {
             overflow-x: auto;
         }
 
         table {
-
             width: 100%;
-
             border-collapse: collapse;
         }
 
-        thead {
-            background: #ecfdf5;
-        }
-
         th {
-
             text-align: left;
-
-            padding: 14px;
-
+            padding: 13px;
+            background: #ecfdf5;
             color: #134e4a;
-
-            border-bottom:
-                2px solid #d1fae5;
+            border-bottom: 2px solid #d1fae5;
         }
 
         td {
-
-            padding: 14px;
-
-            border-bottom:
-                1px solid #eceff1;
+            padding: 13px;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle;
         }
 
         tbody tr:hover {
-            background: #f8faf9;
+            background: #f8fafc;
         }
 
         .status {
-
             display: inline-block;
-
             padding: 6px 10px;
-
             border-radius: 20px;
-
             font-size: 12px;
-
             font-weight: bold;
         }
 
-        .ativo {
-
+        .approved {
             background: #dcfce7;
-
             color: #166534;
         }
 
-        .pendente {
-
+        .pending {
             background: #fef3c7;
-
             color: #92400e;
         }
 
-        .inativo {
-
+        .suspended {
             background: #fee2e2;
-
             color: #991b1b;
         }
 
-        .btn-excluir {
-
-            background: #fee2e2;
-
-            color: #991b1b;
-
-            padding: 7px 11px;
+        .active-status {
+            background: #dbeafe;
+            color: #1e40af;
         }
 
-        .btn-excluir:hover {
-            background: #fecaca;
+        .small-button {
+            border: none;
+            padding: 7px 10px;
+            border-radius: 7px;
+            margin: 2px;
+            font-size: 12px;
+        }
+
+        .approve {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .neutral {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        /* DOADOR */
+
+        .search {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 13px 15px;
+            font-size: 15px;
+            margin-bottom: 22px;
+        }
+
+        .ongs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ong-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 22px;
+            transition: .2s;
+        }
+
+        .ong-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,.09);
+        }
+
+        .ong-card-icon {
+            width: 58px;
+            height: 58px;
+            background: #ccfbf1;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .ong-name {
+            display: inline-block;
+            border: none;
+            background: none;
+            padding: 0;
+            text-align: left;
+            color: #0f766e;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        .ong-name:hover {
+            text-decoration: underline;
+            color: #115e59;
+        }
+
+        .ong-card p {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 7px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        /* PERFIL DA ONG */
+
+        .back-button {
+            border: none;
+            background: none;
+            color: #0f766e;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .profile-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 110px;
+            height: 110px;
+            background: #ccfbf1;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+        }
+
+        .profile-header h1 {
+            color: #134e4a;
+            margin-bottom: 8px;
+        }
+
+        .profile-header p {
+            color: #64748b;
+            margin: 5px 0;
+        }
+
+        .description {
+            color: #475569;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .campaign {
+            border: 1px solid #e2e8f0;
+            border-radius: 13px;
+            padding: 19px;
+        }
+
+        .campaign h3 {
+            color: #0f766e;
+            margin-bottom: 9px;
+        }
+
+        .campaign p {
+            color: #64748b;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+
+        .help-button {
+            margin-top: 14px;
+            width: 100%;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+            padding: 30px;
         }
 
         footer {
-
             text-align: center;
-
-            color: #78909c;
-
             padding: 25px;
+            color: #64748b;
         }
 
-        @media(max-width:800px) {
+        @media(max-width: 900px) {
+            .cards,
+            .ongs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-            .tipos-login {
+        @media(max-width: 650px) {
+            .login-types,
+            .cards,
+            .ongs-grid,
+            .campaigns-grid,
+            .grid-two {
                 grid-template-columns: 1fr;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            form {
-                grid-template-columns: 1fr;
-            }
-
-            .campo-completo {
-                grid-column: auto;
-            }
-
-            .filtros {
-                flex-direction: column;
             }
 
             header {
@@ -626,148 +578,72 @@
                 align-items: flex-start;
             }
 
-            .usuario-area {
+            .header-user {
                 text-align: left;
             }
 
+            .ong-summary,
+            .profile-header {
+                grid-template-columns: 1fr;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+<!-- LOGIN -->
 
-<!-- =========================
-     TELA DE LOGIN
-========================== -->
+<section id="loginPage">
 
-<section id="telaLogin">
+    <div class="login-box">
 
-    <div class="login-container">
-
-        <div class="login-logo">
-
-            <h1>🐾 Projeto Veterinário</h1>
-
-            <p>
-                Entre para acessar a plataforma
-            </p>
-
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            <h1>ConectaVet</h1>
+            <p>Conectando quem ajuda a quem precisa.</p>
         </div>
 
+        <div class="login-types">
 
-        <div class="tipos-login">
-
-            <button
-                class="tipo-login selecionado"
-                data-tipo="ong"
-                onclick="selecionarTipo('ong')"
-            >
-
+            <button class="login-type active" data-role="ong" onclick="selectRole('ong')">
                 <span>🏠</span>
-
                 ONG
-
             </button>
 
-
-            <button
-                class="tipo-login"
-                data-tipo="doador"
-                onclick="selecionarTipo('doador')"
-            >
-
+            <button class="login-type" data-role="donor" onclick="selectRole('donor')">
                 <span>❤️</span>
-
                 Doador
-
             </button>
 
-
-            <button
-                class="tipo-login"
-                data-tipo="admin"
-                onclick="selecionarTipo('admin')"
-            >
-
+            <button class="login-type" data-role="admin" onclick="selectRole('admin')">
                 <span>⚙️</span>
-
                 Administrador
-
             </button>
 
         </div>
 
-
-        <div class="login-campo">
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                id="emailLogin"
-                placeholder="Digite seu e-mail"
-            >
-
+        <div class="field">
+            <label>E-mail</label>
+            <input id="loginEmail" type="email" placeholder="Digite seu e-mail">
         </div>
 
-
-        <div class="login-campo">
-
+        <div class="field">
             <label>Senha</label>
-
-            <input
-                type="password"
-                id="senhaLogin"
-                placeholder="Digite sua senha"
-            >
-
+            <input id="loginPassword" type="password" placeholder="Digite sua senha">
         </div>
 
-
-        <button
-            class="btn-login"
-            onclick="fazerLogin()"
-        >
-
+        <button class="primary login-button" onclick="login()">
             Entrar
-
         </button>
 
+        <div id="loginError"></div>
 
-        <div
-            class="erro-login"
-            id="erroLogin"
-        ></div>
-
-
-        <div class="contas-teste">
-
-            <strong>
-                Contas de demonstração
-            </strong>
-
-            <br>
-
-            ONG:
-            ong@teste.com /
-            ong123
-
-            <br>
-
-            Doador:
-            doador@teste.com /
-            doador123
-
-            <br>
-
-            Administrador:
-            admin@teste.com /
-            admin123
-
+        <div class="test-accounts">
+            <strong>Contas para teste</strong><br>
+            ONG: ong@teste.com / ong123<br>
+            Doador: doador@teste.com / doador123<br>
+            Administrador: admin@teste.com / admin123
         </div>
 
     </div>
@@ -775,1100 +651,1390 @@
 </section>
 
 
+<!-- SISTEMA -->
 
-<!-- =========================
-     SISTEMA
-========================== -->
+<div id="app">
 
-<div id="sistema">
+    <header>
 
-
-<header>
-
-    <div>
-
-        <h1>
-            🐾 Projeto Veterinário
-        </h1>
-
-        <p>
-            Sistema de gerenciamento
-        </p>
-
-    </div>
-
-
-    <div class="usuario-area">
-
-        <strong id="usuarioLogado">
-
-        </strong>
-
-        <button
-            class="btn-sair"
-            onclick="sair()"
-        >
-
-            Sair
-
-        </button>
-
-    </div>
-
-</header>
-
-
-<main>
-
-
-    <section class="perfil">
-
-        <h3 id="tituloPerfil">
-
-        </h3>
-
-        <p id="descricaoPerfil">
-
-        </p>
-
-    </section>
-
-
-
-    <section class="cards">
-
-        <div class="card">
-
-            <p>Total de cadastros</p>
-
-            <h2 id="totalCadastros">
-                0
-            </h2>
-
+        <div>
+            <h1>🐾 ConectaVet</h1>
+            <p id="headerDescription"></p>
         </div>
 
+        <div class="header-user">
+            <strong id="loggedUser"></strong>
 
-        <div class="card">
-
-            <p>Ativos</p>
-
-            <h2 id="totalAtivos">
-                0
-            </h2>
-
+            <button class="logout" onclick="logout()">
+                Sair
+            </button>
         </div>
 
-
-        <div class="card">
-
-            <p>Pendentes</p>
-
-            <h2 id="totalPendentes">
-                0
-            </h2>
-
-        </div>
-
-    </section>
+    </header>
 
 
+    <main>
 
-    <!-- CADASTRO -->
+        <!-- ===============================
+             ÁREA DA ONG
+        ================================ -->
 
-    <section
-        class="box"
-        id="areaCadastro"
-    >
+        <section id="ongView" class="view">
 
-        <h2>
-            Novo cadastro
-        </h2>
-
-
-        <form id="formCadastro">
-
-
-            <div class="campo">
-
-                <label>
-                    Nome
-                </label>
-
-                <input
-                    type="text"
-                    id="nome"
-                    placeholder="Digite o nome"
-                    required
-                >
-
+            <div class="welcome">
+                <h2>🏠 Área da ONG</h2>
+                <p>
+                    Gerencie o perfil da sua organização e suas campanhas.
+                </p>
             </div>
 
+            <div id="ongOwnProfile" class="box"></div>
 
-            <div class="campo">
+            <div class="box">
 
-                <label>
-                    Categoria
-                </label>
+                <div class="box-title">
+                    <h2>Editar perfil da ONG</h2>
+                </div>
 
-                <select
-                    id="categoria"
-                    required
-                >
+                <div class="grid-two">
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <div class="field">
+                        <label>Nome da ONG</label>
+                        <input id="ongEditName">
+                    </div>
 
-                    <option value="Categoria 1">
-                        Categoria 1
-                    </option>
+                    <div class="field">
+                        <label>Cidade</label>
+                        <input id="ongEditCity">
+                    </div>
 
-                    <option value="Categoria 2">
-                        Categoria 2
-                    </option>
+                    <div class="field">
+                        <label>Área de atuação</label>
+                        <input id="ongEditCause">
+                    </div>
 
-                    <option value="Categoria 3">
-                        Categoria 3
-                    </option>
+                    <div class="field">
+                        <label>Contato</label>
+                        <input id="ongEditContact">
+                    </div>
 
-                </select>
+                </div>
 
-            </div>
+                <div class="field">
+                    <label>Descrição</label>
+                    <textarea id="ongEditDescription"></textarea>
+                </div>
 
-
-            <div class="campo">
-
-                <label>
-                    Responsável
-                </label>
-
-                <input
-                    type="text"
-                    id="responsavel"
-                    placeholder="Nome do responsável"
-                    required
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>
-                    Status
-                </label>
-
-                <select id="status">
-
-                    <option value="Ativo">
-                        Ativo
-                    </option>
-
-                    <option value="Pendente">
-                        Pendente
-                    </option>
-
-                    <option value="Inativo">
-                        Inativo
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div
-                class="campo
-                campo-completo"
-            >
-
-                <label>
-                    Observações
-                </label>
-
-                <textarea
-                    id="observacao"
-                    placeholder="Informações adicionais..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="campo-completo">
-
-                <button
-                    class="btn-principal"
-                    type="submit"
-                >
-
-                    + Cadastrar
-
+                <button class="primary" onclick="saveOngProfile()">
+                    Salvar alterações
                 </button>
 
             </div>
 
 
-        </form>
+            <div class="box">
 
-    </section>
+                <div class="box-title">
+                    <h2>Nova campanha / necessidade</h2>
+                </div>
 
+                <div class="grid-two">
 
+                    <div class="field">
+                        <label>Título</label>
+                        <input id="campaignTitle" placeholder="Ex: Arrecadação de ração">
+                    </div>
 
-    <!-- TABELA -->
+                    <div class="field">
+                        <label>Categoria</label>
 
-    <section class="box">
+                        <select id="campaignCategory">
+                            <option>Alimentação</option>
+                            <option>Medicamentos</option>
+                            <option>Tratamento veterinário</option>
+                            <option>Infraestrutura</option>
+                            <option>Materiais</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
 
-        <h2>
-            Cadastros
-        </h2>
+                    <div class="field">
+                        <label>Meta estimada (R$)</label>
+                        <input id="campaignGoal" type="number" min="0">
+                    </div>
 
+                </div>
 
-        <div class="filtros">
+                <div class="field">
+                    <label>Descrição</label>
 
-            <input
-                type="text"
-                id="busca"
-                placeholder="🔎 Buscar por nome..."
-            >
+                    <textarea
+                        id="campaignDescription"
+                        placeholder="Explique o que a ONG precisa..."
+                    ></textarea>
+                </div>
 
+                <button class="primary" onclick="createCampaign()">
+                    + Criar campanha
+                </button>
 
-            <select id="filtroStatus">
-
-                <option value="">
-                    Todos os status
-                </option>
-
-                <option value="Ativo">
-                    Ativo
-                </option>
-
-                <option value="Pendente">
-                    Pendente
-                </option>
-
-                <option value="Inativo">
-                    Inativo
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="tabela-container">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Nome</th>
-
-                        <th>Categoria</th>
-
-                        <th>Responsável</th>
-
-                        <th>Status</th>
-
-                        <th>Data</th>
-
-                        <th id="cabecalhoAcao">
-                            Ação
-                        </th>
-
-                    </tr>
-
-                </thead>
+            </div>
 
 
-                <tbody id="corpoTabela">
+            <div class="box">
 
-                </tbody>
+                <div class="box-title">
+                    <h2>Minhas campanhas</h2>
+                </div>
 
-            </table>
+                <div class="table-container">
 
-        </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Campanha</th>
+                                <th>Categoria</th>
+                                <th>Meta</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
 
-    </section>
+                        <tbody id="ongCampaignTable"></tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-</main>
+        <!-- ===============================
+             ÁREA DO DOADOR
+        ================================ -->
+
+        <section id="donorView" class="view">
+
+            <div class="welcome">
+                <h2>❤️ Área do Doador</h2>
+
+                <p>
+                    Encontre organizações e conheça as necessidades de cada ONG.
+                </p>
+            </div>
+
+            <div class="box">
+
+                <div class="box-title">
+                    <h2>ONGs disponíveis</h2>
+                </div>
+
+                <input
+                    class="search"
+                    id="ongSearch"
+                    placeholder="🔎 Pesquise pelo nome, cidade ou área de atuação..."
+                    oninput="renderDonorOngs()"
+                >
+
+                <div id="donorOngGrid" class="ongs-grid"></div>
+
+            </div>
+
+        </section>
 
 
-<footer>
+        <!-- ===============================
+             PERFIL PÚBLICO DA ONG
+        ================================ -->
 
-    Projeto acadêmico de Empreendedorismo
-    • Medicina Veterinária
+        <section id="ongProfileView" class="view">
 
-</footer>
+            <button class="back-button" onclick="backToDonor()">
+                ← Voltar para as ONGs
+            </button>
 
+            <div id="publicOngProfile"></div>
+
+        </section>
+
+
+        <!-- ===============================
+             ADMINISTRADOR
+        ================================ -->
+
+        <section id="adminView" class="view">
+
+            <div class="welcome">
+                <h2>⚙️ Painel Administrativo</h2>
+
+                <p>
+                    Gerencie usuários, ONGs e conteúdos da plataforma.
+                </p>
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <p>ONGs cadastradas</p>
+                    <h2 id="adminOngCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>ONGs pendentes</p>
+                    <h2 id="adminPendingCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>Campanhas ativas</p>
+                    <h2 id="adminCampaignCount">0</h2>
+                </div>
+
+                <div class="card">
+                    <p>Doadores</p>
+                    <h2 id="adminDonorCount">1</h2>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+
+                <div class="box-title">
+                    <h2>ONGs aguardando aprovação</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ONG</th>
+                                <th>Cidade</th>
+                                <th>Área</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="pendingOngTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <div class="box">
+
+                <div class="box-title">
+                    <h2>Todas as ONGs</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ONG</th>
+                                <th>Cidade</th>
+                                <th>Status</th>
+                                <th>Campanhas</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="allOngTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Projeto acadêmico de Empreendedorismo • Medicina Veterinária
+    </footer>
 
 </div>
 
 
-
 <script>
 
+    /* =====================================
+       USUÁRIOS DE TESTE
+    ====================================== */
 
-/*
-==========================================
-LOGIN
-==========================================
-*/
+    let selectedRole = "ong";
+    let currentUser = null;
 
-let tipoSelecionado = "ong";
+    const users = {
+        ong: {
+            email: "ong@teste.com",
+            password: "ong123",
+            name: "ONG Patinhas do Bem",
+            role: "ong",
+            ongId: 1
+        },
 
-let usuarioAtual = null;
+        donor: {
+            email: "doador@teste.com",
+            password: "doador123",
+            name: "Doador",
+            role: "donor"
+        },
 
-
-const usuarios = {
-
-    ong: {
-
-        email: "ong@teste.com",
-
-        senha: "ong123",
-
-        nome: "ONG",
-
-        tipo: "ong"
-
-    },
-
-
-    doador: {
-
-        email: "doador@teste.com",
-
-        senha: "doador123",
-
-        nome: "Doador",
-
-        tipo: "doador"
-
-    },
+        admin: {
+            email: "admin@teste.com",
+            password: "admin123",
+            name: "Administrador",
+            role: "admin"
+        }
+    };
 
 
-    admin: {
+    /* =====================================
+       DADOS INICIAIS
+    ====================================== */
 
-        email: "admin@teste.com",
+    const initialOngs = [
+        {
+            id: 1,
+            name: "ONG Patinhas do Bem",
+            city: "Poá - SP",
+            cause: "Resgate de cães e gatos",
+            contact: "contato@patinhasdobem.org",
+            description:
+                "Trabalhamos com o resgate, tratamento e encaminhamento para adoção responsável de cães e gatos em situação de abandono.",
+            status: "Aprovada"
+        },
 
-        senha: "admin123",
+        {
+            id: 2,
+            name: "Amigos de Quatro Patas",
+            city: "Mogi das Cruzes - SP",
+            cause: "Animais abandonados",
+            contact: "contato@amigos4patas.org",
+            description:
+                "Organização dedicada ao acolhimento temporário e à recuperação de animais abandonados.",
+            status: "Aprovada"
+        },
 
-        nome: "Administrador",
+        {
+            id: 3,
+            name: "Projeto Novo Lar",
+            city: "Suzano - SP",
+            cause: "Adoção responsável",
+            contact: "contato@novolar.org",
+            description:
+                "Promovemos feiras de adoção e auxiliamos animais em situação de vulnerabilidade.",
+            status: "Pendente"
+        },
 
-        tipo: "admin"
+        {
+            id: 4,
+            name: "Instituto Vida Animal",
+            city: "São Paulo - SP",
+            cause: "Tratamento veterinário",
+            contact: "contato@vidaanimal.org",
+            description:
+                "Atuamos no atendimento e suporte veterinário para animais resgatados em situação de risco.",
+            status: "Aprovada"
+        }
+    ];
 
+
+    const initialCampaigns = [
+        {
+            id: 1,
+            ongId: 1,
+            title: "Arrecadação de ração",
+            category: "Alimentação",
+            goal: 1500,
+            description:
+                "Precisamos arrecadar ração para os animais acolhidos durante este mês.",
+            status: "Ativa"
+        },
+
+        {
+            id: 2,
+            ongId: 1,
+            title: "Tratamento da Mel",
+            category: "Tratamento veterinário",
+            goal: 2200,
+            description:
+                "A cadela Mel precisa realizar exames e tratamento veterinário.",
+            status: "Ativa"
+        },
+
+        {
+            id: 3,
+            ongId: 2,
+            title: "Reforma dos canis",
+            category: "Infraestrutura",
+            goal: 5000,
+            description:
+                "A organização precisa reformar parte dos canis utilizados no acolhimento.",
+            status: "Ativa"
+        },
+
+        {
+            id: 4,
+            ongId: 4,
+            title: "Medicamentos veterinários",
+            category: "Medicamentos",
+            goal: 1800,
+            description:
+                "Campanha para aquisição de medicamentos utilizados nos animais resgatados.",
+            status: "Ativa"
+        }
+    ];
+
+
+    let ongs =
+        JSON.parse(localStorage.getItem("conectaVetOngs"));
+
+    let campaigns =
+        JSON.parse(localStorage.getItem("conectaVetCampaigns"));
+
+
+    if (!ongs) {
+        ongs = initialOngs;
+        saveOngs();
     }
 
-};
+    if (!campaigns) {
+        campaigns = initialCampaigns;
+        saveCampaigns();
+    }
 
 
+    /* =====================================
+       LOGIN
+    ====================================== */
 
-function selecionarTipo(tipo) {
+    function selectRole(role) {
 
-    tipoSelecionado = tipo;
+        selectedRole = role;
+
+        document
+            .querySelectorAll(".login-type")
+            .forEach(button => {
+                button.classList.remove("active");
+            });
+
+        document
+            .querySelector(`[data-role="${role}"]`)
+            .classList.add("active");
+
+        document.getElementById("loginError").textContent = "";
+    }
 
 
-    document
-        .querySelectorAll(".tipo-login")
-        .forEach(botao => {
+    function login() {
 
-            botao.classList.remove(
-                "selecionado"
+        const email =
+            document.getElementById("loginEmail").value.trim();
+
+        const password =
+            document.getElementById("loginPassword").value;
+
+        const user = users[selectedRole];
+
+        if (
+            email === user.email &&
+            password === user.password
+        ) {
+
+            currentUser = user;
+
+            sessionStorage.setItem(
+                "conectaVetUser",
+                JSON.stringify(user)
             );
 
+            openSystem();
+
+        } else {
+
+            document.getElementById("loginError").textContent =
+                "E-mail ou senha incorretos.";
+        }
+    }
+
+
+    function logout() {
+
+        sessionStorage.removeItem("conectaVetUser");
+
+        location.reload();
+    }
+
+
+    function openSystem() {
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("app").style.display = "block";
+
+        document.getElementById("loggedUser").textContent =
+            currentUser.name;
+
+        hideViews();
+
+        if (currentUser.role === "ong") {
+
+            document.getElementById("headerDescription").textContent =
+                "Gerenciamento da organização";
+
+            document.getElementById("ongView").classList.add("active");
+
+            renderOngArea();
+        }
+
+        if (currentUser.role === "donor") {
+
+            document.getElementById("headerDescription").textContent =
+                "Encontre projetos para apoiar";
+
+            document.getElementById("donorView").classList.add("active");
+
+            renderDonorOngs();
+        }
+
+        if (currentUser.role === "admin") {
+
+            document.getElementById("headerDescription").textContent =
+                "Administração da plataforma";
+
+            document.getElementById("adminView").classList.add("active");
+
+            renderAdmin();
+        }
+    }
+
+
+    function hideViews() {
+
+        document
+            .querySelectorAll(".view")
+            .forEach(view => {
+                view.classList.remove("active");
+            });
+    }
+
+
+    /* =====================================
+       SALVAMENTO
+    ====================================== */
+
+    function saveOngs() {
+
+        localStorage.setItem(
+            "conectaVetOngs",
+            JSON.stringify(ongs)
+        );
+    }
+
+
+    function saveCampaigns() {
+
+        localStorage.setItem(
+            "conectaVetCampaigns",
+            JSON.stringify(campaigns)
+        );
+    }
+
+
+    /* =====================================
+       ÁREA DA ONG
+    ====================================== */
+
+    function getOwnOng() {
+
+        return ongs.find(
+            ong => ong.id === currentUser.ongId
+        );
+    }
+
+
+    function renderOngArea() {
+
+        const ong = getOwnOng();
+
+        if (!ong) return;
+
+        document.getElementById("ongOwnProfile").innerHTML = `
+            <div class="ong-summary">
+
+                <div class="ong-avatar">
+                    🐾
+                </div>
+
+                <div>
+                    <h2>${escapeHTML(ong.name)}</h2>
+
+                    <p>
+                        📍 ${escapeHTML(ong.city)}
+                    </p>
+
+                    <p>
+                        ❤️ ${escapeHTML(ong.cause)}
+                    </p>
+
+                    <p>
+                        Status:
+                        ${statusBadge(ong.status)}
+                    </p>
+                </div>
+
+            </div>
+        `;
+
+
+        document.getElementById("ongEditName").value =
+            ong.name;
+
+        document.getElementById("ongEditCity").value =
+            ong.city;
+
+        document.getElementById("ongEditCause").value =
+            ong.cause;
+
+        document.getElementById("ongEditContact").value =
+            ong.contact;
+
+        document.getElementById("ongEditDescription").value =
+            ong.description;
+
+        renderOngCampaigns();
+    }
+
+
+    function saveOngProfile() {
+
+        const ong = getOwnOng();
+
+        ong.name =
+            document.getElementById("ongEditName").value.trim();
+
+        ong.city =
+            document.getElementById("ongEditCity").value.trim();
+
+        ong.cause =
+            document.getElementById("ongEditCause").value.trim();
+
+        ong.contact =
+            document.getElementById("ongEditContact").value.trim();
+
+        ong.description =
+            document.getElementById("ongEditDescription").value.trim();
+
+        saveOngs();
+
+        currentUser.name = ong.name;
+
+        sessionStorage.setItem(
+            "conectaVetUser",
+            JSON.stringify(currentUser)
+        );
+
+        document.getElementById("loggedUser").textContent =
+            ong.name;
+
+        renderOngArea();
+
+        alert("Perfil atualizado com sucesso!");
+    }
+
+
+    function createCampaign() {
+
+        const title =
+            document.getElementById("campaignTitle").value.trim();
+
+        const category =
+            document.getElementById("campaignCategory").value;
+
+        const goal =
+            Number(document.getElementById("campaignGoal").value);
+
+        const description =
+            document.getElementById("campaignDescription").value.trim();
+
+
+        if (!title || !description) {
+
+            alert("Preencha o título e a descrição.");
+
+            return;
+        }
+
+
+        campaigns.push({
+            id: Date.now(),
+            ongId: currentUser.ongId,
+            title,
+            category,
+            goal,
+            description,
+            status: "Ativa"
         });
 
 
-    document
-        .querySelector(
-            `[data-tipo="${tipo}"]`
-        )
-        .classList.add(
-            "selecionado"
-        );
+        saveCampaigns();
 
 
-    document.getElementById(
-        "erroLogin"
-    ).textContent = "";
-
-}
+        document.getElementById("campaignTitle").value = "";
+        document.getElementById("campaignGoal").value = "";
+        document.getElementById("campaignDescription").value = "";
 
 
-
-function fazerLogin() {
-
-    const email =
-        document.getElementById(
-            "emailLogin"
-        ).value.trim();
-
-
-    const senha =
-        document.getElementById(
-            "senhaLogin"
-        ).value;
-
-
-    const usuario =
-        usuarios[tipoSelecionado];
-
-
-    if (
-        email === usuario.email &&
-        senha === usuario.senha
-    ) {
-
-        usuarioAtual = usuario;
-
-
-        sessionStorage.setItem(
-            "usuarioVet",
-            JSON.stringify(usuario)
-        );
-
-
-        abrirSistema();
-
-    }
-
-    else {
-
-        document.getElementById(
-            "erroLogin"
-        ).textContent =
-            "E-mail ou senha incorretos.";
-
-    }
-
-}
-
-
-
-function abrirSistema() {
-
-    document.getElementById(
-        "telaLogin"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "sistema"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "usuarioLogado"
-    ).textContent =
-        usuarioAtual.nome;
-
-
-    configurarPermissoes();
-
-
-    atualizarTabela();
-
-}
-
-
-
-function configurarPermissoes() {
-
-    const cadastro =
-        document.getElementById(
-            "areaCadastro"
-        );
-
-
-    const titulo =
-        document.getElementById(
-            "tituloPerfil"
-        );
-
-
-    const descricao =
-        document.getElementById(
-            "descricaoPerfil"
-        );
-
-
-    if (
-        usuarioAtual.tipo === "ong"
-    ) {
-
-        cadastro.style.display =
-            "block";
-
-
-        titulo.textContent =
-            "🏠 Área da ONG";
-
-
-        descricao.textContent =
-            "Cadastre e gerencie informações da organização.";
-
+        renderOngCampaigns();
     }
 
 
-    if (
-        usuarioAtual.tipo === "doador"
-    ) {
+    function renderOngCampaigns() {
 
-        cadastro.style.display =
-            "none";
+        const tbody =
+            document.getElementById("ongCampaignTable");
 
+        tbody.innerHTML = "";
 
-        titulo.textContent =
-            "❤️ Área do Doador";
-
-
-        descricao.textContent =
-            "Consulte as informações disponíveis e acompanhe os registros.";
-
-    }
-
-
-    if (
-        usuarioAtual.tipo === "admin"
-    ) {
-
-        cadastro.style.display =
-            "block";
-
-
-        titulo.textContent =
-            "⚙️ Área Administrativa";
-
-
-        descricao.textContent =
-            "Acesso completo ao gerenciamento da plataforma.";
-
-    }
-
-}
-
-
-
-function sair() {
-
-    sessionStorage.removeItem(
-        "usuarioVet"
-    );
-
-
-    usuarioAtual = null;
-
-
-    location.reload();
-
-}
-
-
-
-/*
-==========================================
-BANCO TEMPORÁRIO
-==========================================
-*/
-
-let cadastros =
-
-    JSON.parse(
-        localStorage.getItem(
-            "cadastrosVet"
-        )
-    )
-
-    || [];
-
-
-
-/*
-==========================================
-ELEMENTOS
-==========================================
-*/
-
-const form =
-    document.getElementById(
-        "formCadastro"
-    );
-
-
-const tabela =
-    document.getElementById(
-        "corpoTabela"
-    );
-
-
-const busca =
-    document.getElementById(
-        "busca"
-    );
-
-
-const filtroStatus =
-    document.getElementById(
-        "filtroStatus"
-    );
-
-
-
-/*
-==========================================
-CADASTRAR
-==========================================
-*/
-
-form.addEventListener(
-    "submit",
-
-    function(event) {
-
-        event.preventDefault();
-
-
-        if (
-            usuarioAtual.tipo ===
-            "doador"
-        ) {
-
-            return;
-
-        }
-
-
-        const cadastro = {
-
-            id:
-                Date.now(),
-
-            nome:
-                document.getElementById(
-                    "nome"
-                ).value,
-
-            categoria:
-                document.getElementById(
-                    "categoria"
-                ).value,
-
-            responsavel:
-                document.getElementById(
-                    "responsavel"
-                ).value,
-
-            status:
-                document.getElementById(
-                    "status"
-                ).value,
-
-            observacao:
-                document.getElementById(
-                    "observacao"
-                ).value,
-
-            data:
-                new Date()
-                    .toLocaleDateString(
-                        "pt-BR"
-                    )
-
-        };
-
-
-        cadastros.push(
-            cadastro
-        );
-
-
-        salvarDados();
-
-
-        form.reset();
-
-
-        atualizarTabela();
-
-    }
-);
-
-
-
-function salvarDados() {
-
-    localStorage.setItem(
-
-        "cadastrosVet",
-
-        JSON.stringify(
-            cadastros
-        )
-
-    );
-
-}
-
-
-
-/*
-==========================================
-EXCLUIR
-==========================================
-*/
-
-function excluirCadastro(id) {
-
-    if (
-        usuarioAtual.tipo ===
-        "doador"
-    ) {
-
-        return;
-
-    }
-
-
-    const confirmar =
-        confirm(
-            "Deseja realmente excluir este cadastro?"
-        );
-
-
-    if (!confirmar) {
-
-        return;
-
-    }
-
-
-    cadastros =
-        cadastros.filter(
-
-            cadastro =>
-                cadastro.id !== id
-
-        );
-
-
-    salvarDados();
-
-
-    atualizarTabela();
-
-}
-
-
-
-/*
-==========================================
-STATUS
-==========================================
-*/
-
-function classeStatus(status) {
-
-    if (
-        status === "Ativo"
-    ) {
-
-        return "ativo";
-
-    }
-
-
-    if (
-        status === "Pendente"
-    ) {
-
-        return "pendente";
-
-    }
-
-
-    return "inativo";
-
-}
-
-
-
-/*
-==========================================
-PROTEÇÃO DE TEXTO
-==========================================
-*/
-
-function escaparHTML(texto) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        texto;
-
-
-    return div.innerHTML;
-
-}
-
-
-
-/*
-==========================================
-ATUALIZAR TABELA
-==========================================
-*/
-
-function atualizarTabela() {
-
-    tabela.innerHTML = "";
-
-
-    const textoBusca =
-        busca.value
-            .toLowerCase();
-
-
-    const statusSelecionado =
-        filtroStatus.value;
-
-
-    const resultados =
-        cadastros.filter(
-
-            cadastro => {
-
-                const nomeEncontrado =
-
-                    cadastro.nome
-                        .toLowerCase()
-                        .includes(
-                            textoBusca
-                        );
-
-
-                const statusEncontrado =
-
-                    !statusSelecionado
-
-                    ||
-
-                    cadastro.status ===
-                    statusSelecionado;
-
-
-                return (
-
-                    nomeEncontrado
-
-                    &&
-
-                    statusEncontrado
-
-                );
-
-            }
-
-        );
-
-
-    resultados.forEach(
-
-        cadastro => {
-
-            const linha =
-                document.createElement(
-                    "tr"
-                );
-
-
-            let botaoExcluir = "";
-
-
-            if (
-                usuarioAtual &&
-                usuarioAtual.tipo !==
-                "doador"
-            ) {
-
-                botaoExcluir = `
-
-                    <button
-                        class="btn-excluir"
-                        onclick="
-                            excluirCadastro(
-                                ${cadastro.id}
-                            )
-                        "
-                    >
-
-                        Excluir
-
-                    </button>
-
-                `;
-
-            }
-
-
-            linha.innerHTML = `
-
-                <td>
-                    ${escaparHTML(cadastro.nome)}
-                </td>
-
-                <td>
-                    ${escaparHTML(cadastro.categoria)}
-                </td>
-
-                <td>
-                    ${escaparHTML(cadastro.responsavel)}
-                </td>
-
-                <td>
-
-                    <span
-                        class="
-                            status
-                            ${classeStatus(
-                                cadastro.status
-                            )}
-                        "
-                    >
-
-                        ${cadastro.status}
-
-                    </span>
-
-                </td>
-
-                <td>
-                    ${cadastro.data}
-                </td>
-
-                <td>
-                    ${botaoExcluir}
-                </td>
-
-            `;
-
-
-            tabela.appendChild(
-                linha
+        const ownCampaigns =
+            campaigns.filter(
+                campaign =>
+                    campaign.ongId === currentUser.ongId
             );
 
+
+        if (ownCampaigns.length === 0) {
+
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="empty">
+                        Nenhuma campanha cadastrada.
+                    </td>
+                </tr>
+            `;
+
+            return;
         }
 
-    );
+
+        ownCampaigns.forEach(campaign => {
+
+            tbody.innerHTML += `
+                <tr>
+
+                    <td>
+                        ${escapeHTML(campaign.title)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(campaign.category)}
+                    </td>
+
+                    <td>
+                        ${money(campaign.goal)}
+                    </td>
+
+                    <td>
+                        <span class="status active-status">
+                            ${campaign.status}
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="small-button danger"
+                            onclick="deleteCampaign(${campaign.id})"
+                        >
+                            Excluir
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+        });
+    }
 
 
-    atualizarContadores();
+    function deleteCampaign(id) {
 
-}
+        const confirmation =
+            confirm("Deseja excluir esta campanha?");
 
+        if (!confirmation) return;
 
+        campaigns =
+            campaigns.filter(
+                campaign => campaign.id !== id
+            );
 
-/*
-==========================================
-CONTADORES
-==========================================
-*/
+        saveCampaigns();
 
-function atualizarContadores() {
-
-    document.getElementById(
-        "totalCadastros"
-    ).textContent =
-        cadastros.length;
+        renderOngCampaigns();
+    }
 
 
-    document.getElementById(
-        "totalAtivos"
-    ).textContent =
+    /* =====================================
+       DOADOR
+    ====================================== */
 
-        cadastros.filter(
+    function renderDonorOngs() {
 
-            cadastro =>
-                cadastro.status ===
-                "Ativo"
+        const container =
+            document.getElementById("donorOngGrid");
 
-        ).length;
+        const search =
+            document.getElementById("ongSearch")
+                .value
+                .toLowerCase();
 
-
-    document.getElementById(
-        "totalPendentes"
-    ).textContent =
-
-        cadastros.filter(
-
-            cadastro =>
-                cadastro.status ===
-                "Pendente"
-
-        ).length;
-
-}
+        container.innerHTML = "";
 
 
+        const availableOngs =
+            ongs.filter(ong => {
 
-/*
-==========================================
-FILTROS
-==========================================
-*/
+                const approved =
+                    ong.status === "Aprovada";
 
-busca.addEventListener(
+                const matches =
+                    ong.name.toLowerCase().includes(search)
+                    ||
+                    ong.city.toLowerCase().includes(search)
+                    ||
+                    ong.cause.toLowerCase().includes(search);
 
-    "input",
-
-    atualizarTabela
-
-);
-
-
-filtroStatus.addEventListener(
-
-    "change",
-
-    atualizarTabela
-
-);
+                return approved && matches;
+            });
 
 
+        if (availableOngs.length === 0) {
 
-/*
-==========================================
-VERIFICAR LOGIN
-==========================================
-*/
+            container.innerHTML = `
+                <div class="empty">
+                    Nenhuma ONG encontrada.
+                </div>
+            `;
 
-const sessaoSalva =
-
-    sessionStorage.getItem(
-        "usuarioVet"
-    );
+            return;
+        }
 
 
-if (sessaoSalva) {
+        availableOngs.forEach(ong => {
 
-    usuarioAtual =
-        JSON.parse(
-            sessaoSalva
+            const activeCampaigns =
+                campaigns.filter(
+                    campaign =>
+                        campaign.ongId === ong.id
+                        &&
+                        campaign.status === "Ativa"
+                ).length;
+
+
+            container.innerHTML += `
+                <article class="ong-card">
+
+                    <div class="ong-card-icon">
+                        🐾
+                    </div>
+
+                    <button
+                        class="ong-name"
+                        onclick="openOngProfile(${ong.id})"
+                    >
+                        ${escapeHTML(ong.name)}
+                    </button>
+
+                    <p>
+                        📍 ${escapeHTML(ong.city)}
+                    </p>
+
+                    <p>
+                        ${escapeHTML(ong.description)}
+                    </p>
+
+                    <span class="tag">
+                        ${escapeHTML(ong.cause)}
+                    </span>
+
+                    <span class="tag">
+                        ${activeCampaigns}
+                        campanha(s) ativa(s)
+                    </span>
+
+                </article>
+            `;
+        });
+    }
+
+
+    /* =====================================
+       PERFIL DA ONG PARA O DOADOR
+    ====================================== */
+
+    function openOngProfile(ongId) {
+
+        const ong =
+            ongs.find(
+                item => item.id === ongId
+            );
+
+        if (!ong) return;
+
+
+        hideViews();
+
+        document
+            .getElementById("ongProfileView")
+            .classList.add("active");
+
+
+        const ongCampaigns =
+            campaigns.filter(
+                campaign =>
+                    campaign.ongId === ongId
+                    &&
+                    campaign.status === "Ativa"
+            );
+
+
+        let campaignHTML = "";
+
+
+        if (ongCampaigns.length === 0) {
+
+            campaignHTML = `
+                <div class="empty">
+                    Esta ONG não possui campanhas ativas no momento.
+                </div>
+            `;
+
+        } else {
+
+            ongCampaigns.forEach(campaign => {
+
+                campaignHTML += `
+                    <div class="campaign">
+
+                        <h3>
+                            ${escapeHTML(campaign.title)}
+                        </h3>
+
+                        <p>
+                            <strong>Categoria:</strong>
+                            ${escapeHTML(campaign.category)}
+                        </p>
+
+                        <p>
+                            <strong>Meta:</strong>
+                            ${money(campaign.goal)}
+                        </p>
+
+                        <p>
+                            ${escapeHTML(campaign.description)}
+                        </p>
+
+                        <button
+                            class="primary help-button"
+                            onclick="helpCampaign(
+                                ${ong.id},
+                                ${campaign.id}
+                            )"
+                        >
+                            ❤️ Quero ajudar
+                        </button>
+
+                    </div>
+                `;
+            });
+        }
+
+
+        document.getElementById("publicOngProfile").innerHTML = `
+
+            <div class="box">
+
+                <div class="profile-header">
+
+                    <div class="profile-avatar">
+                        🐾
+                    </div>
+
+                    <div>
+
+                        <h1>
+                            ${escapeHTML(ong.name)}
+                        </h1>
+
+                        <p>
+                            📍 ${escapeHTML(ong.city)}
+                        </p>
+
+                        <p>
+                            ❤️ ${escapeHTML(ong.cause)}
+                        </p>
+
+                        <p>
+                            ✉️ ${escapeHTML(ong.contact)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <p class="description">
+                    ${escapeHTML(ong.description)}
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <div class="box-title">
+
+                    <h2>
+                        Campanhas e necessidades
+                    </h2>
+
+                </div>
+
+                <div class="campaigns-grid">
+                    ${campaignHTML}
+                </div>
+
+            </div>
+        `;
+    }
+
+
+    function backToDonor() {
+
+        hideViews();
+
+        document
+            .getElementById("donorView")
+            .classList.add("active");
+
+        renderDonorOngs();
+    }
+
+
+    function helpCampaign(ongId, campaignId) {
+
+        const ong =
+            ongs.find(item => item.id === ongId);
+
+        const campaign =
+            campaigns.find(item => item.id === campaignId);
+
+        if (!ong || !campaign) return;
+
+
+        alert(
+            "Você demonstrou interesse em ajudar a campanha \"" +
+            campaign.title +
+            "\" da " +
+            ong.name +
+            ".\n\nNa próxima versão podemos criar o fluxo de doação."
         );
+    }
 
 
-    abrirSistema();
+    /* =====================================
+       ADMINISTRADOR
+    ====================================== */
 
-}
+    function renderAdmin() {
+
+        document.getElementById("adminOngCount").textContent =
+            ongs.length;
+
+        document.getElementById("adminPendingCount").textContent =
+            ongs.filter(
+                ong => ong.status === "Pendente"
+            ).length;
+
+        document.getElementById("adminCampaignCount").textContent =
+            campaigns.filter(
+                campaign => campaign.status === "Ativa"
+            ).length;
+
+
+        renderPendingOngs();
+        renderAllOngs();
+    }
+
+
+    function renderPendingOngs() {
+
+        const tbody =
+            document.getElementById("pendingOngTable");
+
+        tbody.innerHTML = "";
+
+        const pendingOngs =
+            ongs.filter(
+                ong => ong.status === "Pendente"
+            );
+
+
+        if (pendingOngs.length === 0) {
+
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="4" class="empty">
+                        Nenhuma ONG aguardando aprovação.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        pendingOngs.forEach(ong => {
+
+            tbody.innerHTML += `
+                <tr>
+
+                    <td>
+                        ${escapeHTML(ong.name)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(ong.city)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(ong.cause)}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="small-button approve"
+                            onclick="changeOngStatus(
+                                ${ong.id},
+                                'Aprovada'
+                            )"
+                        >
+                            Aprovar
+                        </button>
+
+                        <button
+                            class="small-button danger"
+                            onclick="changeOngStatus(
+                                ${ong.id},
+                                'Suspensa'
+                            )"
+                        >
+                            Recusar
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+        });
+    }
+
+
+    function renderAllOngs() {
+
+        const tbody =
+            document.getElementById("allOngTable");
+
+        tbody.innerHTML = "";
+
+
+        ongs.forEach(ong => {
+
+            const ongCampaigns =
+                campaigns.filter(
+                    campaign => campaign.ongId === ong.id
+                ).length;
+
+
+            let actionButton = "";
+
+
+            if (ong.status === "Aprovada") {
+
+                actionButton = `
+                    <button
+                        class="small-button danger"
+                        onclick="changeOngStatus(
+                            ${ong.id},
+                            'Suspensa'
+                        )"
+                    >
+                        Suspender
+                    </button>
+                `;
+
+            } else if (ong.status === "Suspensa") {
+
+                actionButton = `
+                    <button
+                        class="small-button approve"
+                        onclick="changeOngStatus(
+                            ${ong.id},
+                            'Aprovada'
+                        )"
+                    >
+                        Reativar
+                    </button>
+                `;
+
+            } else {
+
+                actionButton = `
+                    <button
+                        class="small-button approve"
+                        onclick="changeOngStatus(
+                            ${ong.id},
+                            'Aprovada'
+                        )"
+                    >
+                        Aprovar
+                    </button>
+                `;
+            }
+
+
+            tbody.innerHTML += `
+                <tr>
+
+                    <td>
+                        ${escapeHTML(ong.name)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(ong.city)}
+                    </td>
+
+                    <td>
+                        ${statusBadge(ong.status)}
+                    </td>
+
+                    <td>
+                        ${ongCampaigns}
+                    </td>
+
+                    <td>
+                        ${actionButton}
+                    </td>
+
+                </tr>
+            `;
+        });
+    }
+
+
+    function changeOngStatus(id, status) {
+
+        const ong =
+            ongs.find(
+                item => item.id === id
+            );
+
+        if (!ong) return;
+
+
+        ong.status = status;
+
+        saveOngs();
+
+        renderAdmin();
+    }
+
+
+    /* =====================================
+       FUNÇÕES AUXILIARES
+    ====================================== */
+
+    function statusBadge(status) {
+
+        if (status === "Aprovada") {
+
+            return `
+                <span class="status approved">
+                    Aprovada
+                </span>
+            `;
+        }
+
+        if (status === "Pendente") {
+
+            return `
+                <span class="status pending">
+                    Pendente
+                </span>
+            `;
+        }
+
+        return `
+            <span class="status suspended">
+                Suspensa
+            </span>
+        `;
+    }
+
+
+    function money(value) {
+
+        return Number(value || 0)
+            .toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            );
+    }
+
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = text || "";
+
+        return div.innerHTML;
+    }
+
+
+    /* =====================================
+       RECUPERAR SESSÃO
+    ====================================== */
+
+    const savedSession =
+        sessionStorage.getItem("conectaVetUser");
+
+
+    if (savedSession) {
+
+        currentUser =
+            JSON.parse(savedSession);
+
+        openSystem();
+    }
 
 </script>
-
 
 </body>
 
