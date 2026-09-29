@@ -1,1 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Projeto Veterinário</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f6;
+            color: #263238;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        header {
+            background: linear-gradient(135deg, #0f766e, #115e59);
+            color: white;
+            padding: 28px 8%;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            opacity: 0.9;
+        }
+
+        /* =========================
+           CONTEÚDO PRINCIPAL
+        ========================== */
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .card p {
+            color: #607d8b;
+            margin-bottom: 8px;
+        }
+
+        .card h2 {
+            font-size: 30px;
+            color: #0f766e;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================== */
+
+        .box {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .box h2 {
+            margin-bottom: 22px;
+            color: #134e4a;
+        }
+
+        /* =========================
+           FORMULÁRIO
+        ========================== */
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .campo-completo {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #37474f;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 12px 14px;
+            border: 1px solid #cfd8dc;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #0f766e;
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 9px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .btn-principal {
+            padding: 13px 25px;
+            background: #0f766e;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-principal:hover {
+            background: #115e59;
+        }
+
+        /* =========================
+           BUSCA
+        ========================== */
+
+        .filtros {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .filtros input {
+            flex: 1;
+        }
+
+        /* =========================
+           TABELA
+        ========================== */
+
+        .tabela-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #ecfdf5;
+        }
+
+        th {
+            text-align: left;
+            padding: 14px;
+            color: #134e4a;
+            border-bottom: 2px solid #d1fae5;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eceff1;
+        }
+
+        tbody tr:hover {
+            background: #f8faf9;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .ativo {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .pendente {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .inativo {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .btn-excluir {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 7px 11px;
+        }
+
+        .btn-excluir:hover {
+            background: #fecaca;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================== */
+
+        footer {
+            text-align: center;
+            color: #78909c;
+            padding: 25px;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .campo-completo {
+                grid-column: auto;
+            }
+
+            .filtros {
+                flex-direction: column;
+            }
+
+            header {
+                padding: 25px 5%;
+            }
+
+            main {
+                width: 94%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 Projeto Veterinário</h1>
+    <p>Sistema de cadastro e gerenciamento</p>
+</header>
+
+<main>
+
+    <!-- CARDS -->
+
+    <section class="cards">
+
+        <div class="card">
+            <p>Total de cadastros</p>
+            <h2 id="totalCadastros">0</h2>
+        </div>
+
+        <div class="card">
+            <p>Ativos</p>
+            <h2 id="totalAtivos">0</h2>
+        </div>
+
+        <div class="card">
+            <p>Pendentes</p>
+            <h2 id="totalPendentes">0</h2>
+        </div>
+
+    </section>
+
+
+    <!-- CADASTRO -->
+
+    <section class="box">
+
+        <h2>Novo cadastro</h2>
+
+        <form id="formCadastro">
+
+            <div class="campo">
+                <label for="nome">Nome</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite o nome"
+                    required
+                >
+            </div>
+
+
+            <div class="campo">
+                <label for="categoria">Categoria</label>
+
+                <select id="categoria" required>
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="Categoria 1">
+                        Categoria 1
+                    </option>
+
+                    <option value="Categoria 2">
+                        Categoria 2
+                    </option>
+
+                    <option value="Categoria 3">
+                        Categoria 3
+                    </option>
+
+                </select>
+            </div>
+
+
+            <div class="campo">
+                <label for="responsavel">
+                    Responsável
+                </label>
+
+                <input
+                    type="text"
+                    id="responsavel"
+                    placeholder="Nome do responsável"
+                    required
+                >
+            </div>
+
+
+            <div class="campo">
+                <label for="status">
+                    Status
+                </label>
+
+                <select id="status">
+
+                    <option value="Ativo">
+                        Ativo
+                    </option>
+
+                    <option value="Pendente">
+                        Pendente
+                    </option>
+
+                    <option value="Inativo">
+                        Inativo
+                    </option>
+
+                </select>
+            </div>
+
+
+            <div class="campo campo-completo">
+
+                <label for="observacao">
+                    Observações
+                </label>
+
+                <textarea
+                    id="observacao"
+                    placeholder="Informações adicionais..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="campo-completo">
+
+                <button
+                    class="btn-principal"
+                    type="submit"
+                >
+                    + Cadastrar
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- TABELA -->
+
+    <section class="box">
+
+        <h2>Cadastros</h2>
+
+        <div class="filtros">
+
+            <input
+                type="text"
+                id="busca"
+                placeholder="🔎 Buscar por nome..."
+            >
+
+            <select id="filtroStatus">
+
+                <option value="">
+                    Todos os status
+                </option>
+
+                <option value="Ativo">
+                    Ativo
+                </option>
+
+                <option value="Pendente">
+                    Pendente
+                </option>
+
+                <option value="Inativo">
+                    Inativo
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="tabela-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Responsável</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th>Ação</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="corpoTabela">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    Projeto acadêmico de Empreendedorismo • Medicina Veterinária
+</footer>
+
+
+<script>
+
+    /*
+    ==========================================
+    DADOS
+    ==========================================
+    */
+
+    let cadastros =
+        JSON.parse(localStorage.getItem("cadastrosVet"))
+        || [];
+
+
+    /*
+    ==========================================
+    ELEMENTOS DA PÁGINA
+    ==========================================
+    */
+
+    const form =
+        document.getElementById("formCadastro");
+
+    const tabela =
+        document.getElementById("corpoTabela");
+
+    const busca =
+        document.getElementById("busca");
+
+    const filtroStatus =
+        document.getElementById("filtroStatus");
+
+
+    /*
+    ==========================================
+    CADASTRAR
+    ==========================================
+    */
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const cadastro = {
+
+            id: Date.now(),
+
+            nome:
+                document.getElementById("nome").value,
+
+            categoria:
+                document.getElementById("categoria").value,
+
+            responsavel:
+                document.getElementById("responsavel").value,
+
+            status:
+                document.getElementById("status").value,
+
+            observacao:
+                document.getElementById("observacao").value,
+
+            data:
+                new Date().toLocaleDateString("pt-BR")
+
+        };
+
+
+        cadastros.push(cadastro);
+
+
+        salvarDados();
+
+
+        form.reset();
+
+
+        atualizarTabela();
+
+    });
+
+
+    /*
+    ==========================================
+    SALVAR NO NAVEGADOR
+    ==========================================
+    */
+
+    function salvarDados() {
+
+        localStorage.setItem(
+            "cadastrosVet",
+            JSON.stringify(cadastros)
+        );
+
+    }
+
+
+    /*
+    ==========================================
+    EXCLUIR
+    ==========================================
+    */
+
+    function excluirCadastro(id) {
+
+        const confirmar =
+            confirm(
+                "Deseja realmente excluir este cadastro?"
+            );
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        cadastros =
+            cadastros.filter(
+                cadastro => cadastro.id !== id
+            );
+
+
+        salvarDados();
+
+        atualizarTabela();
+
+    }
+
+
+    /*
+    ==========================================
+    STATUS
+    ==========================================
+    */
+
+    function classeStatus(status) {
+
+        if (status === "Ativo") {
+            return "ativo";
+        }
+
+        if (status === "Pendente") {
+            return "pendente";
+        }
+
+        return "inativo";
+
+    }
+
+
+    /*
+    ==========================================
+    ATUALIZAR TABELA
+    ==========================================
+    */
+
+    function atualizarTabela() {
+
+        tabela.innerHTML = "";
+
+
+        const textoBusca =
+            busca.value.toLowerCase();
+
+
+        const statusSelecionado =
+            filtroStatus.value;
+
+
+        const resultados =
+            cadastros.filter(cadastro => {
+
+                const nomeEncontrado =
+                    cadastro.nome
+                        .toLowerCase()
+                        .includes(textoBusca);
+
+
+                const statusEncontrado =
+                    !statusSelecionado ||
+                    cadastro.status === statusSelecionado;
+
+
+                return (
+                    nomeEncontrado &&
+                    statusEncontrado
+                );
+
+            });
+
+
+        resultados.forEach(cadastro => {
+
+            const linha =
+                document.createElement("tr");
+
+
+            linha.innerHTML = `
+
+                <td>${cadastro.nome}</td>
+
+                <td>${cadastro.categoria}</td>
+
+                <td>${cadastro.responsavel}</td>
+
+                <td>
+
+                    <span class="
+                        status
+                        ${classeStatus(cadastro.status)}
+                    ">
+
+                        ${cadastro.status}
+
+                    </span>
+
+                </td>
+
+                <td>${cadastro.data}</td>
+
+                <td>
+
+                    <button
+                        class="btn-excluir"
+                        onclick="excluirCadastro(${cadastro.id})"
+                    >
+                        Excluir
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tabela.appendChild(linha);
+
+        });
+
+
+        atualizarContadores();
+
+    }
+
+
+    /*
+    ==========================================
+    CONTADORES
+    ==========================================
+    */
+
+    function atualizarContadores() {
+
+        document.getElementById(
+            "totalCadastros"
+        ).textContent =
+            cadastros.length;
+
+
+        document.getElementById(
+            "totalAtivos"
+        ).textContent =
+            cadastros.filter(
+                cadastro =>
+                    cadastro.status === "Ativo"
+            ).length;
+
+
+        document.getElementById(
+            "totalPendentes"
+        ).textContent =
+            cadastros.filter(
+                cadastro =>
+                    cadastro.status === "Pendente"
+            ).length;
+
+    }
+
+
+    /*
+    ==========================================
+    BUSCA E FILTRO
+    ==========================================
+    */
+
+    busca.addEventListener(
+        "input",
+        atualizarTabela
+    );
+
+
+    filtroStatus.addEventListener(
+        "change",
+        atualizarTabela
+    );
+
+
+    /*
+    ==========================================
+    INICIAR SISTEMA
+    ==========================================
+    */
+
+    atualizarTabela();
+
+</script>
+
+</body>
+</html>
