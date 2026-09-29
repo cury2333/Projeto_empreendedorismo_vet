@@ -8,6 +8,7 @@
     <title>ConectaVet</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -31,15 +32,21 @@
             cursor: pointer;
         }
 
-        /* LOGIN */
+        /* =====================================
+           LOGIN
+        ====================================== */
 
         #loginPage {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0f766e, #134e4a);
             padding: 30px;
+            background: linear-gradient(
+                135deg,
+                #0f766e,
+                #134e4a
+            );
         }
 
         .login-box {
@@ -48,7 +55,9 @@
             background: white;
             padding: 40px;
             border-radius: 22px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.25);
         }
 
         .logo {
@@ -83,7 +92,7 @@
             border: 2px solid #e2e8f0;
             border-radius: 13px;
             padding: 15px 8px;
-            transition: .2s;
+            transition: 0.2s;
         }
 
         .login-type span {
@@ -128,7 +137,9 @@
         .field textarea:focus,
         .field select:focus {
             border-color: #0f766e;
-            box-shadow: 0 0 0 3px rgba(15, 118, 110, .12);
+            box-shadow:
+                0 0 0 3px
+                rgba(15, 118, 110, 0.12);
         }
 
         .primary {
@@ -167,30 +178,77 @@
             line-height: 1.7;
         }
 
-        /* APP */
+        /* =====================================
+           SISTEMA
+        ====================================== */
 
         #app {
             display: none;
         }
 
         header {
-            background: linear-gradient(135deg, #0f766e, #115e59);
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f766e,
+                    #115e59
+                );
+
             color: white;
-            padding: 21px 6%;
+
+            padding: 20px 6%;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             gap: 20px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
+
+            box-shadow:
+                0 3px 12px
+                rgba(0, 0, 0, 0.15);
         }
 
-        header h1 {
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .brand h1 {
             font-size: 25px;
         }
 
-        header p {
+        .brand p {
             margin-top: 5px;
-            opacity: .85;
+            opacity: 0.85;
+        }
+
+        /* BOTÃO INÍCIO */
+
+        .home-button {
+            border: 1px solid
+                rgba(255, 255, 255, 0.4);
+
+            background:
+                rgba(255, 255, 255, 0.15);
+
+            color: white;
+
+            padding: 9px 14px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .home-button:hover {
+            background:
+                rgba(255, 255, 255, 0.28);
         }
 
         .header-user {
@@ -205,9 +263,20 @@
         .logout {
             padding: 8px 13px;
             border-radius: 8px;
-            border: 1px solid rgba(255,255,255,.4);
-            background: rgba(255,255,255,.12);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.4);
+
+            background:
+                rgba(255, 255, 255, 0.12);
+
             color: white;
+        }
+
+        .logout:hover {
+            background:
+                rgba(255, 255, 255, 0.25);
         }
 
         main {
@@ -226,9 +295,14 @@
 
         .welcome {
             background: #ecfdf5;
-            border-left: 5px solid #0f766e;
+
+            border-left:
+                5px solid #0f766e;
+
             padding: 19px;
+
             border-radius: 10px;
+
             margin-bottom: 25px;
         }
 
@@ -237,18 +311,29 @@
             margin-bottom: 6px;
         }
 
+        /* =====================================
+           CARDS
+        ====================================== */
+
         .cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns:
+                repeat(4, 1fr);
+
             gap: 18px;
             margin-bottom: 28px;
         }
 
         .card {
             background: white;
+
             padding: 21px;
+
             border-radius: 14px;
-            box-shadow: 0 3px 15px rgba(0,0,0,.07);
+
+            box-shadow:
+                0 3px 15px
+                rgba(0, 0, 0, 0.07);
         }
 
         .card p {
@@ -264,10 +349,16 @@
 
         .box {
             background: white;
+
             border-radius: 16px;
+
             padding: 27px;
+
             margin-bottom: 28px;
-            box-shadow: 0 3px 15px rgba(0,0,0,.07);
+
+            box-shadow:
+                0 3px 15px
+                rgba(0, 0, 0, 0.07);
         }
 
         .box-title {
@@ -284,27 +375,39 @@
 
         .grid-two {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                1fr 1fr;
+
             gap: 18px;
         }
 
-        /* ONG */
+        /* =====================================
+           ONG
+        ====================================== */
 
         .ong-summary {
             display: grid;
-            grid-template-columns: auto 1fr;
+
+            grid-template-columns:
+                auto 1fr;
+
             gap: 20px;
+
             align-items: center;
         }
 
         .ong-avatar {
             width: 90px;
             height: 90px;
+
             border-radius: 20px;
+
             background: #ccfbf1;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 42px;
         }
 
@@ -314,10 +417,12 @@
 
         .ong-summary p {
             color: #64748b;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
-        /* TABELAS */
+        /* =====================================
+           TABELAS
+        ====================================== */
 
         .table-container {
             overflow-x: auto;
@@ -330,15 +435,23 @@
 
         th {
             text-align: left;
+
             padding: 13px;
+
             background: #ecfdf5;
+
             color: #134e4a;
-            border-bottom: 2px solid #d1fae5;
+
+            border-bottom:
+                2px solid #d1fae5;
         }
 
         td {
             padding: 13px;
-            border-bottom: 1px solid #e5e7eb;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
             vertical-align: middle;
         }
 
@@ -348,9 +461,13 @@
 
         .status {
             display: inline-block;
+
             padding: 6px 10px;
+
             border-radius: 20px;
+
             font-size: 12px;
+
             font-weight: bold;
         }
 
@@ -376,9 +493,13 @@
 
         .small-button {
             border: none;
+
             padding: 7px 10px;
+
             border-radius: 7px;
+
             margin: 2px;
+
             font-size: 12px;
         }
 
@@ -392,62 +513,90 @@
             color: #991b1b;
         }
 
-        .neutral {
-            background: #e2e8f0;
-            color: #334155;
-        }
-
-        /* DOADOR */
+        /* =====================================
+           DOADOR
+        ====================================== */
 
         .search {
             width: 100%;
-            border: 1px solid #cbd5e1;
+
+            border:
+                1px solid #cbd5e1;
+
             border-radius: 10px;
+
             padding: 13px 15px;
+
             font-size: 15px;
+
             margin-bottom: 22px;
         }
 
         .ongs-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 20px;
         }
 
         .ong-card {
             background: white;
-            border: 1px solid #e2e8f0;
+
+            border:
+                1px solid #e2e8f0;
+
             border-radius: 16px;
+
             padding: 22px;
-            transition: .2s;
+
+            transition: 0.2s;
         }
 
         .ong-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,.09);
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.09);
         }
 
         .ong-card-icon {
             width: 58px;
             height: 58px;
+
             background: #ccfbf1;
+
             border-radius: 14px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 28px;
+
             margin-bottom: 15px;
         }
 
         .ong-name {
             display: inline-block;
+
             border: none;
+
             background: none;
+
             padding: 0;
+
             text-align: left;
+
             color: #0f766e;
+
             font-size: 19px;
+
             font-weight: bold;
+
             margin-bottom: 9px;
         }
 
@@ -464,40 +613,60 @@
 
         .tag {
             display: inline-block;
+
             background: #f1f5f9;
+
             color: #475569;
+
             padding: 5px 9px;
+
             border-radius: 15px;
+
             font-size: 12px;
+
             margin-top: 7px;
         }
 
-        /* PERFIL DA ONG */
+        /* =====================================
+           PERFIL DA ONG
+        ====================================== */
 
         .back-button {
             border: none;
             background: none;
+
             color: #0f766e;
+
             font-weight: bold;
+
             font-size: 14px;
+
             margin-bottom: 18px;
         }
 
         .profile-header {
             display: grid;
-            grid-template-columns: auto 1fr;
+
+            grid-template-columns:
+                auto 1fr;
+
             gap: 22px;
+
             align-items: center;
         }
 
         .profile-avatar {
             width: 110px;
             height: 110px;
+
             background: #ccfbf1;
+
             border-radius: 22px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             font-size: 52px;
         }
 
@@ -513,19 +682,27 @@
 
         .description {
             color: #475569;
+
             line-height: 1.7;
+
             margin-top: 20px;
         }
 
         .campaigns-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 18px;
         }
 
         .campaign {
-            border: 1px solid #e2e8f0;
+            border:
+                1px solid #e2e8f0;
+
             border-radius: 13px;
+
             padding: 19px;
         }
 
@@ -545,6 +722,167 @@
             width: 100%;
         }
 
+        /* =====================================
+           PROGRESSO
+        ====================================== */
+
+        .progress-container {
+            margin-top: 15px;
+        }
+
+        .progress-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            font-size: 13px;
+
+            color: #64748b;
+
+            margin-bottom: 7px;
+        }
+
+        .progress-background {
+            width: 100%;
+            height: 12px;
+
+            border-radius: 20px;
+
+            background: #e2e8f0;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0f766e,
+                    #14b8a6
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.4s;
+        }
+
+        /* =====================================
+           PÁGINA DA DOAÇÃO
+        ====================================== */
+
+        .donation-layout {
+            display: grid;
+
+            grid-template-columns:
+                1.2fr 0.8fr;
+
+            gap: 25px;
+        }
+
+        .donation-title {
+            color: #134e4a;
+            margin-bottom: 10px;
+        }
+
+        .donation-ong {
+            color: #0f766e;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .donation-description {
+            color: #64748b;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+        }
+
+        .money-summary {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .money-item {
+            background: #f8fafc;
+
+            border-radius: 10px;
+
+            padding: 14px;
+
+            text-align: center;
+        }
+
+        .money-item small {
+            color: #64748b;
+
+            display: block;
+
+            margin-bottom: 6px;
+        }
+
+        .money-item strong {
+            color: #134e4a;
+        }
+
+        .donation-form {
+            background: #f8fafc;
+
+            border-radius: 14px;
+
+            padding: 22px;
+        }
+
+        .donation-form h2 {
+            margin-bottom: 18px;
+        }
+
+        .prototype-warning {
+            background: #fef3c7;
+
+            color: #92400e;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-bottom: 18px;
+        }
+
+        .donation-feedback {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 14px;
+
+            border-radius: 9px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            line-height: 1.5;
+        }
+
+        .item-fields {
+            display: none;
+        }
+
         .empty {
             text-align: center;
             color: #64748b;
@@ -557,23 +895,41 @@
             color: #64748b;
         }
 
+        /* =====================================
+           RESPONSIVO
+        ====================================== */
+
         @media(max-width: 900px) {
+
             .cards,
             .ongs-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
+
+            .donation-layout {
+                grid-template-columns: 1fr;
+            }
+
         }
 
         @media(max-width: 650px) {
+
             .login-types,
             .cards,
             .ongs-grid,
             .campaigns-grid,
-            .grid-two {
+            .grid-two,
+            .money-summary {
                 grid-template-columns: 1fr;
             }
 
             header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-left {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -586,64 +942,140 @@
             .profile-header {
                 grid-template-columns: 1fr;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-<!-- LOGIN -->
+
+<!-- =====================================
+     LOGIN
+====================================== -->
 
 <section id="loginPage">
 
     <div class="login-box">
 
         <div class="logo">
-            <div class="logo-icon">🐾</div>
-            <h1>ConectaVet</h1>
-            <p>Conectando quem ajuda a quem precisa.</p>
+
+            <div class="logo-icon">
+                🐾
+            </div>
+
+            <h1>
+                ConectaVet
+            </h1>
+
+            <p>
+                Conectando quem ajuda a quem precisa.
+            </p>
+
         </div>
+
 
         <div class="login-types">
 
-            <button class="login-type active" data-role="ong" onclick="selectRole('ong')">
+            <button
+                class="login-type active"
+                data-role="ong"
+                onclick="selectRole('ong')"
+            >
                 <span>🏠</span>
                 ONG
             </button>
 
-            <button class="login-type" data-role="donor" onclick="selectRole('donor')">
+
+            <button
+                class="login-type"
+                data-role="donor"
+                onclick="selectRole('donor')"
+            >
                 <span>❤️</span>
                 Doador
             </button>
 
-            <button class="login-type" data-role="admin" onclick="selectRole('admin')">
+
+            <button
+                class="login-type"
+                data-role="admin"
+                onclick="selectRole('admin')"
+            >
                 <span>⚙️</span>
                 Administrador
             </button>
 
         </div>
 
-        <div class="field">
-            <label>E-mail</label>
-            <input id="loginEmail" type="email" placeholder="Digite seu e-mail">
-        </div>
 
         <div class="field">
-            <label>Senha</label>
-            <input id="loginPassword" type="password" placeholder="Digite sua senha">
+
+            <label>
+                E-mail
+            </label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Digite seu e-mail"
+            >
+
         </div>
 
-        <button class="primary login-button" onclick="login()">
+
+        <div class="field">
+
+            <label>
+                Senha
+            </label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Digite sua senha"
+            >
+
+        </div>
+
+
+        <button
+            class="primary login-button"
+            onclick="login()"
+        >
             Entrar
         </button>
 
+
         <div id="loginError"></div>
 
+
         <div class="test-accounts">
-            <strong>Contas para teste</strong><br>
-            ONG: ong@teste.com / ong123<br>
-            Doador: doador@teste.com / doador123<br>
-            Administrador: admin@teste.com / admin123
+
+            <strong>
+                Contas para teste
+            </strong>
+
+            <br>
+
+            ONG:
+            ong@teste.com /
+            ong123
+
+            <br>
+
+            Doador:
+            doador@teste.com /
+            doador123
+
+            <br>
+
+            Administrador:
+            admin@teste.com /
+            admin123
+
         </div>
 
     </div>
@@ -651,23 +1083,49 @@
 </section>
 
 
-<!-- SISTEMA -->
+<!-- =====================================
+     SISTEMA
+====================================== -->
 
 <div id="app">
 
+
     <header>
 
-        <div>
-            <h1>🐾 ConectaVet</h1>
-            <p id="headerDescription"></p>
+        <div class="header-left">
+
+            <div class="brand">
+
+                <h1>
+                    🐾 ConectaVet
+                </h1>
+
+                <p id="headerDescription"></p>
+
+            </div>
+
+
+            <button
+                class="home-button"
+                onclick="goHome()"
+            >
+                🏠 Início
+            </button>
+
         </div>
 
+
         <div class="header-user">
+
             <strong id="loggedUser"></strong>
 
-            <button class="logout" onclick="logout()">
+            <button
+                class="logout"
+                onclick="logout()"
+            >
                 Sair
             </button>
+
         </div>
 
     </header>
@@ -675,57 +1133,112 @@
 
     <main>
 
-        <!-- ===============================
-             ÁREA DA ONG
-        ================================ -->
 
-        <section id="ongView" class="view">
+        <!-- =================================
+             ÁREA DA ONG
+        ================================== -->
+
+        <section
+            id="ongView"
+            class="view"
+        >
 
             <div class="welcome">
-                <h2>🏠 Área da ONG</h2>
+
+                <h2>
+                    🏠 Área da ONG
+                </h2>
+
                 <p>
-                    Gerencie o perfil da sua organização e suas campanhas.
+                    Gerencie o perfil da sua organização
+                    e suas campanhas.
                 </p>
+
             </div>
 
-            <div id="ongOwnProfile" class="box"></div>
+
+            <div
+                id="ongOwnProfile"
+                class="box"
+            ></div>
+
 
             <div class="box">
 
                 <div class="box-title">
-                    <h2>Editar perfil da ONG</h2>
+
+                    <h2>
+                        Editar perfil da ONG
+                    </h2>
+
                 </div>
+
 
                 <div class="grid-two">
 
                     <div class="field">
-                        <label>Nome da ONG</label>
+
+                        <label>
+                            Nome da ONG
+                        </label>
+
                         <input id="ongEditName">
+
                     </div>
 
+
                     <div class="field">
-                        <label>Cidade</label>
+
+                        <label>
+                            Cidade
+                        </label>
+
                         <input id="ongEditCity">
+
                     </div>
 
+
                     <div class="field">
-                        <label>Área de atuação</label>
+
+                        <label>
+                            Área de atuação
+                        </label>
+
                         <input id="ongEditCause">
+
                     </div>
 
+
                     <div class="field">
-                        <label>Contato</label>
+
+                        <label>
+                            Contato
+                        </label>
+
                         <input id="ongEditContact">
+
                     </div>
 
                 </div>
+
 
                 <div class="field">
-                    <label>Descrição</label>
-                    <textarea id="ongEditDescription"></textarea>
+
+                    <label>
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="ongEditDescription"
+                    ></textarea>
+
                 </div>
 
-                <button class="primary" onclick="saveOngProfile()">
+
+                <button
+                    class="primary"
+                    onclick="saveOngProfile()"
+                >
                     Salvar alterações
                 </button>
 
@@ -735,46 +1248,102 @@
             <div class="box">
 
                 <div class="box-title">
-                    <h2>Nova campanha / necessidade</h2>
+
+                    <h2>
+                        Nova campanha / necessidade
+                    </h2>
+
                 </div>
+
 
                 <div class="grid-two">
 
                     <div class="field">
-                        <label>Título</label>
-                        <input id="campaignTitle" placeholder="Ex: Arrecadação de ração">
+
+                        <label>
+                            Título
+                        </label>
+
+                        <input
+                            id="campaignTitle"
+                            placeholder="Ex: Arrecadação de ração"
+                        >
+
                     </div>
 
+
                     <div class="field">
-                        <label>Categoria</label>
+
+                        <label>
+                            Categoria
+                        </label>
 
                         <select id="campaignCategory">
-                            <option>Alimentação</option>
-                            <option>Medicamentos</option>
-                            <option>Tratamento veterinário</option>
-                            <option>Infraestrutura</option>
-                            <option>Materiais</option>
-                            <option>Outros</option>
+
+                            <option>
+                                Alimentação
+                            </option>
+
+                            <option>
+                                Medicamentos
+                            </option>
+
+                            <option>
+                                Tratamento veterinário
+                            </option>
+
+                            <option>
+                                Infraestrutura
+                            </option>
+
+                            <option>
+                                Materiais
+                            </option>
+
+                            <option>
+                                Outros
+                            </option>
+
                         </select>
+
                     </div>
 
+
                     <div class="field">
-                        <label>Meta estimada (R$)</label>
-                        <input id="campaignGoal" type="number" min="0">
+
+                        <label>
+                            Meta estimada (R$)
+                        </label>
+
+                        <input
+                            id="campaignGoal"
+                            type="number"
+                            min="0"
+                        >
+
                     </div>
 
                 </div>
 
+
                 <div class="field">
-                    <label>Descrição</label>
+
+                    <label>
+                        Descrição
+                    </label>
 
                     <textarea
                         id="campaignDescription"
                         placeholder="Explique o que a ONG precisa..."
                     ></textarea>
+
                 </div>
 
-                <button class="primary" onclick="createCampaign()">
+
+                <button
+                    class="primary"
+                    onclick="createCampaign()"
+                >
                     + Criar campanha
                 </button>
 
@@ -784,23 +1353,35 @@
             <div class="box">
 
                 <div class="box-title">
-                    <h2>Minhas campanhas</h2>
+
+                    <h2>
+                        Minhas campanhas
+                    </h2>
+
                 </div>
+
 
                 <div class="table-container">
 
                     <table>
+
                         <thead>
+
                             <tr>
                                 <th>Campanha</th>
                                 <th>Categoria</th>
                                 <th>Meta</th>
+                                <th>Arrecadado</th>
                                 <th>Status</th>
                                 <th>Ação</th>
                             </tr>
+
                         </thead>
 
-                        <tbody id="ongCampaignTable"></tbody>
+                        <tbody
+                            id="ongCampaignTable"
+                        ></tbody>
+
                     </table>
 
                 </div>
@@ -810,25 +1391,40 @@
         </section>
 
 
-        <!-- ===============================
+        <!-- =================================
              ÁREA DO DOADOR
-        ================================ -->
+        ================================== -->
 
-        <section id="donorView" class="view">
+        <section
+            id="donorView"
+            class="view"
+        >
 
             <div class="welcome">
-                <h2>❤️ Área do Doador</h2>
+
+                <h2>
+                    ❤️ Área do Doador
+                </h2>
 
                 <p>
-                    Encontre organizações e conheça as necessidades de cada ONG.
+                    Encontre organizações,
+                    conheça suas necessidades
+                    e escolha como ajudar.
                 </p>
+
             </div>
+
 
             <div class="box">
 
                 <div class="box-title">
-                    <h2>ONGs disponíveis</h2>
+
+                    <h2>
+                        ONGs disponíveis
+                    </h2>
+
                 </div>
+
 
                 <input
                     class="search"
@@ -837,63 +1433,295 @@
                     oninput="renderDonorOngs()"
                 >
 
-                <div id="donorOngGrid" class="ongs-grid"></div>
+
+                <div
+                    id="donorOngGrid"
+                    class="ongs-grid"
+                ></div>
 
             </div>
 
         </section>
 
 
-        <!-- ===============================
+        <!-- =================================
              PERFIL PÚBLICO DA ONG
-        ================================ -->
+        ================================== -->
 
-        <section id="ongProfileView" class="view">
+        <section
+            id="ongProfileView"
+            class="view"
+        >
 
-            <button class="back-button" onclick="backToDonor()">
+            <button
+                class="back-button"
+                onclick="backToDonor()"
+            >
                 ← Voltar para as ONGs
             </button>
+
 
             <div id="publicOngProfile"></div>
 
         </section>
 
 
-        <!-- ===============================
-             ADMINISTRADOR
-        ================================ -->
+        <!-- =================================
+             PÁGINA DE DOAÇÃO
+        ================================== -->
 
-        <section id="adminView" class="view">
+        <section
+            id="donationView"
+            class="view"
+        >
+
+            <button
+                class="back-button"
+                onclick="backToOngProfile()"
+            >
+                ← Voltar para o perfil da ONG
+            </button>
+
+
+            <div class="donation-layout">
+
+
+                <div class="box">
+
+                    <div id="donationCampaignInfo">
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <div class="donation-form">
+
+                        <h2>
+                            ❤️ Como você deseja ajudar?
+                        </h2>
+
+
+                        <div class="prototype-warning">
+
+                            Esta é uma demonstração acadêmica.
+                            Nenhum pagamento real será realizado.
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Forma de ajuda
+                            </label>
+
+                            <select
+                                id="helpType"
+                                onchange="updateDonationFields()"
+                            >
+
+                                <option value="money">
+                                    Doação financeira
+                                </option>
+
+                                <option value="items">
+                                    Doação de produtos ou materiais
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DINHEIRO -->
+
+                        <div id="moneyFields">
+
+                            <div class="field">
+
+                                <label>
+                                    Valor que deseja doar (R$)
+                                </label>
+
+                                <input
+                                    id="donationAmount"
+                                    type="number"
+                                    min="1"
+                                    step="0.01"
+                                    placeholder="Ex: 50,00"
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Forma de pagamento
+                                </label>
+
+                                <select
+                                    id="paymentMethod"
+                                >
+
+                                    <option>
+                                        PIX
+                                    </option>
+
+                                    <option>
+                                        Cartão
+                                    </option>
+
+                                    <option>
+                                        Transferência bancária
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ITENS -->
+
+                        <div
+                            id="itemFields"
+                            class="item-fields"
+                        >
+
+                            <div class="field">
+
+                                <label>
+                                    O que deseja doar?
+                                </label>
+
+                                <input
+                                    id="itemDescription"
+                                    placeholder="Ex: 20 kg de ração"
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Quantidade
+                                </label>
+
+                                <input
+                                    id="itemQuantity"
+                                    type="number"
+                                    min="1"
+                                    placeholder="Ex: 2"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="primary"
+                            style="width:100%"
+                            onclick="confirmHelp()"
+                        >
+                            Confirmar ajuda
+                        </button>
+
+
+                        <div
+                            id="donationFeedback"
+                            class="donation-feedback"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             ADMINISTRADOR
+        ================================== -->
+
+        <section
+            id="adminView"
+            class="view"
+        >
 
             <div class="welcome">
-                <h2>⚙️ Painel Administrativo</h2>
+
+                <h2>
+                    ⚙️ Painel Administrativo
+                </h2>
 
                 <p>
-                    Gerencie usuários, ONGs e conteúdos da plataforma.
+                    Gerencie ONGs,
+                    usuários e campanhas
+                    da plataforma.
                 </p>
+
             </div>
 
 
             <div class="cards">
 
                 <div class="card">
-                    <p>ONGs cadastradas</p>
-                    <h2 id="adminOngCount">0</h2>
+
+                    <p>
+                        ONGs cadastradas
+                    </p>
+
+                    <h2 id="adminOngCount">
+                        0
+                    </h2>
+
                 </div>
 
-                <div class="card">
-                    <p>ONGs pendentes</p>
-                    <h2 id="adminPendingCount">0</h2>
-                </div>
 
                 <div class="card">
-                    <p>Campanhas ativas</p>
-                    <h2 id="adminCampaignCount">0</h2>
+
+                    <p>
+                        ONGs pendentes
+                    </p>
+
+                    <h2 id="adminPendingCount">
+                        0
+                    </h2>
+
                 </div>
 
+
                 <div class="card">
-                    <p>Doadores</p>
-                    <h2 id="adminDonorCount">1</h2>
+
+                    <p>
+                        Campanhas ativas
+                    </p>
+
+                    <h2 id="adminCampaignCount">
+                        0
+                    </h2>
+
+                </div>
+
+
+                <div class="card">
+
+                    <p>
+                        Doadores
+                    </p>
+
+                    <h2 id="adminDonorCount">
+                        1
+                    </h2>
+
                 </div>
 
             </div>
@@ -902,23 +1730,38 @@
             <div class="box">
 
                 <div class="box-title">
-                    <h2>ONGs aguardando aprovação</h2>
+
+                    <h2>
+                        ONGs aguardando aprovação
+                    </h2>
+
                 </div>
+
 
                 <div class="table-container">
 
                     <table>
 
                         <thead>
+
                             <tr>
+
                                 <th>ONG</th>
+
                                 <th>Cidade</th>
+
                                 <th>Área</th>
+
                                 <th>Ações</th>
+
                             </tr>
+
                         </thead>
 
-                        <tbody id="pendingOngTable"></tbody>
+
+                        <tbody
+                            id="pendingOngTable"
+                        ></tbody>
 
                     </table>
 
@@ -930,24 +1773,40 @@
             <div class="box">
 
                 <div class="box-title">
-                    <h2>Todas as ONGs</h2>
+
+                    <h2>
+                        Todas as ONGs
+                    </h2>
+
                 </div>
+
 
                 <div class="table-container">
 
                     <table>
 
                         <thead>
+
                             <tr>
+
                                 <th>ONG</th>
+
                                 <th>Cidade</th>
+
                                 <th>Status</th>
+
                                 <th>Campanhas</th>
+
                                 <th>Ações</th>
+
                             </tr>
+
                         </thead>
 
-                        <tbody id="allOngTable"></tbody>
+
+                        <tbody
+                            id="allOngTable"
+                        ></tbody>
 
                     </table>
 
@@ -959,8 +1818,12 @@
 
     </main>
 
+
     <footer>
-        Projeto acadêmico de Empreendedorismo • Medicina Veterinária
+
+        Projeto acadêmico de Empreendedorismo
+        • Medicina Veterinária
+
     </footer>
 
 </div>
@@ -968,494 +1831,1002 @@
 
 <script>
 
-    /* =====================================
-       USUÁRIOS DE TESTE
-    ====================================== */
+/* =========================================
+   USUÁRIOS
+========================================= */
 
-    let selectedRole = "ong";
-    let currentUser = null;
+let selectedRole = "ong";
 
-    const users = {
-        ong: {
-            email: "ong@teste.com",
-            password: "ong123",
-            name: "ONG Patinhas do Bem",
-            role: "ong",
-            ongId: 1
-        },
+let currentUser = null;
 
-        donor: {
-            email: "doador@teste.com",
-            password: "doador123",
-            name: "Doador",
-            role: "donor"
-        },
+let selectedOngId = null;
 
-        admin: {
-            email: "admin@teste.com",
-            password: "admin123",
-            name: "Administrador",
-            role: "admin"
-        }
-    };
+let selectedCampaignId = null;
 
 
-    /* =====================================
-       DADOS INICIAIS
-    ====================================== */
+const users = {
 
-    const initialOngs = [
-        {
-            id: 1,
-            name: "ONG Patinhas do Bem",
-            city: "Poá - SP",
-            cause: "Resgate de cães e gatos",
-            contact: "contato@patinhasdobem.org",
-            description:
-                "Trabalhamos com o resgate, tratamento e encaminhamento para adoção responsável de cães e gatos em situação de abandono.",
-            status: "Aprovada"
-        },
+    ong: {
 
-        {
-            id: 2,
-            name: "Amigos de Quatro Patas",
-            city: "Mogi das Cruzes - SP",
-            cause: "Animais abandonados",
-            contact: "contato@amigos4patas.org",
-            description:
-                "Organização dedicada ao acolhimento temporário e à recuperação de animais abandonados.",
-            status: "Aprovada"
-        },
+        email: "ong@teste.com",
 
-        {
-            id: 3,
-            name: "Projeto Novo Lar",
-            city: "Suzano - SP",
-            cause: "Adoção responsável",
-            contact: "contato@novolar.org",
-            description:
-                "Promovemos feiras de adoção e auxiliamos animais em situação de vulnerabilidade.",
-            status: "Pendente"
-        },
+        password: "ong123",
 
-        {
-            id: 4,
-            name: "Instituto Vida Animal",
-            city: "São Paulo - SP",
-            cause: "Tratamento veterinário",
-            contact: "contato@vidaanimal.org",
-            description:
-                "Atuamos no atendimento e suporte veterinário para animais resgatados em situação de risco.",
-            status: "Aprovada"
-        }
-    ];
+        name: "ONG Patinhas do Bem",
+
+        role: "ong",
+
+        ongId: 1
+
+    },
 
 
-    const initialCampaigns = [
-        {
-            id: 1,
-            ongId: 1,
-            title: "Arrecadação de ração",
-            category: "Alimentação",
-            goal: 1500,
-            description:
-                "Precisamos arrecadar ração para os animais acolhidos durante este mês.",
-            status: "Ativa"
-        },
+    donor: {
 
-        {
-            id: 2,
-            ongId: 1,
-            title: "Tratamento da Mel",
-            category: "Tratamento veterinário",
-            goal: 2200,
-            description:
-                "A cadela Mel precisa realizar exames e tratamento veterinário.",
-            status: "Ativa"
-        },
+        email: "doador@teste.com",
 
-        {
-            id: 3,
-            ongId: 2,
-            title: "Reforma dos canis",
-            category: "Infraestrutura",
-            goal: 5000,
-            description:
-                "A organização precisa reformar parte dos canis utilizados no acolhimento.",
-            status: "Ativa"
-        },
+        password: "doador123",
 
-        {
-            id: 4,
-            ongId: 4,
-            title: "Medicamentos veterinários",
-            category: "Medicamentos",
-            goal: 1800,
-            description:
-                "Campanha para aquisição de medicamentos utilizados nos animais resgatados.",
-            status: "Ativa"
-        }
-    ];
+        name: "Doador",
+
+        role: "donor"
+
+    },
 
 
-    let ongs =
-        JSON.parse(localStorage.getItem("conectaVetOngs"));
+    admin: {
 
-    let campaigns =
-        JSON.parse(localStorage.getItem("conectaVetCampaigns"));
+        email: "admin@teste.com",
 
+        password: "admin123",
 
-    if (!ongs) {
-        ongs = initialOngs;
-        saveOngs();
+        name: "Administrador",
+
+        role: "admin"
+
     }
 
-    if (!campaigns) {
-        campaigns = initialCampaigns;
-        saveCampaigns();
+};
+
+
+/* =========================================
+   DADOS INICIAIS
+========================================= */
+
+const initialOngs = [
+
+    {
+
+        id: 1,
+
+        name:
+            "ONG Patinhas do Bem",
+
+        city:
+            "Poá - SP",
+
+        cause:
+            "Resgate de cães e gatos",
+
+        contact:
+            "contato@patinhasdobem.org",
+
+        description:
+            "Trabalhamos com o resgate, tratamento e encaminhamento para adoção responsável de cães e gatos em situação de abandono.",
+
+        status:
+            "Aprovada"
+
+    },
+
+
+    {
+
+        id: 2,
+
+        name:
+            "Amigos de Quatro Patas",
+
+        city:
+            "Mogi das Cruzes - SP",
+
+        cause:
+            "Animais abandonados",
+
+        contact:
+            "contato@amigos4patas.org",
+
+        description:
+            "Organização dedicada ao acolhimento temporário e à recuperação de animais abandonados.",
+
+        status:
+            "Aprovada"
+
+    },
+
+
+    {
+
+        id: 3,
+
+        name:
+            "Projeto Novo Lar",
+
+        city:
+            "Suzano - SP",
+
+        cause:
+            "Adoção responsável",
+
+        contact:
+            "contato@novolar.org",
+
+        description:
+            "Promovemos feiras de adoção e auxiliamos animais em situação de vulnerabilidade.",
+
+        status:
+            "Pendente"
+
+    },
+
+
+    {
+
+        id: 4,
+
+        name:
+            "Instituto Vida Animal",
+
+        city:
+            "São Paulo - SP",
+
+        cause:
+            "Tratamento veterinário",
+
+        contact:
+            "contato@vidaanimal.org",
+
+        description:
+            "Atuamos no atendimento e suporte veterinário para animais resgatados em situação de risco.",
+
+        status:
+            "Aprovada"
+
     }
 
+];
 
-    /* =====================================
-       LOGIN
-    ====================================== */
 
-    function selectRole(role) {
+const initialCampaigns = [
 
-        selectedRole = role;
+    {
 
-        document
-            .querySelectorAll(".login-type")
-            .forEach(button => {
-                button.classList.remove("active");
-            });
+        id: 1,
 
-        document
-            .querySelector(`[data-role="${role}"]`)
-            .classList.add("active");
+        ongId: 1,
 
-        document.getElementById("loginError").textContent = "";
+        title:
+            "Arrecadação de ração",
+
+        category:
+            "Alimentação",
+
+        goal: 1500,
+
+        raised: 450,
+
+        description:
+            "Precisamos arrecadar recursos para a compra de ração destinada aos animais acolhidos durante este mês.",
+
+        status:
+            "Ativa"
+
+    },
+
+
+    {
+
+        id: 2,
+
+        ongId: 1,
+
+        title:
+            "Tratamento da Mel",
+
+        category:
+            "Tratamento veterinário",
+
+        goal: 2200,
+
+        raised: 900,
+
+        description:
+            "A cadela Mel precisa realizar exames e tratamento veterinário.",
+
+        status:
+            "Ativa"
+
+    },
+
+
+    {
+
+        id: 3,
+
+        ongId: 2,
+
+        title:
+            "Reforma dos canis",
+
+        category:
+            "Infraestrutura",
+
+        goal: 5000,
+
+        raised: 2100,
+
+        description:
+            "A organização precisa reformar parte dos canis utilizados no acolhimento.",
+
+        status:
+            "Ativa"
+
+    },
+
+
+    {
+
+        id: 4,
+
+        ongId: 4,
+
+        title:
+            "Medicamentos veterinários",
+
+        category:
+            "Medicamentos",
+
+        goal: 1800,
+
+        raised: 600,
+
+        description:
+            "Campanha para aquisição de medicamentos utilizados nos animais resgatados.",
+
+        status:
+            "Ativa"
+
     }
 
+];
 
-    function login() {
 
-        const email =
-            document.getElementById("loginEmail").value.trim();
+/* =========================================
+   CARREGAR DADOS
+========================================= */
 
-        const password =
-            document.getElementById("loginPassword").value;
+let ongs =
+    JSON.parse(
+        localStorage.getItem(
+            "conectaVetOngs"
+        )
+    );
 
-        const user = users[selectedRole];
 
-        if (
-            email === user.email &&
-            password === user.password
-        ) {
+let campaigns =
+    JSON.parse(
+        localStorage.getItem(
+            "conectaVetCampaigns"
+        )
+    );
 
-            currentUser = user;
 
-            sessionStorage.setItem(
-                "conectaVetUser",
-                JSON.stringify(user)
-            );
+let donations =
+    JSON.parse(
+        localStorage.getItem(
+            "conectaVetDonations"
+        )
+    ) || [];
 
-            openSystem();
 
-        } else {
+if (!ongs) {
 
-            document.getElementById("loginError").textContent =
-                "E-mail ou senha incorretos.";
+    ongs = initialOngs;
+
+    saveOngs();
+
+}
+
+
+if (!campaigns) {
+
+    campaigns =
+        initialCampaigns;
+
+    saveCampaigns();
+
+}
+
+
+/* MIGRAÇÃO PARA CAMPANHAS ANTIGAS */
+
+campaigns =
+    campaigns.map(
+        campaign => {
+
+            return {
+
+                ...campaign,
+
+                goal:
+                    Number(
+                        campaign.goal || 0
+                    ),
+
+                raised:
+                    Number(
+                        campaign.raised || 0
+                    )
+
+            };
+
         }
-    }
+    );
 
 
-    function logout() {
-
-        sessionStorage.removeItem("conectaVetUser");
-
-        location.reload();
-    }
+saveCampaigns();
 
 
-    function openSystem() {
+/* =========================================
+   LOGIN
+========================================= */
 
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("app").style.display = "block";
+function selectRole(role) {
 
-        document.getElementById("loggedUser").textContent =
-            currentUser.name;
-
-        hideViews();
-
-        if (currentUser.role === "ong") {
-
-            document.getElementById("headerDescription").textContent =
-                "Gerenciamento da organização";
-
-            document.getElementById("ongView").classList.add("active");
-
-            renderOngArea();
-        }
-
-        if (currentUser.role === "donor") {
-
-            document.getElementById("headerDescription").textContent =
-                "Encontre projetos para apoiar";
-
-            document.getElementById("donorView").classList.add("active");
-
-            renderDonorOngs();
-        }
-
-        if (currentUser.role === "admin") {
-
-            document.getElementById("headerDescription").textContent =
-                "Administração da plataforma";
-
-            document.getElementById("adminView").classList.add("active");
-
-            renderAdmin();
-        }
-    }
+    selectedRole = role;
 
 
-    function hideViews() {
+    document
+        .querySelectorAll(
+            ".login-type"
+        )
+        .forEach(
+            button => {
 
-        document
-            .querySelectorAll(".view")
-            .forEach(view => {
-                view.classList.remove("active");
-            });
-    }
+                button.classList.remove(
+                    "active"
+                );
 
-
-    /* =====================================
-       SALVAMENTO
-    ====================================== */
-
-    function saveOngs() {
-
-        localStorage.setItem(
-            "conectaVetOngs",
-            JSON.stringify(ongs)
+            }
         );
-    }
 
 
-    function saveCampaigns() {
-
-        localStorage.setItem(
-            "conectaVetCampaigns",
-            JSON.stringify(campaigns)
+    document
+        .querySelector(
+            `[data-role="${role}"]`
+        )
+        .classList.add(
+            "active"
         );
-    }
 
 
-    /* =====================================
-       ÁREA DA ONG
-    ====================================== */
+    document.getElementById(
+        "loginError"
+    ).textContent = "";
 
-    function getOwnOng() {
-
-        return ongs.find(
-            ong => ong.id === currentUser.ongId
-        );
-    }
+}
 
 
-    function renderOngArea() {
+function login() {
 
-        const ong = getOwnOng();
-
-        if (!ong) return;
-
-        document.getElementById("ongOwnProfile").innerHTML = `
-            <div class="ong-summary">
-
-                <div class="ong-avatar">
-                    🐾
-                </div>
-
-                <div>
-                    <h2>${escapeHTML(ong.name)}</h2>
-
-                    <p>
-                        📍 ${escapeHTML(ong.city)}
-                    </p>
-
-                    <p>
-                        ❤️ ${escapeHTML(ong.cause)}
-                    </p>
-
-                    <p>
-                        Status:
-                        ${statusBadge(ong.status)}
-                    </p>
-                </div>
-
-            </div>
-        `;
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
 
 
-        document.getElementById("ongEditName").value =
-            ong.name;
-
-        document.getElementById("ongEditCity").value =
-            ong.city;
-
-        document.getElementById("ongEditCause").value =
-            ong.cause;
-
-        document.getElementById("ongEditContact").value =
-            ong.contact;
-
-        document.getElementById("ongEditDescription").value =
-            ong.description;
-
-        renderOngCampaigns();
-    }
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
 
 
-    function saveOngProfile() {
+    const user =
+        users[selectedRole];
 
-        const ong = getOwnOng();
 
-        ong.name =
-            document.getElementById("ongEditName").value.trim();
+    if (
+        email === user.email
+        &&
+        password === user.password
+    ) {
 
-        ong.city =
-            document.getElementById("ongEditCity").value.trim();
+        currentUser = user;
 
-        ong.cause =
-            document.getElementById("ongEditCause").value.trim();
-
-        ong.contact =
-            document.getElementById("ongEditContact").value.trim();
-
-        ong.description =
-            document.getElementById("ongEditDescription").value.trim();
-
-        saveOngs();
-
-        currentUser.name = ong.name;
 
         sessionStorage.setItem(
+
             "conectaVetUser",
-            JSON.stringify(currentUser)
+
+            JSON.stringify(user)
+
         );
 
-        document.getElementById("loggedUser").textContent =
-            ong.name;
+
+        openSystem();
+
+    }
+
+    else {
+
+        document.getElementById(
+            "loginError"
+        ).textContent =
+            "E-mail ou senha incorretos.";
+
+    }
+
+}
+
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "conectaVetUser"
+    );
+
+
+    location.reload();
+
+}
+
+
+function openSystem() {
+
+    document.getElementById(
+        "loginPage"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "app"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "loggedUser"
+    ).textContent =
+        currentUser.name;
+
+
+    goHome();
+
+}
+
+
+/* =========================================
+   BOTÃO INÍCIO
+========================================= */
+
+function goHome() {
+
+    hideViews();
+
+
+    selectedOngId = null;
+
+    selectedCampaignId = null;
+
+
+    if (
+        currentUser.role === "ong"
+    ) {
+
+        document.getElementById(
+            "headerDescription"
+        ).textContent =
+            "Gerenciamento da organização";
+
+
+        document.getElementById(
+            "ongView"
+        ).classList.add(
+            "active"
+        );
+
 
         renderOngArea();
 
-        alert("Perfil atualizado com sucesso!");
     }
 
 
-    function createCampaign() {
+    if (
+        currentUser.role === "donor"
+    ) {
 
-        const title =
-            document.getElementById("campaignTitle").value.trim();
-
-        const category =
-            document.getElementById("campaignCategory").value;
-
-        const goal =
-            Number(document.getElementById("campaignGoal").value);
-
-        const description =
-            document.getElementById("campaignDescription").value.trim();
+        document.getElementById(
+            "headerDescription"
+        ).textContent =
+            "Encontre projetos para apoiar";
 
 
-        if (!title || !description) {
-
-            alert("Preencha o título e a descrição.");
-
-            return;
-        }
-
-
-        campaigns.push({
-            id: Date.now(),
-            ongId: currentUser.ongId,
-            title,
-            category,
-            goal,
-            description,
-            status: "Ativa"
-        });
+        document.getElementById(
+            "donorView"
+        ).classList.add(
+            "active"
+        );
 
 
-        saveCampaigns();
+        renderDonorOngs();
 
-
-        document.getElementById("campaignTitle").value = "";
-        document.getElementById("campaignGoal").value = "";
-        document.getElementById("campaignDescription").value = "";
-
-
-        renderOngCampaigns();
     }
 
 
-    function renderOngCampaigns() {
+    if (
+        currentUser.role === "admin"
+    ) {
 
-        const tbody =
-            document.getElementById("ongCampaignTable");
-
-        tbody.innerHTML = "";
-
-        const ownCampaigns =
-            campaigns.filter(
-                campaign =>
-                    campaign.ongId === currentUser.ongId
-            );
+        document.getElementById(
+            "headerDescription"
+        ).textContent =
+            "Administração da plataforma";
 
 
-        if (ownCampaigns.length === 0) {
-
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="5" class="empty">
-                        Nenhuma campanha cadastrada.
-                    </td>
-                </tr>
-            `;
-
-            return;
-        }
+        document.getElementById(
+            "adminView"
+        ).classList.add(
+            "active"
+        );
 
 
-        ownCampaigns.forEach(campaign => {
+        renderAdmin();
+
+    }
+
+}
+
+
+function hideViews() {
+
+    document
+        .querySelectorAll(
+            ".view"
+        )
+        .forEach(
+            view => {
+
+                view.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================
+   SALVAMENTO
+========================================= */
+
+function saveOngs() {
+
+    localStorage.setItem(
+
+        "conectaVetOngs",
+
+        JSON.stringify(
+            ongs
+        )
+
+    );
+
+}
+
+
+function saveCampaigns() {
+
+    localStorage.setItem(
+
+        "conectaVetCampaigns",
+
+        JSON.stringify(
+            campaigns
+        )
+
+    );
+
+}
+
+
+function saveDonations() {
+
+    localStorage.setItem(
+
+        "conectaVetDonations",
+
+        JSON.stringify(
+            donations
+        )
+
+    );
+
+}
+
+
+/* =========================================
+   ÁREA DA ONG
+========================================= */
+
+function getOwnOng() {
+
+    return ongs.find(
+
+        ong =>
+            ong.id ===
+            currentUser.ongId
+
+    );
+
+}
+
+
+function renderOngArea() {
+
+    const ong =
+        getOwnOng();
+
+
+    if (!ong) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "loggedUser"
+    ).textContent =
+        ong.name;
+
+
+    document.getElementById(
+        "ongOwnProfile"
+    ).innerHTML = `
+
+        <div class="ong-summary">
+
+            <div class="ong-avatar">
+                🐾
+            </div>
+
+            <div>
+
+                <h2>
+                    ${escapeHTML(ong.name)}
+                </h2>
+
+                <p>
+                    📍 ${escapeHTML(ong.city)}
+                </p>
+
+                <p>
+                    ❤️ ${escapeHTML(ong.cause)}
+                </p>
+
+                <p>
+
+                    Status:
+
+                    ${statusBadge(
+                        ong.status
+                    )}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "ongEditName"
+    ).value =
+        ong.name;
+
+
+    document.getElementById(
+        "ongEditCity"
+    ).value =
+        ong.city;
+
+
+    document.getElementById(
+        "ongEditCause"
+    ).value =
+        ong.cause;
+
+
+    document.getElementById(
+        "ongEditContact"
+    ).value =
+        ong.contact;
+
+
+    document.getElementById(
+        "ongEditDescription"
+    ).value =
+        ong.description;
+
+
+    renderOngCampaigns();
+
+}
+
+
+function saveOngProfile() {
+
+    const ong =
+        getOwnOng();
+
+
+    ong.name =
+        document.getElementById(
+            "ongEditName"
+        ).value.trim();
+
+
+    ong.city =
+        document.getElementById(
+            "ongEditCity"
+        ).value.trim();
+
+
+    ong.cause =
+        document.getElementById(
+            "ongEditCause"
+        ).value.trim();
+
+
+    ong.contact =
+        document.getElementById(
+            "ongEditContact"
+        ).value.trim();
+
+
+    ong.description =
+        document.getElementById(
+            "ongEditDescription"
+        ).value.trim();
+
+
+    saveOngs();
+
+
+    currentUser.name =
+        ong.name;
+
+
+    sessionStorage.setItem(
+
+        "conectaVetUser",
+
+        JSON.stringify(
+            currentUser
+        )
+
+    );
+
+
+    renderOngArea();
+
+
+    alert(
+        "Perfil atualizado com sucesso!"
+    );
+
+}
+
+
+function createCampaign() {
+
+    const title =
+        document.getElementById(
+            "campaignTitle"
+        ).value.trim();
+
+
+    const category =
+        document.getElementById(
+            "campaignCategory"
+        ).value;
+
+
+    const goal =
+        Number(
+            document.getElementById(
+                "campaignGoal"
+            ).value
+        );
+
+
+    const description =
+        document.getElementById(
+            "campaignDescription"
+        ).value.trim();
+
+
+    if (
+        !title
+        ||
+        !description
+    ) {
+
+        alert(
+            "Preencha o título e a descrição."
+        );
+
+        return;
+
+    }
+
+
+    campaigns.push({
+
+        id:
+            Date.now(),
+
+        ongId:
+            currentUser.ongId,
+
+        title,
+
+        category,
+
+        goal,
+
+        raised: 0,
+
+        description,
+
+        status:
+            "Ativa"
+
+    });
+
+
+    saveCampaigns();
+
+
+    document.getElementById(
+        "campaignTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "campaignGoal"
+    ).value = "";
+
+
+    document.getElementById(
+        "campaignDescription"
+    ).value = "";
+
+
+    renderOngCampaigns();
+
+}
+
+
+function renderOngCampaigns() {
+
+    const tbody =
+        document.getElementById(
+            "ongCampaignTable"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    const ownCampaigns =
+        campaigns.filter(
+
+            campaign =>
+                campaign.ongId ===
+                currentUser.ongId
+
+        );
+
+
+    if (
+        ownCampaigns.length === 0
+    ) {
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="empty"
+                >
+
+                    Nenhuma campanha cadastrada.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    ownCampaigns.forEach(
+
+        campaign => {
 
             tbody.innerHTML += `
+
                 <tr>
 
                     <td>
-                        ${escapeHTML(campaign.title)}
+                        ${escapeHTML(
+                            campaign.title
+                        )}
                     </td>
 
                     <td>
-                        ${escapeHTML(campaign.category)}
+                        ${escapeHTML(
+                            campaign.category
+                        )}
                     </td>
 
                     <td>
-                        ${money(campaign.goal)}
+                        ${money(
+                            campaign.goal
+                        )}
                     </td>
 
                     <td>
-                        <span class="status active-status">
+                        ${money(
+                            campaign.raised
+                        )}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="
+                                status
+                                active-status
+                            "
+                        >
                             ${campaign.status}
                         </span>
+
                     </td>
 
                     <td>
 
                         <button
-                            class="small-button danger"
-                            onclick="deleteCampaign(${campaign.id})"
+                            class="
+                                small-button
+                                danger
+                            "
+                            onclick="
+                                deleteCampaign(
+                                    ${campaign.id}
+                                )
+                            "
                         >
                             Excluir
                         </button>
@@ -1463,383 +2834,1268 @@
                     </td>
 
                 </tr>
-            `;
-        });
-    }
 
-
-    function deleteCampaign(id) {
-
-        const confirmation =
-            confirm("Deseja excluir esta campanha?");
-
-        if (!confirmation) return;
-
-        campaigns =
-            campaigns.filter(
-                campaign => campaign.id !== id
-            );
-
-        saveCampaigns();
-
-        renderOngCampaigns();
-    }
-
-
-    /* =====================================
-       DOADOR
-    ====================================== */
-
-    function renderDonorOngs() {
-
-        const container =
-            document.getElementById("donorOngGrid");
-
-        const search =
-            document.getElementById("ongSearch")
-                .value
-                .toLowerCase();
-
-        container.innerHTML = "";
-
-
-        const availableOngs =
-            ongs.filter(ong => {
-
-                const approved =
-                    ong.status === "Aprovada";
-
-                const matches =
-                    ong.name.toLowerCase().includes(search)
-                    ||
-                    ong.city.toLowerCase().includes(search)
-                    ||
-                    ong.cause.toLowerCase().includes(search);
-
-                return approved && matches;
-            });
-
-
-        if (availableOngs.length === 0) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    Nenhuma ONG encontrada.
-                </div>
             `;
 
-            return;
         }
 
+    );
 
-        availableOngs.forEach(ong => {
+}
+
+
+function deleteCampaign(id) {
+
+    const confirmation =
+        confirm(
+            "Deseja excluir esta campanha?"
+        );
+
+
+    if (!confirmation) {
+
+        return;
+
+    }
+
+
+    campaigns =
+        campaigns.filter(
+
+            campaign =>
+                campaign.id !== id
+
+        );
+
+
+    saveCampaigns();
+
+
+    renderOngCampaigns();
+
+}
+
+
+/* =========================================
+   ÁREA DO DOADOR
+========================================= */
+
+function renderDonorOngs() {
+
+    const container =
+        document.getElementById(
+            "donorOngGrid"
+        );
+
+
+    const search =
+        document.getElementById(
+            "ongSearch"
+        ).value
+        .toLowerCase();
+
+
+    container.innerHTML = "";
+
+
+    const availableOngs =
+        ongs.filter(
+
+            ong => {
+
+                const approved =
+                    ong.status ===
+                    "Aprovada";
+
+
+                const matches =
+
+                    ong.name
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    ong.city
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    ong.cause
+                        .toLowerCase()
+                        .includes(search);
+
+
+                return (
+                    approved
+                    &&
+                    matches
+                );
+
+            }
+
+        );
+
+
+    if (
+        availableOngs.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Nenhuma ONG encontrada.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    availableOngs.forEach(
+
+        ong => {
 
             const activeCampaigns =
                 campaigns.filter(
+
                     campaign =>
-                        campaign.ongId === ong.id
+                        campaign.ongId ===
+                        ong.id
+
                         &&
-                        campaign.status === "Ativa"
+
+                        campaign.status ===
+                        "Ativa"
+
                 ).length;
 
 
             container.innerHTML += `
+
                 <article class="ong-card">
 
                     <div class="ong-card-icon">
                         🐾
                     </div>
 
+
                     <button
                         class="ong-name"
-                        onclick="openOngProfile(${ong.id})"
+                        onclick="
+                            openOngProfile(
+                                ${ong.id}
+                            )
+                        "
                     >
-                        ${escapeHTML(ong.name)}
+                        ${escapeHTML(
+                            ong.name
+                        )}
                     </button>
 
-                    <p>
-                        📍 ${escapeHTML(ong.city)}
-                    </p>
 
                     <p>
-                        ${escapeHTML(ong.description)}
+                        📍
+                        ${escapeHTML(
+                            ong.city
+                        )}
                     </p>
+
+
+                    <p>
+                        ${escapeHTML(
+                            ong.description
+                        )}
+                    </p>
+
 
                     <span class="tag">
-                        ${escapeHTML(ong.cause)}
+                        ${escapeHTML(
+                            ong.cause
+                        )}
                     </span>
 
+
                     <span class="tag">
+
                         ${activeCampaigns}
+
                         campanha(s) ativa(s)
+
                     </span>
 
                 </article>
+
             `;
-        });
+
+        }
+
+    );
+
+}
+
+
+/* =========================================
+   PERFIL PÚBLICO DA ONG
+========================================= */
+
+function openOngProfile(ongId) {
+
+    selectedOngId =
+        ongId;
+
+
+    const ong =
+        ongs.find(
+
+            item =>
+                item.id ===
+                ongId
+
+        );
+
+
+    if (!ong) {
+
+        return;
+
     }
 
 
-    /* =====================================
-       PERFIL DA ONG PARA O DOADOR
-    ====================================== */
-
-    function openOngProfile(ongId) {
-
-        const ong =
-            ongs.find(
-                item => item.id === ongId
-            );
-
-        if (!ong) return;
+    hideViews();
 
 
-        hideViews();
-
-        document
-            .getElementById("ongProfileView")
-            .classList.add("active");
-
-
-        const ongCampaigns =
-            campaigns.filter(
-                campaign =>
-                    campaign.ongId === ongId
-                    &&
-                    campaign.status === "Ativa"
-            );
+    document.getElementById(
+        "ongProfileView"
+    ).classList.add(
+        "active"
+    );
 
 
-        let campaignHTML = "";
+    const ongCampaigns =
+        campaigns.filter(
+
+            campaign =>
+                campaign.ongId === ongId
+
+                &&
+
+                campaign.status ===
+                "Ativa"
+
+        );
 
 
-        if (ongCampaigns.length === 0) {
+    let campaignHTML = "";
 
-            campaignHTML = `
-                <div class="empty">
-                    Esta ONG não possui campanhas ativas no momento.
-                </div>
-            `;
 
-        } else {
+    if (
+        ongCampaigns.length === 0
+    ) {
 
-            ongCampaigns.forEach(campaign => {
+        campaignHTML = `
+
+            <div class="empty">
+
+                Esta ONG não possui
+                campanhas ativas no momento.
+
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        ongCampaigns.forEach(
+
+            campaign => {
+
+                const percent =
+                    calculateProgress(
+                        campaign
+                    );
+
 
                 campaignHTML += `
+
                     <div class="campaign">
 
                         <h3>
-                            ${escapeHTML(campaign.title)}
+                            ${escapeHTML(
+                                campaign.title
+                            )}
                         </h3>
 
-                        <p>
-                            <strong>Categoria:</strong>
-                            ${escapeHTML(campaign.category)}
-                        </p>
 
                         <p>
-                            <strong>Meta:</strong>
-                            ${money(campaign.goal)}
+
+                            <strong>
+                                Categoria:
+                            </strong>
+
+                            ${escapeHTML(
+                                campaign.category
+                            )}
+
                         </p>
 
+
                         <p>
-                            ${escapeHTML(campaign.description)}
+                            ${escapeHTML(
+                                campaign.description
+                            )}
                         </p>
+
+
+                        <div
+                            class="
+                                progress-container
+                            "
+                        >
+
+                            <div
+                                class="
+                                    progress-info
+                                "
+                            >
+
+                                <span>
+
+                                    ${money(
+                                        campaign.raised
+                                    )}
+                                    arrecadados
+
+                                </span>
+
+                                <span>
+                                    ${percent}%
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    progress-background
+                                "
+                            >
+
+                                <div
+                                    class="
+                                        progress-bar
+                                    "
+
+                                    style="
+                                        width:
+                                        ${percent}%
+                                    "
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <p
+                            style="
+                                margin-top:10px
+                            "
+                        >
+
+                            Meta:
+
+                            <strong>
+                                ${money(
+                                    campaign.goal
+                                )}
+                            </strong>
+
+                        </p>
+
 
                         <button
-                            class="primary help-button"
-                            onclick="helpCampaign(
-                                ${ong.id},
-                                ${campaign.id}
-                            )"
+                            class="
+                                primary
+                                help-button
+                            "
+                            onclick="
+                                helpCampaign(
+                                    ${ong.id},
+                                    ${campaign.id}
+                                )
+                            "
                         >
+
                             ❤️ Quero ajudar
+
                         </button>
 
                     </div>
+
                 `;
-            });
-        }
 
+            }
 
-        document.getElementById("publicOngProfile").innerHTML = `
-
-            <div class="box">
-
-                <div class="profile-header">
-
-                    <div class="profile-avatar">
-                        🐾
-                    </div>
-
-                    <div>
-
-                        <h1>
-                            ${escapeHTML(ong.name)}
-                        </h1>
-
-                        <p>
-                            📍 ${escapeHTML(ong.city)}
-                        </p>
-
-                        <p>
-                            ❤️ ${escapeHTML(ong.cause)}
-                        </p>
-
-                        <p>
-                            ✉️ ${escapeHTML(ong.contact)}
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <p class="description">
-                    ${escapeHTML(ong.description)}
-                </p>
-
-            </div>
-
-
-            <div class="box">
-
-                <div class="box-title">
-
-                    <h2>
-                        Campanhas e necessidades
-                    </h2>
-
-                </div>
-
-                <div class="campaigns-grid">
-                    ${campaignHTML}
-                </div>
-
-            </div>
-        `;
-    }
-
-
-    function backToDonor() {
-
-        hideViews();
-
-        document
-            .getElementById("donorView")
-            .classList.add("active");
-
-        renderDonorOngs();
-    }
-
-
-    function helpCampaign(ongId, campaignId) {
-
-        const ong =
-            ongs.find(item => item.id === ongId);
-
-        const campaign =
-            campaigns.find(item => item.id === campaignId);
-
-        if (!ong || !campaign) return;
-
-
-        alert(
-            "Você demonstrou interesse em ajudar a campanha \"" +
-            campaign.title +
-            "\" da " +
-            ong.name +
-            ".\n\nNa próxima versão podemos criar o fluxo de doação."
         );
+
     }
 
 
-    /* =====================================
-       ADMINISTRADOR
-    ====================================== */
+    document.getElementById(
+        "publicOngProfile"
+    ).innerHTML = `
 
-    function renderAdmin() {
+        <div class="box">
 
-        document.getElementById("adminOngCount").textContent =
-            ongs.length;
+            <div class="profile-header">
 
-        document.getElementById("adminPendingCount").textContent =
-            ongs.filter(
-                ong => ong.status === "Pendente"
-            ).length;
-
-        document.getElementById("adminCampaignCount").textContent =
-            campaigns.filter(
-                campaign => campaign.status === "Ativa"
-            ).length;
+                <div class="profile-avatar">
+                    🐾
+                </div>
 
 
-        renderPendingOngs();
-        renderAllOngs();
+                <div>
+
+                    <h1>
+                        ${escapeHTML(
+                            ong.name
+                        )}
+                    </h1>
+
+                    <p>
+                        📍
+                        ${escapeHTML(
+                            ong.city
+                        )}
+                    </p>
+
+                    <p>
+                        ❤️
+                        ${escapeHTML(
+                            ong.cause
+                        )}
+                    </p>
+
+                    <p>
+                        ✉️
+                        ${escapeHTML(
+                            ong.contact
+                        )}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p class="description">
+
+                ${escapeHTML(
+                    ong.description
+                )}
+
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <div class="box-title">
+
+                <h2>
+
+                    Campanhas e necessidades
+
+                </h2>
+
+            </div>
+
+
+            <div
+                class="campaigns-grid"
+            >
+
+                ${campaignHTML}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function backToDonor() {
+
+    selectedOngId = null;
+
+    selectedCampaignId = null;
+
+
+    hideViews();
+
+
+    document.getElementById(
+        "donorView"
+    ).classList.add(
+        "active"
+    );
+
+
+    renderDonorOngs();
+
+}
+
+
+/* =========================================
+   PÁGINA DE DOAÇÃO
+========================================= */
+
+function helpCampaign(
+    ongId,
+    campaignId
+) {
+
+    selectedOngId =
+        ongId;
+
+
+    selectedCampaignId =
+        campaignId;
+
+
+    hideViews();
+
+
+    document.getElementById(
+        "donationView"
+    ).classList.add(
+        "active"
+    );
+
+
+    renderDonationPage();
+
+}
+
+
+function renderDonationPage() {
+
+    const ong =
+        ongs.find(
+
+            item =>
+                item.id ===
+                selectedOngId
+
+        );
+
+
+    const campaign =
+        campaigns.find(
+
+            item =>
+                item.id ===
+                selectedCampaignId
+
+        );
+
+
+    if (
+        !ong
+        ||
+        !campaign
+    ) {
+
+        goHome();
+
+        return;
+
     }
 
 
-    function renderPendingOngs() {
+    const percent =
+        calculateProgress(
+            campaign
+        );
 
-        const tbody =
-            document.getElementById("pendingOngTable");
 
-        tbody.innerHTML = "";
+    const remaining =
+        Math.max(
 
-        const pendingOngs =
-            ongs.filter(
-                ong => ong.status === "Pendente"
+            campaign.goal -
+            campaign.raised,
+
+            0
+
+        );
+
+
+    document.getElementById(
+        "donationCampaignInfo"
+    ).innerHTML = `
+
+        <h1 class="donation-title">
+
+            ${escapeHTML(
+                campaign.title
+            )}
+
+        </h1>
+
+
+        <div class="donation-ong">
+
+            🐾
+            ${escapeHTML(
+                ong.name
+            )}
+
+        </div>
+
+
+        <p class="donation-description">
+
+            ${escapeHTML(
+                campaign.description
+            )}
+
+        </p>
+
+
+        <span class="tag">
+
+            ${escapeHTML(
+                campaign.category
+            )}
+
+        </span>
+
+
+        <div
+            class="
+                progress-container
+            "
+            style="
+                margin-top:25px
+            "
+        >
+
+            <div class="progress-info">
+
+                <strong>
+                    Progresso da campanha
+                </strong>
+
+                <strong>
+                    ${percent}%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-background">
+
+                <div
+                    class="progress-bar"
+
+                    style="
+                        width:
+                        ${percent}%
+                    "
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="money-summary">
+
+            <div class="money-item">
+
+                <small>
+                    Meta
+                </small>
+
+                <strong>
+                    ${money(
+                        campaign.goal
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="money-item">
+
+                <small>
+                    Arrecadado
+                </small>
+
+                <strong>
+                    ${money(
+                        campaign.raised
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="money-item">
+
+                <small>
+                    Ainda necessário
+                </small>
+
+                <strong>
+                    ${money(
+                        remaining
+                    )}
+                </strong>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "donationAmount"
+    ).value = "";
+
+
+    document.getElementById(
+        "itemDescription"
+    ).value = "";
+
+
+    document.getElementById(
+        "itemQuantity"
+    ).value = "";
+
+
+    document.getElementById(
+        "donationFeedback"
+    ).style.display =
+        "none";
+
+
+    updateDonationFields();
+
+}
+
+
+function updateDonationFields() {
+
+    const type =
+        document.getElementById(
+            "helpType"
+        ).value;
+
+
+    if (
+        type === "money"
+    ) {
+
+        document.getElementById(
+            "moneyFields"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "itemFields"
+        ).style.display =
+            "none";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "moneyFields"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "itemFields"
+        ).style.display =
+            "block";
+
+    }
+
+}
+
+
+function confirmHelp() {
+
+    const campaign =
+        campaigns.find(
+
+            item =>
+                item.id ===
+                selectedCampaignId
+
+        );
+
+
+    const ong =
+        ongs.find(
+
+            item =>
+                item.id ===
+                selectedOngId
+
+        );
+
+
+    if (
+        !campaign
+        ||
+        !ong
+    ) {
+
+        return;
+
+    }
+
+
+    const type =
+        document.getElementById(
+            "helpType"
+        ).value;
+
+
+    /* DOAÇÃO FINANCEIRA */
+
+    if (
+        type === "money"
+    ) {
+
+        const amount =
+            Number(
+                document.getElementById(
+                    "donationAmount"
+                ).value
             );
 
 
-        if (pendingOngs.length === 0) {
+        const method =
+            document.getElementById(
+                "paymentMethod"
+            ).value;
 
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="4" class="empty">
-                        Nenhuma ONG aguardando aprovação.
-                    </td>
-                </tr>
-            `;
+
+        if (
+            !amount
+            ||
+            amount <= 0
+        ) {
+
+            alert(
+                "Digite um valor válido."
+            );
 
             return;
+
         }
 
 
-        pendingOngs.forEach(ong => {
+        donations.push({
+
+            id:
+                Date.now(),
+
+            ongId:
+                ong.id,
+
+            campaignId:
+                campaign.id,
+
+            type:
+                "Financeira",
+
+            amount,
+
+            method,
+
+            date:
+                new Date()
+                    .toLocaleDateString(
+                        "pt-BR"
+                    )
+
+        });
+
+
+        campaign.raised =
+            Number(
+                campaign.raised || 0
+            )
+            +
+            amount;
+
+
+        saveDonations();
+
+        saveCampaigns();
+
+
+        renderDonationPage();
+
+
+        const feedback =
+            document.getElementById(
+                "donationFeedback"
+            );
+
+
+        feedback.innerHTML = `
+
+            <strong>
+                ❤️ Ajuda registrada!
+            </strong>
+
+            <br><br>
+
+            Sua contribuição simulada de
+
+            <strong>
+                ${money(amount)}
+            </strong>
+
+            foi registrada para a campanha
+
+            <strong>
+                "${escapeHTML(
+                    campaign.title
+                )}"
+            </strong>.
+
+            <br><br>
+
+            Neste protótipo acadêmico,
+            nenhum pagamento real foi realizado.
+
+        `;
+
+
+        feedback.style.display =
+            "block";
+
+    }
+
+
+    /* DOAÇÃO DE ITEM */
+
+    else {
+
+        const item =
+            document.getElementById(
+                "itemDescription"
+            ).value.trim();
+
+
+        const quantity =
+            Number(
+                document.getElementById(
+                    "itemQuantity"
+                ).value
+            );
+
+
+        if (
+            !item
+            ||
+            !quantity
+            ||
+            quantity <= 0
+        ) {
+
+            alert(
+                "Informe o item e a quantidade."
+            );
+
+            return;
+
+        }
+
+
+        donations.push({
+
+            id:
+                Date.now(),
+
+            ongId:
+                ong.id,
+
+            campaignId:
+                campaign.id,
+
+            type:
+                "Produto / material",
+
+            item,
+
+            quantity,
+
+            date:
+                new Date()
+                    .toLocaleDateString(
+                        "pt-BR"
+                    )
+
+        });
+
+
+        saveDonations();
+
+
+        document.getElementById(
+            "itemDescription"
+        ).value = "";
+
+
+        document.getElementById(
+            "itemQuantity"
+        ).value = "";
+
+
+        const feedback =
+            document.getElementById(
+                "donationFeedback"
+            );
+
+
+        feedback.innerHTML = `
+
+            <strong>
+                ❤️ Interesse registrado!
+            </strong>
+
+            <br><br>
+
+            Você informou que deseja doar
+
+            <strong>
+                ${quantity}
+            </strong>
+
+            unidade(s) de
+
+            <strong>
+                ${escapeHTML(item)}
+            </strong>
+
+            para a
+
+            <strong>
+                ${escapeHTML(
+                    ong.name
+                )}
+            </strong>.
+
+            <br><br>
+
+            Em uma versão com banco de dados,
+            a ONG poderia receber essa solicitação
+            e entrar em contato com o doador.
+
+        `;
+
+
+        feedback.style.display =
+            "block";
+
+    }
+
+}
+
+
+function backToOngProfile() {
+
+    if (
+        selectedOngId
+    ) {
+
+        openOngProfile(
+            selectedOngId
+        );
+
+    }
+
+    else {
+
+        goHome();
+
+    }
+
+}
+
+
+/* =========================================
+   ADMINISTRADOR
+========================================= */
+
+function renderAdmin() {
+
+    document.getElementById(
+        "adminOngCount"
+    ).textContent =
+        ongs.length;
+
+
+    document.getElementById(
+        "adminPendingCount"
+    ).textContent =
+
+        ongs.filter(
+
+            ong =>
+                ong.status ===
+                "Pendente"
+
+        ).length;
+
+
+    document.getElementById(
+        "adminCampaignCount"
+    ).textContent =
+
+        campaigns.filter(
+
+            campaign =>
+                campaign.status ===
+                "Ativa"
+
+        ).length;
+
+
+    renderPendingOngs();
+
+    renderAllOngs();
+
+}
+
+
+function renderPendingOngs() {
+
+    const tbody =
+        document.getElementById(
+            "pendingOngTable"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    const pendingOngs =
+        ongs.filter(
+
+            ong =>
+                ong.status ===
+                "Pendente"
+
+        );
+
+
+    if (
+        pendingOngs.length === 0
+    ) {
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="empty"
+                >
+
+                    Nenhuma ONG
+                    aguardando aprovação.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    pendingOngs.forEach(
+
+        ong => {
 
             tbody.innerHTML += `
+
                 <tr>
 
                     <td>
-                        ${escapeHTML(ong.name)}
+                        ${escapeHTML(
+                            ong.name
+                        )}
                     </td>
 
                     <td>
-                        ${escapeHTML(ong.city)}
+                        ${escapeHTML(
+                            ong.city
+                        )}
                     </td>
 
                     <td>
-                        ${escapeHTML(ong.cause)}
+                        ${escapeHTML(
+                            ong.cause
+                        )}
                     </td>
 
                     <td>
 
                         <button
-                            class="small-button approve"
-                            onclick="changeOngStatus(
-                                ${ong.id},
-                                'Aprovada'
-                            )"
+                            class="
+                                small-button
+                                approve
+                            "
+                            onclick="
+                                changeOngStatus(
+                                    ${ong.id},
+                                    'Aprovada'
+                                )
+                            "
                         >
                             Aprovar
                         </button>
 
+
                         <button
-                            class="small-button danger"
-                            onclick="changeOngStatus(
-                                ${ong.id},
-                                'Suspensa'
-                            )"
+                            class="
+                                small-button
+                                danger
+                            "
+                            onclick="
+                                changeOngStatus(
+                                    ${ong.id},
+                                    'Suspensa'
+                                )
+                            "
                         >
                             Recusar
                         </button>
@@ -1847,87 +4103,114 @@
                     </td>
 
                 </tr>
+
             `;
-        });
-    }
+
+        }
+
+    );
+
+}
 
 
-    function renderAllOngs() {
+function renderAllOngs() {
 
-        const tbody =
-            document.getElementById("allOngTable");
+    const tbody =
+        document.getElementById(
+            "allOngTable"
+        );
 
-        tbody.innerHTML = "";
+
+    tbody.innerHTML = "";
 
 
-        ongs.forEach(ong => {
+    ongs.forEach(
+
+        ong => {
 
             const ongCampaigns =
                 campaigns.filter(
-                    campaign => campaign.ongId === ong.id
+
+                    campaign =>
+                        campaign.ongId ===
+                        ong.id
+
                 ).length;
 
 
             let actionButton = "";
 
 
-            if (ong.status === "Aprovada") {
+            if (
+                ong.status ===
+                "Aprovada"
+            ) {
 
                 actionButton = `
+
                     <button
-                        class="small-button danger"
-                        onclick="changeOngStatus(
-                            ${ong.id},
-                            'Suspensa'
-                        )"
+                        class="
+                            small-button
+                            danger
+                        "
+                        onclick="
+                            changeOngStatus(
+                                ${ong.id},
+                                'Suspensa'
+                            )
+                        "
                     >
                         Suspender
                     </button>
+
                 `;
 
-            } else if (ong.status === "Suspensa") {
+            }
+
+            else {
 
                 actionButton = `
+
                     <button
-                        class="small-button approve"
-                        onclick="changeOngStatus(
-                            ${ong.id},
-                            'Aprovada'
-                        )"
+                        class="
+                            small-button
+                            approve
+                        "
+                        onclick="
+                            changeOngStatus(
+                                ${ong.id},
+                                'Aprovada'
+                            )
+                        "
                     >
-                        Reativar
+                        Aprovar / Reativar
                     </button>
+
                 `;
 
-            } else {
-
-                actionButton = `
-                    <button
-                        class="small-button approve"
-                        onclick="changeOngStatus(
-                            ${ong.id},
-                            'Aprovada'
-                        )"
-                    >
-                        Aprovar
-                    </button>
-                `;
             }
 
 
             tbody.innerHTML += `
+
                 <tr>
 
                     <td>
-                        ${escapeHTML(ong.name)}
+                        ${escapeHTML(
+                            ong.name
+                        )}
                     </td>
 
                     <td>
-                        ${escapeHTML(ong.city)}
+                        ${escapeHTML(
+                            ong.city
+                        )}
                     </td>
 
                     <td>
-                        ${statusBadge(ong.status)}
+                        ${statusBadge(
+                            ong.status
+                        )}
                     </td>
 
                     <td>
@@ -1939,100 +4222,220 @@
                     </td>
 
                 </tr>
+
             `;
-        });
+
+        }
+
+    );
+
+}
+
+
+function changeOngStatus(
+    id,
+    status
+) {
+
+    const ong =
+        ongs.find(
+
+            item =>
+                item.id === id
+
+        );
+
+
+    if (!ong) {
+
+        return;
+
     }
 
 
-    function changeOngStatus(id, status) {
-
-        const ong =
-            ongs.find(
-                item => item.id === id
-            );
-
-        if (!ong) return;
+    ong.status =
+        status;
 
 
-        ong.status = status;
+    saveOngs();
 
-        saveOngs();
 
-        renderAdmin();
+    renderAdmin();
+
+}
+
+
+/* =========================================
+   FUNÇÕES AUXILIARES
+========================================= */
+
+function calculateProgress(
+    campaign
+) {
+
+    if (
+        !campaign.goal
+        ||
+        campaign.goal <= 0
+    ) {
+
+        return 0;
+
     }
 
 
-    /* =====================================
-       FUNÇÕES AUXILIARES
-    ====================================== */
+    const percentage =
+        Math.round(
 
-    function statusBadge(status) {
+            (
+                campaign.raised
+                /
+                campaign.goal
+            )
+            *
+            100
 
-        if (status === "Aprovada") {
+        );
 
-            return `
-                <span class="status approved">
-                    Aprovada
-                </span>
-            `;
-        }
 
-        if (status === "Pendente") {
+    return Math.min(
+        percentage,
+        100
+    );
 
-            return `
-                <span class="status pending">
-                    Pendente
-                </span>
-            `;
-        }
+}
+
+
+function statusBadge(
+    status
+) {
+
+    if (
+        status ===
+        "Aprovada"
+    ) {
 
         return `
-            <span class="status suspended">
-                Suspensa
+
+            <span
+                class="
+                    status
+                    approved
+                "
+            >
+                Aprovada
             </span>
+
         `;
+
     }
 
 
-    function money(value) {
+    if (
+        status ===
+        "Pendente"
+    ) {
 
-        return Number(value || 0)
-            .toLocaleString(
-                "pt-BR",
-                {
-                    style: "currency",
-                    currency: "BRL"
-                }
-            );
+        return `
+
+            <span
+                class="
+                    status
+                    pending
+                "
+            >
+                Pendente
+            </span>
+
+        `;
+
     }
 
 
-    function escapeHTML(text) {
+    return `
 
-        const div =
-            document.createElement("div");
+        <span
+            class="
+                status
+                suspended
+            "
+        >
+            Suspensa
+        </span>
 
-        div.textContent = text || "";
+    `;
 
-        return div.innerHTML;
-    }
-
-
-    /* =====================================
-       RECUPERAR SESSÃO
-    ====================================== */
-
-    const savedSession =
-        sessionStorage.getItem("conectaVetUser");
+}
 
 
-    if (savedSession) {
+function money(
+    value
+) {
 
-        currentUser =
-            JSON.parse(savedSession);
+    return Number(
+        value || 0
+    )
+    .toLocaleString(
 
-        openSystem();
-    }
+        "pt-BR",
+
+        {
+
+            style:
+                "currency",
+
+            currency:
+                "BRL"
+
+        }
+
+    );
+
+}
+
+
+function escapeHTML(
+    text
+) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text || "";
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   RECUPERAR SESSÃO
+========================================= */
+
+const savedSession =
+    sessionStorage.getItem(
+        "conectaVetUser"
+    );
+
+
+if (
+    savedSession
+) {
+
+    currentUser =
+        JSON.parse(
+            savedSession
+        );
+
+
+    openSystem();
+
+}
 
 </script>
 
