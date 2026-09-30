@@ -2260,21 +2260,23 @@
 
 
 
-            <button
-                class="register-button"
-                onclick="openPublicOngRegistration()"
-            >
-                + Cadastrar minha ONG
-            </button>
+<button
+    id="registerOngButton"
+    class="register-button"
+    onclick="openPublicOngRegistration()"
+>
+    + Cadastrar minha ONG
+</button>
 
 
-
-            <button
-                class="register-button"
-                onclick="openDonorRegistration()"
-            >
-                + Cadastrar como doador
-            </button>
+<button
+    id="registerDonorButton"
+    class="register-button"
+    onclick="openDonorRegistration()"
+    style="display: none;"
+>
+    + Cadastrar como doador
+</button>
 
 
             <div id="loginError"></div>
@@ -5550,45 +5552,91 @@ function migrateUsers() {
    LOGIN
 ========================================================== */
 
-function selectRole(
-    role
-) {
+function selectRole(role) {
 
-    selectedRole =
-        role;
+    selectedRole = role;
 
+
+    /* Remove seleção dos botões */
 
     document
-        .querySelectorAll(
-            ".login-type"
-        )
-        .forEach(
+        .querySelectorAll(".login-type")
+        .forEach(button => {
 
-            button => {
+            button.classList.remove("active");
 
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-
-        );
+        });
 
 
-    const button =
+    /* Marca o perfil selecionado */
+
+    const selectedButton =
         document.querySelector(
             `[data-role="${role}"]`
         );
 
 
-    if (button) {
+    if (selectedButton) {
 
-        button.classList.add(
-            "active"
-        );
+        selectedButton.classList.add("active");
 
     }
 
+
+    /* Botões de cadastro */
+
+    const ongButton =
+        document.getElementById(
+            "registerOngButton"
+        );
+
+
+    const donorButton =
+        document.getElementById(
+            "registerDonorButton"
+        );
+
+
+    /* ONG */
+
+    if (role === "ong") {
+
+        ongButton.style.display =
+            "block";
+
+        donorButton.style.display =
+            "none";
+
+    }
+
+
+    /* DOADOR */
+
+    else if (role === "donor") {
+
+        ongButton.style.display =
+            "none";
+
+        donorButton.style.display =
+            "block";
+
+    }
+
+
+    /* ADMINISTRADOR */
+
+    else {
+
+        ongButton.style.display =
+            "none";
+
+        donorButton.style.display =
+            "none";
+
+    }
+
+
+    /* Limpa mensagem de erro */
 
     document.getElementById(
         "loginError"
