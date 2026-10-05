@@ -6,376 +6,549 @@
 <title>ConectaVet</title>
 
 <style>
-:root{
-  --bg:#fff9e8;
-  --surface:#fff;
-  --soft:#fff5cf;
-  --primary:#f4b942;
-  --deep:#9a6a10;
-  --text:#3f3a32;
-  --muted:#7a746b;
-  --border:#eadfbe;
-  --green:#327950;
-  --red:#a63838;
-  --shadow:0 12px 30px #72571c12;
+:root {
+  --bg: #fff9e8;
+  --surface: #fff;
+  --soft: #fff5cf;
+  --primary: #f4b942;
+  --deep: #9a6a10;
+  --text: #3f3a32;
+  --muted: #7a746b;
+  --border: #eadfbe;
+  --green: #327950;
+  --red: #a63838;
+  --shadow: 0 12px 30px #72571c12;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-button:disabled{cursor:default;opacity:.65}
-button:focus-visible,a:focus-visible{
-  outline:3px solid var(--deep);
-  outline-offset:3px;
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .65; }
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--deep);
+  outline-offset: 3px;
 }
-h1,h2,h3{line-height:1.2}
-h2,h3{margin-bottom:8px}
-p{margin:8px 0;color:var(--muted)}
-small{color:var(--muted)}
-.hidden{display:none!important}
-.wrap{width:min(1200px,92%);margin:28px auto}
-.box,.campaign,.tracking-card,.step{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:24px;
-  box-shadow:var(--shadow);
+
+h1, h2, h3 { line-height: 1.2; }
+h2, h3 { margin-bottom: 8px; }
+p { margin: 8px 0; color: var(--muted); }
+small { color: var(--muted); }
+.hidden { display: none !important; }
+
+.wrap { width: min(1200px, 92%); margin: 28px auto; }
+
+.box, .campaign, .tracking-card, .step {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow);
 }
-.box{margin-bottom:24px}
-.primary,.secondary,.ghost,.danger,.small-button,.back-button{
-  border:1px solid transparent;
-  border-radius:10px;
-  padding:10px 15px;
-  font-weight:700;
+
+.box { margin-bottom: 24px; }
+
+.primary, .secondary, .ghost, .danger, .small-button, .back-button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-weight: 700;
 }
-.primary{background:var(--primary);color:#4c390d}
-.primary:hover{background:#e8aa30}
-.secondary{
-  background:#f4efe4;
-  border-color:var(--border);
-  color:var(--text);
+
+.primary { background: var(--primary); color: #4c390d; }
+.primary:hover { background: #e8aa30; }
+
+.secondary {
+  background: #f4efe4;
+  border-color: var(--border);
+  color: var(--text);
 }
-.ghost{
-  background:transparent;
-  border-color:var(--primary);
-  color:var(--deep);
+
+.ghost {
+  background: transparent;
+  border-color: var(--primary);
+  color: var(--deep);
 }
-.danger{background:#fde8e8;color:var(--red)}
-.back-button{background:none;color:var(--deep);padding-left:0}
-.small-button{padding:7px 10px;font-size:12px;margin:3px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.grid-two,.campaigns-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+
+.danger { background: #fde8e8; color: var(--red); }
+.back-button { background: none; color: var(--deep); padding-left: 0; }
+.small-button { padding: 7px 10px; font-size: 12px; margin: 3px; }
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
-.grid-three,.ongs-grid,.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+
+.grid-two, .campaigns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:24px;
+
+.grid-three, .ongs-grid, .steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
-.card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
 }
-.card strong{font-size:27px;color:var(--deep);display:block}
-.field{margin-bottom:17px}
-.field label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:7px;
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
 }
-.required{color:var(--red)}
-.field input,.field select,.field textarea,.search input,.search select{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  color:var(--text);
-  background:white;
-  outline:none;
+
+.card strong { font-size: 27px; color: var(--deep); display: block; }
+.field { margin-bottom: 17px; }
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 7px;
 }
-.field textarea{min-height:105px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px #f4b9422e;
+
+.required { color: var(--red); }
+
+.field input, .field select, .field textarea, .search input, .search select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: white;
+  outline: none;
 }
-.field small{display:block;margin-top:6px}
-.form-note{font-size:13px;margin-bottom:18px}
-.notice{
-  background:var(--soft);
-  border:1px solid #efd487;
-  color:#755617;
-  border-radius:12px;
-  padding:14px;
-  margin:14px 0;
+
+.field textarea { min-height: 105px; resize: vertical; }
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px #f4b9422e;
 }
-.success{background:#e4f5e9;color:var(--green);border-color:#bfe1ca}
-.status,.tag{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:12px;
-  background:var(--soft);
-  color:var(--deep);
+
+.field small { display: block; margin-top: 6px; }
+.form-note { font-size: 13px; margin-bottom: 18px; }
+
+.notice {
+  background: var(--soft);
+  border: 1px solid #efd487;
+  color: #755617;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 14px 0;
 }
-.status.good{background:#e4f5e9;color:var(--green)}
-.status.bad{background:#fde8e8;color:var(--red)}
-.status.blue{background:#e8f2fb;color:#406b93}
-.status.grey{background:#eee9df;color:#5f5a51}
-.tag{margin:6px 5px 6px 0}
-.empty{padding:24px;text-align:center;color:var(--muted)}
-.table-container{overflow:auto}
-table{width:100%;border-collapse:collapse}
-th{
-  background:#fff8df;
-  color:#6b551f;
-  text-align:left;
-  font-size:13px;
+
+.success { background: #e4f5e9; color: var(--green); border-color: #bfe1ca; }
+
+.status, .tag {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: var(--soft);
+  color: var(--deep);
 }
-th,td{padding:12px;border-bottom:1px solid var(--border)}
-td{font-size:14px;vertical-align:top}
-.link{
-  border:none;
-  background:none;
-  color:var(--deep);
-  font-weight:700;
-  text-align:left;
-  text-decoration:underline;
+
+.status.good { background: #e4f5e9; color: var(--green); }
+.status.bad { background: #fde8e8; color: var(--red); }
+.status.blue { background: #e8f2fb; color: #406b93; }
+.status.grey { background: #eee9df; color: #5f5a51; }
+.tag { margin: 6px 5px 6px 0; }
+.empty { padding: 24px; text-align: center; color: var(--muted); }
+
+.table-container { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+
+th {
+  background: #fff8df;
+  color: #6b551f;
+  text-align: left;
+  font-size: 13px;
 }
-.search{display:flex;gap:12px;margin:18px 0;flex-wrap:wrap}
-.search input{flex:1;min-width:180px}
-.search select{width:auto}
-.progress{
-  height:10px;
-  border-radius:99px;
-  background:#eee8d8;
-  overflow:hidden;
-  margin:8px 0;
+
+th, td { padding: 12px; border-bottom: 1px solid var(--border); }
+td { font-size: 14px; vertical-align: top; }
+
+.link {
+  border: none;
+  background: none;
+  color: var(--deep);
+  font-weight: 700;
+  text-align: left;
+  text-decoration: underline;
 }
-.progress>div{
-  height:100%;
-  background:linear-gradient(90deg,#f4b942,#e0a12c);
+
+.search { display: flex; gap: 12px; margin: 18px 0; flex-wrap: wrap; }
+.search input { flex: 1; min-width: 180px; }
+.search select { width: auto; }
+
+.progress {
+  height: 10px;
+  border-radius: 99px;
+  background: #eee8d8;
+  overflow: hidden;
+  margin: 8px 0;
 }
-.progress-info{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  font-size:13px;
-  color:var(--muted);
-  margin-top:20px;
+
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, #f4b942, #e0a12c);
 }
-.summary{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:18px 0;
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 20px;
 }
-.summary>div{
-  background:#fffaf0;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
 }
-.summary small{display:block}
-.summary strong{color:var(--deep)}
-.tracking-list,.report-list{display:grid;gap:14px}
-.tracking-steps{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  list-style:none;
-  margin:16px 0;
+
+.summary > div {
+  background: #fffaf0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
 }
-.tracking-steps li{
-  background:#eee9df;
-  color:#756d61;
-  border-radius:10px;
-  padding:8px 10px;
-  font-size:13px;
+
+.summary small { display: block; }
+.summary strong { color: var(--deep); }
+.tracking-list, .report-list { display: grid; gap: 14px; }
+
+.tracking-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 16px 0;
 }
-.tracking-steps .done{background:#e4f5e9;color:var(--green)}
-.tracking-steps .current{outline:2px solid var(--primary)}
-.report{
-  border-left:4px solid var(--primary);
-  background:#fffaf0;
-  padding:16px;
-  border-radius:0 12px 12px 0;
+
+.tracking-steps li {
+  background: #eee9df;
+  color: #756d61;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
 }
-.report p{white-space:pre-wrap;overflow-wrap:anywhere}
-.profile-text{white-space:pre-wrap;overflow-wrap:anywhere}
-.check{display:flex;gap:10px;align-items:flex-start;margin:14px 0}
-.check input{margin-top:5px;width:18px;height:18px}
-.header,.landing-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  padding:18px 4%;
+
+.tracking-steps .done { background: #e4f5e9; color: var(--green); }
+.tracking-steps .current { outline: 2px solid var(--primary); }
+
+.report {
+  border-left: 4px solid var(--primary);
+  background: #fffaf0;
+  padding: 16px;
+  border-radius: 0 12px 12px 0;
 }
-.header{
-  background:#ffffffed;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:20;
-  backdrop-filter:blur(8px);
+
+.report p, .profile-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
-.brand{font-size:25px;font-weight:800}
-.user{text-align:right}
-.header small{display:block}
-.welcome{
-  background:linear-gradient(135deg,#fff3c7,#fffaf0);
-  border:1px solid #f0d98f;
-  padding:24px;
-  border-radius:18px;
-  margin-bottom:24px;
+
+.check { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0; }
+.check input { margin-top: 5px; width: 18px; height: 18px; }
+
+.header, .landing-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 4%;
 }
-.landing-nav{width:min(1200px,100%);margin:auto}
-.hero{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:45px;
-  align-items:center;
-  padding:45px 0;
+
+.header {
+  background: #ffffffed;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
 }
-.hero h1{font-size:clamp(35px,5vw,60px);margin:16px 0 22px}
-.hero p{font-size:17px;line-height:1.75;margin-bottom:22px}
-.illustration{
-  background:linear-gradient(135deg,#ffdf87,#fff3c7);
-  border:1px solid #ead69a;
-  border-radius:28px;
-  padding:34px;
+
+.brand { font-size: 25px; font-weight: 800; }
+.user { text-align: right; }
+.header small { display: block; }
+
+.welcome {
+  background: linear-gradient(135deg, #fff3c7, #fffaf0);
+  border: 1px solid #f0d98f;
+  padding: 24px;
+  border-radius: 18px;
+  margin-bottom: 24px;
 }
-.animals{font-size:75px;text-align:center;margin:14px 0}
-.landing-section{margin:30px 0 42px}
-.step-number{
-  display:inline-grid;
-  place-items:center;
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  background:var(--soft);
-  color:var(--deep);
-  font-weight:800;
-  margin-bottom:12px;
+
+.landing-nav { width: min(1200px, 100%); margin: auto; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 45px;
+  align-items: center;
+  padding: 45px 0;
 }
-.login-shell{
-  width:min(960px,92%);
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  border:1px solid var(--border);
-  border-radius:26px;
-  overflow:hidden;
-  background:white;
-  box-shadow:var(--shadow);
+
+.hero h1 { font-size: clamp(35px, 5vw, 60px); margin: 16px 0 22px; }
+.hero p { font-size: 17px; line-height: 1.75; margin-bottom: 22px; }
+
+.illustration {
+  background: linear-gradient(135deg, #ffdf87, #fff3c7);
+  border: 1px solid #ead69a;
+  border-radius: 28px;
+  padding: 34px;
 }
-.login-hero{
-  padding:40px;
-  background:linear-gradient(145deg,#f4b942,#ffd96a);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  gap:35px;
+
+.animals { font-size: 75px; text-align: center; margin: 14px 0; }
+.landing-section { margin: 30px 0 42px; }
+
+.step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--deep);
+  font-weight: 800;
+  margin-bottom: 12px;
 }
-.login-hero h2{font-size:38px}
-.login-hero p{color:#5f4c22}
-.login-box{padding:35px}
-.login-types{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin:20px 0;
+
+.login-shell {
+  width: min(960px, 92%);
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow);
 }
-.login-type{
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:white;
-  padding:12px 6px;
+
+.login-hero {
+  padding: 40px;
+  background: linear-gradient(145deg, #f4b942, #ffd96a);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 35px;
 }
-.login-type.active{background:var(--soft);border-color:var(--primary)}
-.login-type span{display:block;font-size:22px}
-.test-accounts{
-  font-size:12px;
-  background:#fffaf0;
-  border:1px dashed #e9cf85;
-  padding:14px;
-  border-radius:12px;
-  margin-top:20px;
+
+.login-hero h2 { font-size: 38px; }
+.login-hero p { color: #5f4c22; }
+.login-box { padding: 35px; }
+
+.login-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 20px 0;
 }
-#loginError{color:var(--red);margin:12px 0}
-.admin-shell{display:grid;grid-template-columns:210px 1fr;gap:22px}
-.admin-nav{display:grid;gap:7px}
-.admin-nav button{text-align:left}
-.admin-nav .active{background:var(--soft);color:var(--deep)}
-.admin-shell>div,.grid-two>div{min-width:0}
-.modal-backdrop{
-  position:fixed;
-  inset:0;
-  background:#372d2166;
-  z-index:100;
-  display:none;
-  place-items:center;
-  padding:20px;
+
+.login-type {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  padding: 12px 6px;
 }
-.modal-backdrop.active{display:grid}
-.modal{
-  width:min(750px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:white;
-  border-radius:20px;
-  padding:26px;
+
+.login-type.active { background: var(--soft); border-color: var(--primary); }
+.login-type span { display: block; font-size: 22px; }
+
+.test-accounts {
+  font-size: 12px;
+  background: #fffaf0;
+  border: 1px dashed #e9cf85;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 20px;
 }
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  align-items:center;
-  margin-bottom:18px;
+
+#loginError { color: var(--red); margin: 12px 0; }
+.admin-shell { display: grid; grid-template-columns: 210px 1fr; gap: 22px; }
+.admin-nav { display: grid; gap: 7px; }
+.admin-nav button { text-align: left; }
+.admin-nav .active { background: var(--soft); color: var(--deep); }
+.admin-shell > div, .grid-two > div { min-width: 0; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #372d2166;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  padding: 20px;
 }
-footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
-@media(max-width:980px){
-  .cards{grid-template-columns:1fr 1fr}
-  .admin-shell{grid-template-columns:1fr}
-  .admin-nav{grid-template-columns:repeat(3,1fr)}
-  .ongs-grid{grid-template-columns:1fr 1fr}
+
+.modal-backdrop.active { display: grid; }
+
+.modal {
+  width: min(750px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 26px;
 }
-@media(max-width:700px){
-  .hero,.login-shell,.grid-two,.grid-three,.campaigns-grid,.ongs-grid,.steps,.summary{
-    grid-template-columns:1fr;
-  }
-  .hero{padding:20px 0;gap:25px}
-  .login-hero,.login-box,.illustration{padding:26px}
-  .header{position:static}
-  .user{text-align:left}
-  .admin-nav{grid-template-columns:1fr 1fr}
-  .box,.campaign,.tracking-card{padding:18px}
-  .tracking-steps{display:grid}
-  .search select{width:100%}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+footer {
+  padding: 26px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.landing-hero { padding: 28px 0 36px; }
+
+.landing-hero h1 {
+  font-size: clamp(34px, 4.4vw, 54px);
+  margin: 14px 0 18px;
+}
+
+.landing-hero p { max-width: 440px; margin-bottom: 22px; }
+
+.landing-visual {
+  position: relative;
+  text-align: center;
+  min-height: 230px;
+  display: grid;
+  align-content: center;
+}
+
+.landing-visual .animals { font-size: 80px; margin: 0; }
+
+.landing-visual p {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep);
+  margin: 12px 0 0;
+  max-width: none;
+}
+
+.visual-heart {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  font-size: 28px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 { margin: 0; }
+.featured-campaign h3 { margin-bottom: 7px; }
+.featured-campaign .progress-info { margin-top: 16px; }
+.featured-campaign .primary { margin-top: 14px; }
+.featured-ong { font-size: 14px; margin: 0; }
+
+.featured-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.featured-meta small { color: var(--muted); }
+
+.landing-details {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-bottom: 26px;
+}
+
+.landing-details details {
+  border-bottom: 1px solid var(--border);
+  padding: 13px 0;
+}
+
+.landing-details summary { cursor: pointer; font-weight: 700; }
+.landing-details details p { max-width: 800px; }
+.landing-details > small { display: block; margin-top: 16px; }
+
+.admin-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.admin-feedback { color: var(--green); margin-bottom: 16px; }
+
+@media (max-width: 980px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-nav { grid-template-columns: repeat(3, 1fr); }
+  .ongs-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 700px) {
+  .hero, .login-shell, .grid-two, .grid-three, .campaigns-grid,
+  .ongs-grid, .steps, .summary { grid-template-columns: 1fr; }
+
+  .hero { padding: 20px 0; gap: 25px; }
+  .login-hero, .login-box, .illustration { padding: 26px; }
+  .header { position: static; }
+  .user { text-align: left; }
+  .admin-nav { grid-template-columns: 1fr 1fr; }
+  .box, .campaign, .tracking-card { padding: 18px; }
+  .tracking-steps { display: grid; }
+  .search select { width: 100%; }
+  .landing-hero { gap: 20px; padding: 12px 0 24px; }
+  .landing-visual { min-height: 160px; padding: 20px; }
+  .landing-visual .animals { font-size: 58px; }
+  .landing-visual p { font-size: 14px; }
+  .section-heading .link { font-size: 14px; }
+  .landing-section { margin: 20px 0 28px; }
 }
 </style>
 </head>
 
 <body>
-
 <section id="landingPage">
   <nav class="landing-nav">
     <div class="brand">🐾 ConectaVet</div>
@@ -386,66 +559,43 @@ footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
   </nav>
 
   <main class="wrap">
-    <div class="hero">
+    <div class="hero landing-hero">
       <div>
-        <span class="tag">Conectando pessoas à proteção animal</span>
+        <span class="tag">Apoio à proteção animal</span>
         <h1>Sua ajuda encontra<br>quem precisa.</h1>
-        <p>Conheça ONGs e suas necessidades, escolha como ajudar e acompanhe sua contribuição até o recebimento e a prestação de contas.</p>
+        <p>Encontre ONGs, apoie campanhas e acompanhe sua ajuda.</p>
         <div class="actions">
-          <button class="primary" onclick="browsePublicOngs()">Quero conhecer as campanhas →</button>
+          <button class="primary" onclick="browsePublicOngs()">Quero ajudar →</button>
           <button class="ghost" onclick="openPublicOngRegistration()">Cadastrar minha ONG</button>
         </div>
       </div>
 
-      <div class="illustration">
+      <div class="illustration landing-visual">
+        <span class="visual-heart" aria-hidden="true">💛</span>
         <div class="animals" aria-hidden="true">🐶 🐱</div>
-        <h2>Necessidades claras. Ajuda acompanhada.</h2>
-        <p>Metas em reais ou materiais, campanhas com prazo e atualizações sobre o uso das contribuições.</p>
-        <span class="tag">Recebimento pela ONG</span>
-        <span class="tag">Prestação de contas</span>
+        <p>Cada ajuda faz diferença.</p>
       </div>
     </div>
 
     <section class="landing-section">
-      <h2>Por que conectar?</h2>
-      <p>As necessidades de uma ONG nem sempre chegam a quem pode ajudar. O ConectaVet aproxima esses dois lados, organizando campanhas e mostrando o andamento de cada contribuição.</p>
-    </section>
-
-    <section class="landing-section">
-      <h2>Como funciona</h2>
-      <div class="steps">
-        <article class="step">
-          <span class="step-number">1</span>
-          <h3>Conheça a necessidade</h3>
-          <p>Consulte ONGs aprovadas, metas e prazos antes de criar uma conta.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">2</span>
-          <h3>Registre e acompanhe</h3>
-          <p>Informe sua intenção de ajudar e, depois do envio, acompanhe a confirmação pela ONG.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">3</span>
-          <h3>Veja o resultado</h3>
-          <p>Leia as atualizações e a prestação de contas publicadas pela organização.</p>
-        </article>
+      <div class="section-heading">
+        <h2>Campanhas em destaque</h2>
+        <button class="link" onclick="browsePublicOngs()">Ver outras ONGs →</button>
       </div>
-    </section>
-
-    <section class="landing-section">
-      <h2>Campanhas para conhecer</h2>
       <div id="landingCampaigns" class="campaigns-grid"></div>
     </section>
 
-    <section class="box">
-      <h2>Como uma ONG é aprovada?</h2>
-      <div id="publicApprovalInfo"></div>
+    <section class="landing-details" aria-label="Saiba mais sobre a plataforma">
+      <details>
+        <summary>Como funciona o ConectaVet?</summary>
+        <p>Escolha uma campanha, registre sua intenção de ajudar e combine o envio com a ONG. Depois, acompanhe o recebimento e a prestação de contas.</p>
+      </details>
+      <details>
+        <summary>Como uma ONG é aprovada?</summary>
+        <div id="publicApprovalInfo"></div>
+      </details>
+      <small>Demonstração acadêmica com dados fictícios e sem pagamentos reais.</small>
     </section>
-
-    <div class="notice">
-      Demonstração acadêmica: organizações e dados iniciais são fictícios.
-      Não há pagamentos reais, verificação externa de documentos ou auditoria financeira.
-    </div>
   </main>
 </section>
 
@@ -485,8 +635,12 @@ footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
       <div id="loginError" role="alert"></div>
 
       <div class="actions">
-        <button id="registerOngButton" class="ghost" onclick="openPublicOngRegistration()">Cadastrar minha ONG</button>
-        <button id="registerDonorButton" class="ghost" onclick="openDonorRegistration()">Cadastrar como doador</button>
+        <button id="registerOngButton" class="ghost" onclick="openPublicOngRegistration()">
+          Cadastrar minha ONG
+        </button>
+        <button id="registerDonorButton" class="ghost" onclick="openDonorRegistration()">
+          Cadastrar como doador
+        </button>
       </div>
 
       <div class="test-accounts">
@@ -517,7 +671,8 @@ footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
   <main id="views" class="wrap"></main>
 </div>
 
-<div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div id="modalBackdrop" class="modal-backdrop" role="dialog"
+     aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
     <div class="modal-head">
       <h2 id="modalTitle"></h2>
@@ -532,255 +687,258 @@ footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
 <script>
 'use strict';
 
-/* FUNÇÕES AUXILIARES */
-const $=id=>document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({
-  '&':'&amp;',
-  '<':'&lt;',
-  '>':'&gt;',
-  '"':'&quot;',
-  "'":'&#39;'
-}[c]));
+const esc = value => String(value ?? '').replace(
+  /[&<>"']/g,
+  c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c])
+);
 
-const money=value=>Number(value||0).toLocaleString('pt-BR',{
-  style:'currency',
-  currency:'BRL'
-});
+const money = value => Number(value || 0).toLocaleString(
+  'pt-BR', { style:'currency', currency:'BRL' }
+);
 
-const quantity=value=>Number(value||0).toLocaleString('pt-BR',{
-  maximumFractionDigits:2
-});
+const quantity = value => Number(value || 0).toLocaleString(
+  'pt-BR', { maximumFractionDigits:2 }
+);
 
-const val=id=>$(id).value.trim();
-const digits=value=>String(value||'').replace(/\D/g,'');
-const nextId=list=>Math.max(0,...list.map(x=>Number(x.id)||0))+1;
+const val = id => $(id).value.trim();
+const digits = value => String(value || '').replace(/\D/g, '');
+const nextId = list => Math.max(0, ...list.map(x => Number(x.id) || 0)) + 1;
 
-const today=()=>{
-  const d=new Date();
+const today = () => {
+  const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 };
 
-function futureDate(days=30){
-  const d=new Date();
+function futureDate(days=30) {
+  const d = new Date();
   d.setDate(d.getDate()+days);
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function dateLabel(date){
-  if(!date)return 'Não informado';
-  const parts=String(date).split('-');
-  return parts.length===3
-    ?`${parts[2]}/${parts[1]}/${parts[0]}`
-    :String(date);
+function dateLabel(date) {
+  if (!date) return 'Não informado';
+  const parts = String(date).split('-');
+  return parts.length === 3
+    ? `${parts[2]}/${parts[1]}/${parts[0]}`
+    : String(date);
 }
 
-function read(key,fallback){
-  try{
-    const parsed=JSON.parse(localStorage.getItem(key));
-    return Array.isArray(parsed)?parsed:fallback;
-  }catch{
+function read(key, fallback) {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key));
+    return Array.isArray(parsed) ? parsed : fallback;
+  } catch {
     return fallback;
   }
 }
 
-/* DADOS DE DEMONSTRAÇÃO */
-const defaultUsers=[
+const defaultUsers = [
   {
-    id:1,name:'ONG Patinhas do Bem',email:'ong@teste.com',
-    username:'ongteste',password:'ong123',
-    role:'ong',ongId:1,active:true
+    id:1, name:'ONG Patinhas do Bem', email:'ong@teste.com',
+    username:'ongteste', password:'ong123',
+    role:'ong', ongId:1, active:true
   },
   {
-    id:2,name:'Doador Demonstração',email:'doador@teste.com',
-    username:'doador',password:'doador123',
-    role:'donor',active:true
+    id:2, name:'Doador Demonstração', email:'doador@teste.com',
+    username:'doador', password:'doador123',
+    role:'donor', active:true
   },
   {
-    id:3,name:'Administrador',email:'admin@teste.com',
-    username:'admin',password:'admin123',
-    role:'admin',active:true
+    id:3, name:'Administrador', email:'admin@teste.com',
+    username:'admin', password:'admin123',
+    role:'admin', active:true
   }
 ];
 
-const initialOngs=[
+const initialOngs = [
   {
-    id:1,name:'ONG Patinhas do Bem',responsible:'Ana Souza',
-    email:'ong@teste.com',phone:'11999991111',cnpj:'12345678000190',
-    city:'Poá - SP',cause:'Resgate de cães e gatos',contact:'ong@teste.com',
+    id:1, name:'ONG Patinhas do Bem', responsible:'Ana Souza',
+    email:'ong@teste.com', phone:'11999991111', cnpj:'12345678000190',
+    city:'Poá - SP', cause:'Resgate de cães e gatos',
+    contact:'ong@teste.com',
     description:'Resgate, tratamento e encaminhamento para adoção responsável de cães e gatos.',
     status:'Aprovada'
   },
   {
-    id:2,name:'Amigos de Quatro Patas',responsible:'Marcos Lima',
-    email:'contato@amigos4patas.org',phone:'11988882222',cnpj:'23456789000110',
-    city:'Mogi das Cruzes - SP',cause:'Animais abandonados',
-    contact:'contato@amigos4patas.org',
+    id:2, name:'Amigos de Quatro Patas', responsible:'Marcos Lima',
+    email:'contato@amigos4patas.org', phone:'11988882222',
+    cnpj:'23456789000110', city:'Mogi das Cruzes - SP',
+    cause:'Animais abandonados', contact:'contato@amigos4patas.org',
     description:'Acolhimento temporário e recuperação de animais abandonados.',
     status:'Aprovada'
   },
   {
-    id:3,name:'Projeto Novo Lar',responsible:'Carla Mendes',
-    email:'contato@novolar.org',phone:'11977773333',cnpj:'34567890000122',
-    city:'Suzano - SP',cause:'Adoção responsável',contact:'contato@novolar.org',
+    id:3, name:'Projeto Novo Lar', responsible:'Carla Mendes',
+    email:'contato@novolar.org', phone:'11977773333',
+    cnpj:'34567890000122', city:'Suzano - SP',
+    cause:'Adoção responsável', contact:'contato@novolar.org',
     description:'Feiras de adoção e apoio a animais em situação de vulnerabilidade.',
     status:'Pendente'
   },
   {
-    id:4,name:'Instituto Vida Animal',responsible:'Pedro Nunes',
-    email:'contato@vidaanimal.org',phone:'11966664444',cnpj:'45678901000132',
-    city:'São Paulo - SP',cause:'Tratamento veterinário',
-    contact:'contato@vidaanimal.org',
+    id:4, name:'Instituto Vida Animal', responsible:'Pedro Nunes',
+    email:'contato@vidaanimal.org', phone:'11966664444',
+    cnpj:'45678901000132', city:'São Paulo - SP',
+    cause:'Tratamento veterinário', contact:'contato@vidaanimal.org',
     description:'Suporte veterinário para animais resgatados em situação de risco.',
     status:'Aprovada'
   }
 ];
 
-const initialCampaigns=[
+const initialCampaigns = [
   {
-    id:5,ongId:1,title:'Ração para os animais acolhidos',
-    category:'Alimentação',goalType:'items',goal:300,raised:0,
-    item:'ração para cães',unit:'kg',
+    id:5, ongId:1, title:'Ração para os animais acolhidos',
+    category:'Alimentação', goalType:'items', goal:300, raised:0,
+    item:'ração para cães', unit:'kg',
     description:'Precisamos receber 300 kg de ração para cães. Combine a entrega com a ONG.',
-    status:'Ativa',deadline:futureDate()
+    status:'Ativa', deadline:futureDate()
   },
   {
-    id:1,ongId:1,title:'Arrecadação de ração',
-    category:'Alimentação',goal:1500,raised:450,
+    id:1, ongId:1, title:'Arrecadação de ração',
+    category:'Alimentação', goal:1500, raised:450,
     description:'Recursos para comprar ração para os animais acolhidos.',
-    status:'Ativa',deadline:futureDate()
+    status:'Ativa', deadline:futureDate()
   },
   {
-    id:2,ongId:1,title:'Tratamento da Mel',
-    category:'Tratamento veterinário',goal:2200,raised:900,
+    id:2, ongId:1, title:'Tratamento da Mel',
+    category:'Tratamento veterinário', goal:2200, raised:900,
     description:'A cadela Mel precisa realizar exames e tratamento veterinário.',
-    status:'Ativa',deadline:futureDate()
+    status:'Ativa', deadline:futureDate()
   },
   {
-    id:3,ongId:2,title:'Reforma dos canis',
-    category:'Infraestrutura',goal:5000,raised:2100,
+    id:3, ongId:2, title:'Reforma dos canis',
+    category:'Infraestrutura', goal:5000, raised:2100,
     description:'Reforma dos canis utilizados no acolhimento.',
-    status:'Ativa',deadline:futureDate()
+    status:'Ativa', deadline:futureDate()
   },
   {
-    id:4,ongId:4,title:'Medicamentos veterinários',
-    category:'Medicamentos',goal:1800,raised:600,
+    id:4, ongId:4, title:'Medicamentos veterinários',
+    category:'Medicamentos', goal:1800, raised:600,
     description:'Compra de medicamentos para os animais resgatados.',
-    status:'Ativa',deadline:futureDate()
+    status:'Ativa', deadline:futureDate()
   }
 ];
 
-/* ESTADO E ARMAZENAMENTO */
-let users=read('conectaVetUsers',defaultUsers);
-let ongs=read('conectaVetOngs',initialOngs);
-let campaigns=read('conectaVetCampaigns',initialCampaigns);
-let donations=read('conectaVetDonations',[]);
-let reports=read('conectaVetReports',[]);
+let users = read('conectaVetUsers', defaultUsers);
+let ongs = read('conectaVetOngs', initialOngs);
+let campaigns = read('conectaVetCampaigns', initialCampaigns);
+let donations = read('conectaVetDonations', []);
+let reports = read('conectaVetReports', []);
 
-let currentUser=null;
-let selectedRole='donor';
-let selectedOngId=null;
-let selectedCampaignId=null;
-let pendingHelp=null;
-let adminSection='dashboard';
-let returnFocus=null;
+let currentUser = null;
+let selectedRole = 'donor';
+let selectedOngId = null;
+let selectedCampaignId = null;
+let pendingHelp = null;
+let adminSection = 'dashboard';
+let returnFocus = null;
 
-const HELP_LABELS={
+const HELP_LABELS = {
   intention:'Intenção registrada',
   awaiting:'Aguardando confirmação',
   received:'Recebida pela ONG'
 };
 
-const HELP_STATES=Object.keys(HELP_LABELS);
+const HELP_STATES = Object.keys(HELP_LABELS);
 
-function save(){
-  localStorage.setItem('conectaVetUsers',JSON.stringify(users));
-  localStorage.setItem('conectaVetOngs',JSON.stringify(ongs));
-  localStorage.setItem('conectaVetCampaigns',JSON.stringify(campaigns));
-  localStorage.setItem('conectaVetDonations',JSON.stringify(donations));
-  localStorage.setItem('conectaVetReports',JSON.stringify(reports));
+function save() {
+  localStorage.setItem('conectaVetUsers', JSON.stringify(users));
+  localStorage.setItem('conectaVetOngs', JSON.stringify(ongs));
+  localStorage.setItem('conectaVetCampaigns', JSON.stringify(campaigns));
+  localStorage.setItem('conectaVetDonations', JSON.stringify(donations));
+  localStorage.setItem('conectaVetReports', JSON.stringify(reports));
 }
 
-function normalizeUsername(text){
-  return String(text||'')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'')
+function normalizeUsername(text) {
+  return String(text || '').normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9._-]/g,'');
+    .replace(/[^a-z0-9._-]/g, '');
 }
 
-function validUsername(text){
+function validUsername(text) {
   return /^[a-z0-9._-]{3,30}$/.test(text);
 }
 
-function usernameExists(name,exclude=null){
-  return users.some(u=>
-    u.id!==exclude&&normalizeUsername(u.username)===name
+function usernameExists(name, exclude=null) {
+  return users.some(
+    u => u.id !== exclude && normalizeUsername(u.username) === name
   );
 }
 
-function emailExists(email,exclude=null){
-  return users.some(u=>
-    u.id!==exclude&&String(u.email||'').toLowerCase()===email.toLowerCase()
+function emailExists(email, exclude=null) {
+  return users.some(
+    u => u.id !== exclude &&
+    String(u.email || '').toLowerCase() === email.toLowerCase()
   );
 }
 
-/* COMPATIBILIDADE COM OS DADOS DAS VERSÕES ANTERIORES */
-function migrate(){
-  users.forEach(u=>{
-    if(!u.username){
-      let base=u.role==='admin'?'admin':normalizeUsername(u.name)||'usuario';
-      let name=base,n=2;
-      while(users.some(v=>v!==u&&v.username===name))name=base+n++;
-      u.username=name;
+/* Adaptação dos dados salvos em versões anteriores. */
+function migrate() {
+  users.forEach(u => {
+    if (!u.username) {
+      let base = u.role === 'admin'
+        ? 'admin'
+        : normalizeUsername(u.name) || 'usuario';
+
+      let name = base, n = 2;
+
+      while (users.some(v => v !== u && v.username === name)) {
+        name = base + n++;
+      }
+
+      u.username = name;
     }
   });
 
-  ongs=ongs.map(o=>({
+  ongs = ongs.map(o => ({
     ...o,
     phone:digits(o.phone),
     cnpj:digits(o.cnpj),
-    contact:o.contact||o.email||'',
-    reviewReason:o.reviewReason||'',
-    reviewChecks:o.reviewChecks||{
-      identity:o.status==='Aprovada',
-      contact:o.status==='Aprovada',
-      cause:o.status==='Aprovada'
+    contact:o.contact || o.email || '',
+    reviewReason:o.reviewReason || '',
+    reviewChecks:o.reviewChecks || {
+      identity:o.status === 'Aprovada',
+      contact:o.status === 'Aprovada',
+      cause:o.status === 'Aprovada'
     }
   }));
 
-  donations=donations.map(d=>({
+  donations = donations.map(d => ({
     ...d,
     status:HELP_STATES.includes(d.status)
-      ?d.status
-      :d.type==='Financeira'?'received':'intention',
-    unit:d.unit||'unidades',
-    history:Array.isArray(d.history)?d.history:[]
+      ? d.status
+      : d.type === 'Financeira' ? 'received' : 'intention',
+    unit:d.unit || 'unidades',
+    history:Array.isArray(d.history) ? d.history : []
   }));
 
-  campaigns=campaigns.map(c=>{
-    const n={
+  campaigns = campaigns.map(c => {
+    const n = {
       ...c,
-      goal:Number(c.goal||0),
-      goalType:c.goalType==='items'?'items':'money',
-      unit:c.goalType==='items'?(c.unit||'unidades'):'BRL',
-      item:c.item||'',
-      deadline:c.deadline||'',
-      status:c.status||'Ativa'
+      goal:Number(c.goal || 0),
+      goalType:c.goalType === 'items' ? 'items' : 'money',
+      unit:c.goalType === 'items' ? (c.unit || 'unidades') : 'BRL',
+      item:c.item || '',
+      deadline:c.deadline || '',
+      status:c.status || 'Ativa'
     };
 
-    const logged=donations.filter(d=>
-      d.campaignId===c.id&&
-      d.ongId===c.ongId&&
-      d.status==='received'&&
-      matchesGoal(d,n)
-    ).reduce((s,d)=>
-      s+Number(n.goalType==='money'?d.amount:d.quantity),0
+    const logged = donations.filter(d =>
+      d.campaignId === c.id &&
+      d.ongId === c.ongId &&
+      d.status === 'received' &&
+      matchesGoal(d, n)
+    ).reduce(
+      (s, d) => s + Number(n.goalType === 'money' ? d.amount : d.quantity),
+      0
     );
 
-    n.confirmedBase=Number.isFinite(c.confirmedBase)
-      ?c.confirmedBase
-      :Math.max(0,Number(c.raised||0)-logged);
+    n.confirmedBase = Number.isFinite(c.confirmedBase)
+      ? c.confirmedBase
+      : Math.max(0, Number(c.raised || 0) - logged);
 
     recalculate(n);
     return n;
@@ -789,8 +947,7 @@ function migrate(){
   save();
 }
 
-/* FORMULÁRIOS */
-function approvalInfo(){
+function approvalInfo() {
   return `
     <p>O administrador analisa o cadastro antes de a ONG aparecer para os doadores.</p>
     <ol style="padding-left:22px">
@@ -802,23 +959,25 @@ function approvalInfo(){
     <small>No protótipo, a análise é manual e simulada. A aprovação não representa certificação, consulta a uma base oficial ou auditoria.</small>`;
 }
 
-function field(id,label,{
-  type='text',required=false,value='',options=null,help='',attrs=''
-}={}){
-  if(type==='number'&&attrs.includes('step="1"')){
-    attrs=attrs.replace('min="0.01"','min="1"');
+/* Montagem dos campos e formulários. */
+function field(id, label, {
+  type='text', required=false, value='',
+  options=null, help='', attrs=''
+}={}) {
+  if (type === 'number' && attrs.includes('step="1"')) {
+    attrs = attrs.replace('min="0.01"', 'min="1"');
   }
 
-  const content=options
-    ?`<select id="${id}" name="${id}" ${required?'required':''} ${attrs}>
-      ${options.map(o=>{
-        const pair=Array.isArray(o)?o:[o,o];
-        return `<option value="${esc(pair[0])}" ${String(value)===String(pair[0])?'selected':''}>${esc(pair[1])}</option>`;
-      }).join('')}
-    </select>`
-    :type==='textarea'
-      ?`<textarea id="${id}" name="${id}" ${required?'required':''} ${attrs}>${esc(value)}</textarea>`
-      :`<input id="${id}" name="${id}" type="${type}" value="${esc(value)}" ${required?'required':''} ${attrs}>`;
+  const content = options
+    ? `<select id="${id}" name="${id}" ${required?'required':''} ${attrs}>
+        ${options.map(o => {
+          const pair = Array.isArray(o) ? o : [o, o];
+          return `<option value="${esc(pair[0])}" ${String(value)===String(pair[0])?'selected':''}>${esc(pair[1])}</option>`;
+        }).join('')}
+      </select>`
+    : type === 'textarea'
+      ? `<textarea id="${id}" name="${id}" ${required?'required':''} ${attrs}>${esc(value)}</textarea>`
+      : `<input id="${id}" name="${id}" type="${type}" value="${esc(value)}" ${required?'required':''} ${attrs}>`;
 
   return `
     <div class="field">
@@ -830,110 +989,116 @@ function field(id,label,{
     </div>`;
 }
 
-const note=()=>'<p class="form-note"><span class="required">*</span> Campos obrigatórios.</p>';
+const note = () => '<p class="form-note"><span class="required">*</span> Campos obrigatórios.</p>';
 
-const docAttrs='inputmode="numeric" data-digits maxlength="14" minlength="14" pattern="[0-9]{14}" title="Digite os 14 números do CNPJ, sem letras."';
+const docAttrs = 'inputmode="numeric" data-digits maxlength="14" minlength="14" pattern="[0-9]{14}" title="Digite os 14 números do CNPJ, sem letras."';
 
-const phoneAttrs='inputmode="numeric" data-digits maxlength="11" minlength="10" pattern="[0-9]{10,11}" title="Digite DDD e telefone, com 10 ou 11 números."';
+const phoneAttrs = 'inputmode="numeric" data-digits maxlength="11" minlength="10" pattern="[0-9]{10,11}" title="Digite DDD e telefone, com 10 ou 11 números."';
 
-function formHTML(id,fields,button){
-  return `
-    <form id="${id}">
-      ${note()}
-      ${fields}
-      <div class="actions"><button class="primary">${button}</button></div>
-    </form>`;
+function formHTML(id, fields, button) {
+  return `<form id="${id}">
+    ${note()}${fields}
+    <div class="actions"><button class="primary">${button}</button></div>
+  </form>`;
 }
 
-function bindForm(id,handler){
-  $(id).addEventListener('submit',event=>{
+function bindForm(id, handler) {
+  $(id).addEventListener('submit', event => {
     event.preventDefault();
     handler();
   });
 }
 
-/* NAVEGAÇÃO E LOGIN */
-function showOnly(id){
-  ['landingPage','loginPage','app'].forEach(x=>{
-    $(x).classList.toggle('hidden',x!==id);
-  });
-  window.scrollTo(0,0);
+/* Navegação e acesso. */
+function showOnly(id) {
+  ['landingPage', 'loginPage', 'app'].forEach(x =>
+    $(x).classList.toggle('hidden', x !== id)
+  );
+  window.scrollTo(0, 0);
 }
 
-function showLanding(){
-  pendingHelp=null;
+function showLanding() {
+  pendingHelp = null;
   showOnly('landingPage');
   renderLandingCampaigns();
 }
 
-function showLogin(role='donor'){
+function showLogin(role='donor') {
   showOnly('loginPage');
   selectRole(role);
 }
 
-function selectRole(role){
-  selectedRole=role;
-  document.querySelectorAll('.login-type').forEach(b=>{
-    b.classList.toggle('active',b.dataset.role===role);
-  });
-  $('registerOngButton').classList.toggle('hidden',role!=='ong');
-  $('registerDonorButton').classList.toggle('hidden',role!=='donor');
-  $('loginError').textContent='';
-}
+function selectRole(role) {
+  selectedRole = role;
 
-function updateHeader(){
-  const labels={ong:'ONG',donor:'Doador',admin:'Administrador'};
-  $('loggedUser').textContent=currentUser?currentUser.name:'Visitante';
-  $('loggedRole').textContent=currentUser?labels[currentUser.role]:'Consulta pública';
-  $('sessionButton').textContent=currentUser?'Sair':'Entrar';
-  $('sessionButton').onclick=currentUser?logout:()=>showLogin('donor');
-}
-
-function login(){
-  const identifier=val('loginUsername').toLowerCase();
-  const u=users.find(u=>
-    u.role===selectedRole&&
-    (
-      u.username.toLowerCase()===identifier||
-      String(u.email||'').toLowerCase()===identifier
-    )&&
-    u.password===$('loginPassword').value
+  document.querySelectorAll('.login-type').forEach(b =>
+    b.classList.toggle('active', b.dataset.role === role)
   );
 
-  if(!u||u.active===false){
-    $('loginError').textContent='Nome de acesso, senha ou perfil incorretos, ou conta desativada.';
+  $('registerOngButton').classList.toggle('hidden', role !== 'ong');
+  $('registerDonorButton').classList.toggle('hidden', role !== 'donor');
+  $('loginError').textContent = '';
+}
+
+function updateHeader() {
+  const labels = { ong:'ONG', donor:'Doador', admin:'Administrador' };
+
+  $('loggedUser').textContent = currentUser ? currentUser.name : 'Visitante';
+  $('loggedRole').textContent = currentUser
+    ? labels[currentUser.role]
+    : 'Consulta pública';
+
+  $('sessionButton').textContent = currentUser ? 'Sair' : 'Entrar';
+  $('sessionButton').onclick = currentUser ? logout : () => showLogin('donor');
+}
+
+function login() {
+  const identifier = val('loginUsername').toLowerCase();
+
+  const u = users.find(u =>
+    u.role === selectedRole &&
+    (
+      u.username.toLowerCase() === identifier ||
+      String(u.email || '').toLowerCase() === identifier
+    ) &&
+    u.password === $('loginPassword').value
+  );
+
+  if (!u || u.active === false) {
+    $('loginError').textContent =
+      'Nome de acesso, senha ou perfil incorretos, ou conta desativada.';
     return;
   }
 
-  currentUser=u;
-  sessionStorage.setItem('conectaVetUser',JSON.stringify({id:u.id}));
+  currentUser = u;
+  sessionStorage.setItem('conectaVetUser', JSON.stringify({ id:u.id }));
   openSystem();
 }
 
-function logout(){
-  currentUser=null;
-  pendingHelp=null;
+function logout() {
+  currentUser = null;
+  pendingHelp = null;
   sessionStorage.removeItem('conectaVetUser');
   showLanding();
 }
 
-function openSystem(){
+function openSystem() {
   showOnly('app');
   updateHeader();
   goHome();
 
-  if(currentUser.role==='donor'&&pendingHelp){
-    const p=pendingHelp;
-    pendingHelp=null;
-    helpCampaign(p.ongId,p.campaignId);
+  if (currentUser.role === 'donor' && pendingHelp) {
+    const p = pendingHelp;
+    pendingHelp = null;
+    helpCampaign(p.ongId, p.campaignId);
   }
 }
 
-function goHome(){
-  selectedOngId=null;
-  selectedCampaignId=null;
+function goHome() {
+  selectedOngId = null;
+  selectedCampaignId = null;
 
-  if(!currentUser){
+  if (!currentUser) {
     showLanding();
     return;
   }
@@ -941,28 +1106,28 @@ function goHome(){
   showOnly('app');
   updateHeader();
 
-  if(currentUser.role==='ong')renderOngArea();
-  else if(currentUser.role==='donor')renderDonorArea();
+  if (currentUser.role === 'ong') renderOngArea();
+  else if (currentUser.role === 'donor') renderDonorArea();
   else renderAdmin('dashboard');
 }
 
-function openModal(title,content){
-  returnFocus=document.activeElement;
-  $('modalTitle').textContent=title;
-  $('modalBody').innerHTML=content;
+function openModal(title, content) {
+  returnFocus = document.activeElement;
+  $('modalTitle').textContent = title;
+  $('modalBody').innerHTML = content;
   $('modalBackdrop').classList.add('active');
 
-  const first=$('modalBody').querySelector('input,select,textarea,button');
-  if(first)first.focus();
+  const first = $('modalBody').querySelector('input,select,textarea,button');
+  if (first) first.focus();
 }
 
-function closeModal(){
+function closeModal() {
   $('modalBackdrop').classList.remove('active');
-  if(returnFocus&&returnFocus.isConnected)returnFocus.focus();
+  if (returnFocus && returnFocus.isConnected) returnFocus.focus();
 }
 
-/* CADASTRO E EDIÇÃO DE PERFIS */
-function ongFields(prefix,o={},account=false){
+/* Cadastro das ONGs e dos doadores. */
+function ongFields(prefix, o={}, account=false) {
   return `
     <div class="grid-two">
       ${field(prefix+'Name','Nome da ONG',{required:true,value:o.name||''})}
@@ -970,30 +1135,33 @@ function ongFields(prefix,o={},account=false){
       ${field(prefix+'Email','E-mail',{type:'email',required:true,value:o.email||''})}
       ${field(prefix+'Phone','Telefone com DDD',{required:true,value:digits(o.phone),attrs:phoneAttrs})}
       ${field(prefix+'Cnpj','CNPJ',{
-        required:true,value:digits(o.cnpj),attrs:docAttrs,
+        required:true,
+        value:digits(o.cnpj),
+        attrs:docAttrs,
         help:'Somente números, sem pontos ou barras.'
       })}
       ${field(prefix+'City','Cidade / UF',{required:true,value:o.city||''})}
       ${field(prefix+'Cause','Área de atuação',{required:true,value:o.cause||''})}
       ${account
-        ?field(prefix+'Username','Nome de acesso',{
-          required:true,
-          attrs:'minlength="3" maxlength="30" pattern="[a-z0-9._-]{3,30}"',
-          help:'3 a 30 caracteres: letras minúsculas, números, ponto, hífen ou underline.'
-        })+
-        field(prefix+'Password','Senha',{
-          type:'password',required:true,
-          attrs:'minlength="6" autocomplete="new-password"',
-          help:'Pelo menos 6 caracteres.'
-        })
-        :''}
+        ? field(prefix+'Username','Nome de acesso',{
+            required:true,
+            attrs:'minlength="3" maxlength="30" pattern="[a-z0-9._-]{3,30}"',
+            help:'3 a 30 caracteres: letras minúsculas, números, ponto, hífen ou underline.'
+          }) +
+          field(prefix+'Password','Senha',{
+            type:'password',
+            required:true,
+            attrs:'minlength="6" autocomplete="new-password"',
+            help:'Pelo menos 6 caracteres.'
+          })
+        : ''}
     </div>
     ${field(prefix+'Description','Descrição da ONG',{
       type:'textarea',required:true,value:o.description||''
     })}`;
 }
 
-function readOngFields(prefix){
+function readOngFields(prefix) {
   return {
     name:val(prefix+'Name'),
     responsible:val(prefix+'Responsible'),
@@ -1006,59 +1174,74 @@ function readOngFields(prefix){
   };
 }
 
-function accountValid(username,email,exclude=null){
-  if(!validUsername(username)){
+function accountValid(username, email, exclude=null) {
+  if (!validUsername(username)) {
     alert('Escolha um nome de acesso válido.');
     return false;
   }
-  if(usernameExists(username,exclude)){
+
+  if (usernameExists(username, exclude)) {
     alert('Nome de acesso já utilizado.');
     return false;
   }
-  if(emailExists(email,exclude)){
+
+  if (emailExists(email, exclude)) {
     alert('E-mail já cadastrado.');
     return false;
   }
+
   return true;
 }
 
-function openPublicOngRegistration(){
+function openPublicOngRegistration() {
   openModal(
     'Cadastrar minha ONG',
     `<div class="notice">${approvalInfo()}</div>
     ${formHTML('publicOngForm',ongFields('publicOng',{},true),'Enviar cadastro')}`
   );
 
-  bindForm('publicOngForm',()=>{
-    const o=readOngFields('publicOng');
-    const username=normalizeUsername(val('publicOngUsername'));
-    if(!accountValid(username,o.email))return;
+  bindForm('publicOngForm', () => {
+    const o = readOngFields('publicOng');
+    const username = normalizeUsername(val('publicOngUsername'));
 
-    const id=nextId(ongs);
+    if (!accountValid(username, o.email)) return;
+
+    const id = nextId(ongs);
+
     ongs.push({
-      ...o,id,contact:o.email,status:'Pendente',reviewReason:'',
-      reviewChecks:{identity:false,contact:false,cause:false}
+      ...o,
+      id,
+      contact:o.email,
+      status:'Pendente',
+      reviewReason:'',
+      reviewChecks:{ identity:false, contact:false, cause:false }
     });
 
     users.push({
-      id:nextId(users),name:o.name,email:o.email,username,
+      id:nextId(users),
+      name:o.name,
+      email:o.email,
+      username,
       password:$('publicOngPassword').value,
-      role:'ong',ongId:id,active:true
+      role:'ong',
+      ongId:id,
+      active:true
     });
 
     save();
     closeModal();
     showLogin('ong');
-    $('loginUsername').value=username;
-    $('loginPassword').value='';
+    $('loginUsername').value = username;
+    $('loginPassword').value = '';
+
     alert('Cadastro enviado para análise. Entre para acompanhar o status.');
   });
 }
 
-function openDonorRegistration(){
+function openDonorRegistration() {
   openModal(
     'Criar conta de doador',
-    formHTML('donorForm',`
+    formHTML('donorForm', `
       <div class="grid-two">
         ${field('donorRegisterName','Seu nome',{required:true})}
         ${field('donorRegisterUsername','Nome de acesso',{
@@ -1077,15 +1260,16 @@ function openDonorRegistration(){
         })}
       </div>
       <div class="notice">Os dados ficam salvos somente neste navegador.</div>
-    `,'Criar conta')
+    `, 'Criar conta')
   );
 
-  bindForm('donorForm',()=>{
-    const username=normalizeUsername(val('donorRegisterUsername'));
-    const email=val('donorRegisterEmail').toLowerCase();
-    if(!accountValid(username,email))return;
+  bindForm('donorForm', () => {
+    const username = normalizeUsername(val('donorRegisterUsername'));
+    const email = val('donorRegisterEmail').toLowerCase();
 
-    if($('donorRegisterPassword').value!==$('donorRegisterPasswordConfirm').value){
+    if (!accountValid(username, email)) return;
+
+    if ($('donorRegisterPassword').value !== $('donorRegisterPasswordConfirm').value) {
       $('donorRegisterPasswordConfirm').setCustomValidity('As senhas não coincidem.');
       $('donorRegisterPasswordConfirm').reportValidity();
       return;
@@ -1094,84 +1278,88 @@ function openDonorRegistration(){
     users.push({
       id:nextId(users),
       name:val('donorRegisterName'),
-      username,email,
+      username,
+      email,
       phone:digits(val('donorRegisterPhone')),
       password:$('donorRegisterPassword').value,
-      role:'donor',active:true
+      role:'donor',
+      active:true
     });
 
     save();
     closeModal();
     showLogin('donor');
-    $('loginUsername').value=username;
-    $('loginPassword').value='';
+    $('loginUsername').value = username;
+    $('loginPassword').value = '';
+
     alert('Conta criada. Entre com seu nome de acesso e senha.');
   });
 }
 
-/* STATUS, PRAZOS E PROGRESSO */
-function statusBadge(status){
-  const cls=status==='Aprovada'||status==='received'
-    ?'good'
-    :status==='Suspensa'
-      ?'bad'
-      :status==='Encerrada'||status==='Pausada'?'grey':'';
+/* Campanhas e prestação de contas na área pública. */
+function statusBadge(status) {
+  const cls = status === 'Aprovada' || status === 'received'
+    ? 'good'
+    : status === 'Suspensa'
+      ? 'bad'
+      : status === 'Encerrada' || status === 'Pausada' ? 'grey' : '';
 
   return `<span class="status ${cls}">${esc(HELP_LABELS[status]||status)}</span>`;
 }
 
-function campaignStatus(c){
-  return c.status==='Encerrada'||(c.deadline&&c.deadline<today())
-    ?'Encerrada'
-    :c.status;
+function campaignStatus(c) {
+  return c.status === 'Encerrada' || (c.deadline && c.deadline < today())
+    ? 'Encerrada'
+    : c.status;
 }
 
-function campaignAvailable(c){
-  return campaignStatus(c)==='Ativa'&&
-    ongs.some(o=>o.id===c.ongId&&o.status==='Aprovada');
+function campaignAvailable(c) {
+  return campaignStatus(c) === 'Ativa' &&
+    ongs.some(o => o.id === c.ongId && o.status === 'Aprovada');
 }
 
-function campaignValue(c,n){
-  return c.goalType==='items'
-    ?`${quantity(n)} ${esc(c.unit)}`
-    :money(n);
+function campaignValue(c, n) {
+  return c.goalType === 'items'
+    ? `${quantity(n)} ${esc(c.unit)}`
+    : money(n);
 }
 
-function calculateProgress(c){
-  return c.goal>0
-    ?Math.min(100,Math.max(0,Math.round(c.raised/c.goal*100)))
-    :0;
+function calculateProgress(c) {
+  return c.goal > 0
+    ? Math.min(100, Math.max(0, Math.round(c.raised/c.goal*100)))
+    : 0;
 }
 
-function applied(c){
-  return reports.filter(r=>
-    r.campaignId===c.id&&
-    r.ongId===c.ongId&&
-    r.type==='Prestação de contas'
-  ).reduce((s,r)=>s+Number(r.used||0),0);
+function applied(c) {
+  return reports.filter(r =>
+    r.campaignId === c.id &&
+    r.ongId === c.ongId &&
+    r.type === 'Prestação de contas'
+  ).reduce((s, r) => s + Number(r.used || 0), 0);
 }
 
-function progress(c){
-  const p=calculateProgress(c);
+function progress(c) {
+  const p = calculateProgress(c);
+
   return `
     <div class="progress-info">
       <span>${campaignValue(c,c.raised)} recebidos</span>
       <strong>${p}%</strong>
     </div>
     <div class="progress" role="progressbar" aria-label="Progresso recebido"
-      aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p}">
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p}">
       <div style="width:${p}%"></div>
     </div>`;
 }
 
-function deadlineText(c){
+function deadlineText(c) {
   return c.deadline
-    ?`Prazo: ${dateLabel(c.deadline)}${c.deadline<today()?' • prazo encerrado':''}`
-    :'Prazo não informado • cadastro anterior';
+    ? `Prazo: ${dateLabel(c.deadline)}${c.deadline<today()?' • prazo encerrado':''}`
+    : 'Prazo não informado • cadastro anterior';
 }
 
-function campaignCard(c){
-  const o=ongs.find(o=>o.id===c.ongId);
+function campaignCard(c) {
+  const o = ongs.find(o => o.id === c.ongId);
 
   return `
     <article class="campaign">
@@ -1186,44 +1374,64 @@ function campaignCard(c){
       ${progress(c)}
       <p>Meta: <strong>${campaignValue(c,c.goal)}</strong></p>
       <div class="actions">
-        <button class="secondary" onclick="openCampaign(${c.id})">Detalhes e prestação de contas</button>
+        <button class="secondary" onclick="openCampaign(${c.id})">
+          Detalhes e prestação de contas
+        </button>
         ${campaignAvailable(c)
-          ?`<button class="primary" onclick="helpCampaign(${c.ongId},${c.id})">Quero ajudar</button>`
-          :'<small>Novas ajudas indisponíveis.</small>'}
+          ? `<button class="primary" onclick="helpCampaign(${c.ongId},${c.id})">Quero ajudar</button>`
+          : '<small>Novas ajudas indisponíveis.</small>'}
       </div>
     </article>`;
 }
 
-/* CONSULTA PÚBLICA */
-function renderLandingCampaigns(){
-  const list=campaigns.filter(campaignAvailable);
-  const material=list.find(c=>c.goalType==='items');
-  const preview=(
-    material?[material,...list.filter(c=>c.id!==material.id)]:list
-  ).slice(0,3);
+function featuredCampaignCard(c) {
+  const o = ongs.find(o => o.id === c.ongId);
 
-  $('landingCampaigns').innerHTML=preview.length
-    ?preview.map(campaignCard).join('')
-    :'<div class="empty">Não há campanhas abertas no momento. Consulte as ONGs e suas prestações de contas.</div>';
-
-  $('publicApprovalInfo').innerHTML=approvalInfo();
+  return `
+    <article class="campaign featured-campaign">
+      <h3>${esc(c.title)}</h3>
+      <p class="featured-ong">${esc(o?.name||'ONG')}</p>
+      ${progress(c)}
+      <div class="featured-meta">
+        <span>Meta: <strong>${campaignValue(c,c.goal)}</strong></span>
+        <small>${deadlineText(c)}</small>
+      </div>
+      <button class="primary" onclick="openCampaign(${c.id})">Ver campanha →</button>
+    </article>`;
 }
 
-function browsePublicOngs(){
+function renderLandingCampaigns() {
+  const list = campaigns.filter(campaignAvailable);
+  const material = list.find(c => c.goalType === 'items');
+
+  const preview = (
+    material
+      ? [material, ...list.filter(c => c.id !== material.id)]
+      : list
+  ).slice(0, 2);
+
+  $('landingCampaigns').innerHTML = preview.length
+    ? preview.map(featuredCampaignCard).join('')
+    : '<div class="empty">Não há campanhas abertas no momento.</div>';
+
+  $('publicApprovalInfo').innerHTML = approvalInfo();
+}
+
+function browsePublicOngs() {
   showOnly('app');
   updateHeader();
   renderDonorArea();
 }
 
-function renderDonorArea(){
-  const isDonor=currentUser?.role==='donor';
-  $('headerDescription').textContent='Conheça as ONGs e suas campanhas';
+function renderDonorArea() {
+  const isDonor = currentUser?.role === 'donor';
+  $('headerDescription').textContent = 'Conheça as ONGs e suas campanhas';
 
-  const causes=[
-    ...new Set(ongs.filter(o=>o.status==='Aprovada').map(o=>o.cause))
+  const causes = [
+    ...new Set(ongs.filter(o => o.status === 'Aprovada').map(o => o.cause))
   ];
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="donorView">
       <div class="welcome">
         <h2>${isDonor?'❤️ Área do Doador':'🐾 Conheça as ONGs'}</h2>
@@ -1233,9 +1441,9 @@ function renderDonorArea(){
         <h2>ONGs disponíveis</h2>
         <div class="search">
           <input id="ongSearch" aria-label="Pesquisar ONGs"
-            placeholder="Nome, cidade ou área" oninput="renderDonorOngs()">
+                 placeholder="Nome, cidade ou área" oninput="renderDonorOngs()">
           <select id="donorCauseFilter" aria-label="Filtrar por causa"
-            onchange="renderDonorOngs()">
+                  onchange="renderDonorOngs()">
             <option value="">Todas as áreas</option>
             ${causes.map(c=>`<option>${esc(c)}</option>`).join('')}
           </select>
@@ -1251,41 +1459,43 @@ function renderDonorArea(){
     </section>`;
 
   renderDonorOngs();
-  if(isDonor)renderHelpTracking();
+  if (isDonor) renderHelpTracking();
 }
 
-function renderDonorOngs(){
-  const search=val('ongSearch').toLowerCase();
-  const cause=val('donorCauseFilter');
+function renderDonorOngs() {
+  const search = val('ongSearch').toLowerCase();
+  const cause = val('donorCauseFilter');
 
-  const list=ongs.filter(o=>
-    o.status==='Aprovada'&&
-    `${o.name} ${o.city} ${o.cause}`.toLowerCase().includes(search)&&
-    (!cause||o.cause===cause)
+  const list = ongs.filter(o =>
+    o.status === 'Aprovada' &&
+    `${o.name} ${o.city} ${o.cause}`.toLowerCase().includes(search) &&
+    (!cause || o.cause === cause)
   );
 
-  $('donorOngGrid').innerHTML=list.length
-    ?list.map(o=>`
+  $('donorOngGrid').innerHTML = list.length
+    ? list.map(o => `
       <article class="campaign">
         <div style="font-size:35px">🐾</div>
-        <h3><button class="link" onclick="openOngProfile(${o.id})">${esc(o.name)}</button></h3>
+        <h3>
+          <button class="link" onclick="openOngProfile(${o.id})">${esc(o.name)}</button>
+        </h3>
         <p>📍 ${esc(o.city)}</p>
         <p>${esc(o.description)}</p>
         <span class="tag">${esc(o.cause)}</span>
         <p>${campaigns.filter(c=>c.ongId===o.id&&campaignAvailable(c)).length} campanha(s) aberta(s)</p>
       </article>`).join('')
-    :'<div class="empty">Nenhuma ONG encontrada.</div>';
+    : '<div class="empty">Nenhuma ONG encontrada.</div>';
 }
 
-function openOngProfile(id){
-  const o=ongs.find(o=>o.id===id&&o.status==='Aprovada');
-  if(!o)return;
+function openOngProfile(id) {
+  const o = ongs.find(o => o.id === id && o.status === 'Aprovada');
+  if (!o) return;
 
-  selectedOngId=id;
+  selectedOngId = id;
   showOnly('app');
   updateHeader();
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="ongProfileView">
       <button class="back-button" onclick="browsePublicOngs()">← Voltar para as ONGs</button>
       <div class="box">
@@ -1310,11 +1520,10 @@ function openOngProfile(id){
     </section>`;
 }
 
-/* PRESTAÇÃO DE CONTAS PÚBLICA */
-function renderReports(c){
-  const list=reports.filter(r=>
-    r.campaignId===c.id&&r.ongId===c.ongId
-  ).slice().sort((a,b)=>
+function renderReports(c) {
+  const list = reports.filter(r =>
+    r.campaignId === c.id && r.ongId === c.ongId
+  ).slice().sort((a, b) =>
     String(b.createdAt).localeCompare(String(a.createdAt))
   );
 
@@ -1328,7 +1537,7 @@ function renderReports(c){
     </div>
     <div class="report-list">
       ${list.length
-        ?list.map(r=>`
+        ? list.map(r=>`
           <article class="report">
             <span class="tag">${esc(r.type)}</span>
             <small>${dateLabel(r.date)}</small>
@@ -1336,21 +1545,21 @@ function renderReports(c){
             <p>${esc(r.text)}</p>
             ${r.used>0?`<strong>Aplicação informada: ${campaignValue(c,r.used)}</strong>`:''}
           </article>`).join('')
-        :'<div class="empty">A ONG ainda não publicou atualizações nesta campanha.</div>'}
+        : '<div class="empty">A ONG ainda não publicou atualizações nesta campanha.</div>'}
     </div>`;
 }
 
-function openCampaign(id){
-  const c=campaigns.find(c=>c.id===id);
-  const o=c&&ongs.find(o=>o.id===c.ongId&&o.status==='Aprovada');
-  if(!c||!o)return;
+function openCampaign(id) {
+  const c = campaigns.find(c => c.id === id);
+  const o = c && ongs.find(o => o.id === c.ongId && o.status === 'Aprovada');
+  if (!c || !o) return;
 
-  selectedOngId=o.id;
-  selectedCampaignId=c.id;
+  selectedOngId = o.id;
+  selectedCampaignId = c.id;
   showOnly('app');
   updateHeader();
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="campaignView">
       <button class="back-button" onclick="openOngProfile(${o.id})">← Voltar ao perfil da ONG</button>
       <div class="box">
@@ -1362,24 +1571,25 @@ function openCampaign(id){
         ${progress(c)}
         <p>Meta: ${campaignValue(c,c.goal)}</p>
         ${campaignAvailable(c)
-          ?`<button class="primary" onclick="helpCampaign(${o.id},${c.id})">Quero ajudar</button>`
-          :'<div class="notice">Esta campanha não aceita novas intenções de ajuda. Contribuições já registradas ainda podem ser acompanhadas.</div>'}
+          ? `<button class="primary" onclick="helpCampaign(${o.id},${c.id})">Quero ajudar</button>`
+          : '<div class="notice">Esta campanha não aceita novas intenções de ajuda. Contribuições já registradas ainda podem ser acompanhadas.</div>'}
       </div>
       <div class="box">${renderReports(c)}</div>
     </section>`;
 }
 
-/* ÁREA DA ONG */
-function renderOngArea(){
-  const o=ongs.find(o=>o.id===currentUser.ongId);
-  if(!o){
-    $('views').innerHTML='<div class="empty">ONG não encontrada.</div>';
+/* Área da ONG. */
+function renderOngArea() {
+  const o = ongs.find(o => o.id === currentUser.ongId);
+
+  if (!o) {
+    $('views').innerHTML = '<div class="empty">ONG não encontrada.</div>';
     return;
   }
 
-  $('headerDescription').textContent='Gerenciamento da organização';
+  $('headerDescription').textContent = 'Gerenciamento da organização';
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="ongView">
       <div class="welcome">
         <h2>🏠 Área da ONG</h2>
@@ -1388,12 +1598,12 @@ function renderOngArea(){
       <div class="box">
         <h2>${esc(o.name)}</h2>
         ${statusBadge(o.status)}
-        ${o.reviewReason?`
-          <div class="notice">
-            <strong>Motivo da análise:</strong> ${esc(o.reviewReason)}
-          </div>`:''}
+        ${o.reviewReason?`<div class="notice"><strong>Motivo da análise:</strong> ${esc(o.reviewReason)}</div>`:''}
         ${o.reviewedAt?`<p>Análise registrada em ${new Date(o.reviewedAt).toLocaleString('pt-BR')}.</p>`:''}
-        <details><summary>Critérios de aprovação</summary>${approvalInfo()}</details>
+        <details>
+          <summary>Critérios de aprovação</summary>
+          ${approvalInfo()}
+        </details>
         ${o.status!=='Aprovada'?'<p>Campanhas ficam indisponíveis ao público até a aprovação.</p>':''}
       </div>
       <div class="box">
@@ -1405,7 +1615,10 @@ function renderOngArea(){
           </button>`:''}
       </div>
       ${o.status==='Aprovada'?`
-        <div class="box"><h2>Nova campanha / necessidade</h2>${campaignForm()}</div>`:''}
+        <div class="box">
+          <h2>Nova campanha / necessidade</h2>
+          ${campaignForm()}
+        </div>`:''}
       <div class="box">
         <h2>Minhas campanhas</h2>
         <div id="ongCampaigns"></div>
@@ -1417,10 +1630,10 @@ function renderOngArea(){
       </div>
     </section>`;
 
-  bindForm('ongProfileForm',()=>saveOngProfile(o));
+  bindForm('ongProfileForm', () => saveOngProfile(o));
 
-  if(o.status==='Aprovada'){
-    bindForm('campaignForm',createCampaign);
+  if (o.status === 'Aprovada') {
+    bindForm('campaignForm', createCampaign);
     updateCampaignGoalFields();
   }
 
@@ -1428,24 +1641,26 @@ function renderOngArea(){
   renderHelpTracking();
 }
 
-function saveOngProfile(o){
-  const data=readOngFields('ongEdit');
-  const u=users.find(u=>u.role==='ong'&&u.ongId===o.id);
+function saveOngProfile(o) {
+  const data = readOngFields('ongEdit');
+  const u = users.find(u => u.role === 'ong' && u.ongId === o.id);
 
-  if(emailExists(data.email,u?.id)){
+  if (emailExists(data.email, u?.id)) {
     alert('E-mail já cadastrado.');
     return;
   }
 
-  const identityChanged=['name','responsible','cnpj'].some(k=>data[k]!==o[k]);
-  Object.assign(o,data,{contact:data.email});
+  const identityChanged = ['name', 'responsible', 'cnpj'].some(
+    k => data[k] !== o[k]
+  );
 
-  if(u)Object.assign(u,{name:o.name,email:o.email});
+  Object.assign(o, data, { contact:data.email });
+  if (u) Object.assign(u, { name:o.name, email:o.email });
 
-  if(identityChanged&&o.status==='Aprovada'){
-    o.status='Pendente';
-    o.reviewChecks={identity:false,contact:false,cause:false};
-    o.reviewReason='Dados de identificação alterados. Cadastro encaminhado para nova análise.';
+  if (identityChanged && o.status === 'Aprovada') {
+    o.status = 'Pendente';
+    o.reviewChecks = { identity:false, contact:false, cause:false };
+    o.reviewReason = 'Dados de identificação alterados. Cadastro encaminhado para nova análise.';
   }
 
   save();
@@ -1454,22 +1669,23 @@ function saveOngProfile(o){
   alert('Perfil atualizado. Alterações de identificação exigem nova análise.');
 }
 
-function requestReview(){
-  const o=ongs.find(o=>o.id===currentUser?.ongId);
-  if(!o||o.status!=='Suspensa')return;
-  if(!$('ongProfileForm').reportValidity())return;
+function requestReview() {
+  const o = ongs.find(o => o.id === currentUser?.ongId);
+  if (!o || o.status !== 'Suspensa') return;
+  if (!$('ongProfileForm').reportValidity()) return;
 
   saveOngProfile(o);
-  o.status='Pendente';
-  o.reviewChecks={identity:false,contact:false,cause:false};
-  o.reviewReason='Correções enviadas pela ONG. Aguardando nova análise.';
+
+  o.status = 'Pendente';
+  o.reviewChecks = { identity:false, contact:false, cause:false };
+  o.reviewReason = 'Correções enviadas pela ONG. Aguardando nova análise.';
+
   save();
   renderOngArea();
 }
 
-/* CRIAÇÃO DE CAMPANHAS */
-function campaignForm(c={}){
-  return formHTML('campaignForm',`
+function campaignForm(c={}) {
+  return formHTML('campaignForm', `
     <div class="grid-two">
       ${field('campaignTitle','Título',{required:true,value:c.title||''})}
       ${field('campaignCategory','Categoria',{
@@ -1501,42 +1717,45 @@ function campaignForm(c={}){
     ${field('campaignDescription','Descrição',{
       type:'textarea',required:true,value:c.description||''
     })}
-  `,'Criar campanha');
+  `, 'Criar campanha');
 }
 
-function updateCampaignGoalFields(){
-  const items=val('campaignGoalType')==='items';
-  $('campaignMaterialFields').classList.toggle('hidden',!items);
-  $('campaignItem').required=items;
-  $('campaignUnit').required=items;
-  $('campaignItem').disabled=!items;
-  $('campaignUnit').disabled=!items;
+function updateCampaignGoalFields() {
+  const items = val('campaignGoalType') === 'items';
 
-  document.querySelector('label[for="campaignGoal"]').innerHTML=
+  $('campaignMaterialFields').classList.toggle('hidden', !items);
+  $('campaignItem').required = items;
+  $('campaignUnit').required = items;
+  $('campaignItem').disabled = !items;
+  $('campaignUnit').disabled = !items;
+
+  document.querySelector('label[for="campaignGoal"]').innerHTML =
     `${items?'Quantidade desejada':'Meta financeira (R$)'} <span class="required">*</span>`;
 
-  document.querySelector('label[for="campaignItem"]').innerHTML=
+  document.querySelector('label[for="campaignItem"]').innerHTML =
     `Material solicitado${items?' <span class="required">*</span>':''}`;
 
-  document.querySelector('label[for="campaignUnit"]').innerHTML=
+  document.querySelector('label[for="campaignUnit"]').innerHTML =
     `Unidade da meta${items?' <span class="required">*</span>':''}`;
 }
 
-function createCampaign(){
-  const o=ongs.find(o=>o.id===currentUser?.ongId);
-  if(currentUser?.role!=='ong'||o?.status!=='Aprovada')return;
+function createCampaign() {
+  const o = ongs.find(o => o.id === currentUser?.ongId);
 
-  const goal=Number(val('campaignGoal'));
-  const goalType=val('campaignGoalType');
-  const unit=goalType==='items'?val('campaignUnit'):'BRL';
-  const deadline=val('campaignDeadline');
+  if (currentUser?.role !== 'ong' || o?.status !== 'Aprovada') return;
 
-  if(!Number.isFinite(goal)||goal<=0||deadline<today()){
+  const goal = Number(val('campaignGoal'));
+  const goalType = val('campaignGoalType');
+  const unit = goalType === 'items' ? val('campaignUnit') : 'BRL';
+  const deadline = val('campaignDeadline');
+
+  if (!Number.isFinite(goal) || goal <= 0 || deadline < today()) {
     alert('Informe uma meta positiva e um prazo a partir de hoje.');
     return;
   }
 
-  if(goalType==='items'&&['unidades','pacotes'].includes(unit)&&!Number.isInteger(goal)){
+  if (goalType === 'items' && ['unidades','pacotes'].includes(unit) &&
+      !Number.isInteger(goal)) {
     alert('Metas em unidades ou pacotes devem ser inteiras.');
     return;
   }
@@ -1546,145 +1765,159 @@ function createCampaign(){
     ongId:o.id,
     title:val('campaignTitle'),
     category:val('campaignCategory'),
-    goalType,goal,unit,
-    item:goalType==='items'?val('campaignItem'):'',
+    goalType,
+    goal,
+    unit,
+    item:goalType === 'items' ? val('campaignItem') : '',
     deadline,
     description:val('campaignDescription'),
-    raised:0,confirmedBase:0,status:'Ativa'
+    raised:0,
+    confirmedBase:0,
+    status:'Ativa'
   });
 
   save();
   renderOngArea();
 }
 
-function renderOngCampaigns(){
-  const list=campaigns.filter(c=>c.ongId===currentUser.ongId);
+function renderOngCampaigns() {
+  const list = campaigns.filter(c => c.ongId === currentUser.ongId);
 
-  $('ongCampaigns').innerHTML=list.length?`
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr><th>Campanha</th><th>Meta / recebido</th><th>Prazo / status</th><th>Ações</th></tr>
-        </thead>
-        <tbody id="ongCampaignTable">
-          ${list.map(c=>`
-            <tr>
-              <td>${esc(c.title)}${c.goalType==='items'?`<br><small>${esc(c.item)}</small>`:''}</td>
-              <td>${campaignValue(c,c.raised)} / ${campaignValue(c,c.goal)}</td>
-              <td>${deadlineText(c)}<br>${statusBadge(campaignStatus(c))}</td>
-              <td>
-                ${campaignStatus(c)!=='Encerrada'?`
-                  <button class="small-button secondary" onclick="toggleOwnCampaign(${c.id})">${c.status==='Ativa'?'Pausar':'Reativar'}</button>
-                  <button class="small-button danger" onclick="closeCampaign(${c.id})">Encerrar</button>`:''}
-                <button class="small-button ghost" onclick="editDeadline(${c.id})">${c.deadline?'Editar prazo':'Definir prazo'}</button>
-                <button class="small-button primary" onclick="openReportForm(${c.id})">Atualizar / prestar contas</button>
-                <button class="small-button danger" onclick="deleteCampaign(${c.id})">Excluir</button>
-              </td>
-            </tr>`).join('')}
-        </tbody>
-      </table>
-    </div>`:'<div class="empty">Nenhuma campanha cadastrada.</div>';
+  $('ongCampaigns').innerHTML = list.length
+    ? `<div class="table-container">
+        <table>
+          <thead>
+            <tr><th>Campanha</th><th>Meta / recebido</th><th>Prazo / status</th><th>Ações</th></tr>
+          </thead>
+          <tbody id="ongCampaignTable">
+            ${list.map(c => `
+              <tr>
+                <td>${esc(c.title)}${c.goalType==='items'?`<br><small>${esc(c.item)}</small>`:''}</td>
+                <td>${campaignValue(c,c.raised)} / ${campaignValue(c,c.goal)}</td>
+                <td>${deadlineText(c)}<br>${statusBadge(campaignStatus(c))}</td>
+                <td>
+                  ${campaignStatus(c)!=='Encerrada'?`
+                    <button class="small-button secondary" onclick="toggleOwnCampaign(${c.id})">${c.status==='Ativa'?'Pausar':'Reativar'}</button>
+                    <button class="small-button danger" onclick="closeCampaign(${c.id})">Encerrar</button>`:''}
+                  <button class="small-button ghost" onclick="editDeadline(${c.id})">${c.deadline?'Editar prazo':'Definir prazo'}</button>
+                  <button class="small-button primary" onclick="openReportForm(${c.id})">Atualizar / prestar contas</button>
+                  <button class="small-button danger" onclick="deleteCampaign(${c.id})">Excluir</button>
+                </td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`
+    : '<div class="empty">Nenhuma campanha cadastrada.</div>';
 }
 
-function ownsCampaign(c){
-  return currentUser?.role==='ong'&&c?.ongId===currentUser.ongId;
+function ownsCampaign(c) {
+  return currentUser?.role === 'ong' && c?.ongId === currentUser.ongId;
 }
 
-function toggleOwnCampaign(id){
-  const c=campaigns.find(c=>c.id===id);
-  if(!ownsCampaign(c)||campaignStatus(c)==='Encerrada')return;
-  c.status=c.status==='Ativa'?'Pausada':'Ativa';
+function toggleOwnCampaign(id) {
+  const c = campaigns.find(c => c.id === id);
+  if (!ownsCampaign(c) || campaignStatus(c) === 'Encerrada') return;
+
+  c.status = c.status === 'Ativa' ? 'Pausada' : 'Ativa';
   save();
   renderOngCampaigns();
 }
 
-function closeCampaign(id){
-  const c=campaigns.find(c=>c.id===id);
-  if(!ownsCampaign(c)||campaignStatus(c)==='Encerrada')return;
+function closeCampaign(id) {
+  const c = campaigns.find(c => c.id === id);
+  if (!ownsCampaign(c) || campaignStatus(c) === 'Encerrada') return;
 
-  if(!confirm('Encerrar a campanha? Novas ajudas serão bloqueadas. Recebimentos pendentes e prestações de contas continuam disponíveis.'))return;
+  if (!confirm('Encerrar a campanha? Novas ajudas serão bloqueadas. Recebimentos pendentes e prestações de contas continuam disponíveis.')) return;
 
-  c.status='Encerrada';
-  c.closedAt=new Date().toISOString();
+  c.status = 'Encerrada';
+  c.closedAt = new Date().toISOString();
   save();
   renderOngCampaigns();
 }
 
-function editDeadline(id){
-  const c=campaigns.find(c=>c.id===id);
-  if(!ownsCampaign(c))return;
+function editDeadline(id) {
+  const c = campaigns.find(c => c.id === id);
+  if (!ownsCampaign(c)) return;
 
-  if(c.status==='Encerrada'){
+  if (c.status === 'Encerrada') {
     alert('Campanhas encerradas manualmente não podem ser reabertas.');
     return;
   }
 
-  openModal('Definir prazo da campanha',formHTML(
-    'deadlineForm',
-    field('editDeadline','Prazo de encerramento',{
-      type:'date',required:true,value:c.deadline||'',
-      attrs:`min="${today()}"`
-    })+
-    '<p>Prorrogar uma campanha cujo prazo terminou permite novas ajudas, se ela estiver ativa.</p>',
-    'Salvar prazo'
-  ));
+  openModal(
+    'Definir prazo da campanha',
+    formHTML(
+      'deadlineForm',
+      field('editDeadline','Prazo de encerramento',{
+        type:'date',required:true,value:c.deadline||'',
+        attrs:`min="${today()}"`
+      }) +
+      '<p>Prorrogar uma campanha cujo prazo terminou permite novas ajudas, se ela estiver ativa.</p>',
+      'Salvar prazo'
+    )
+  );
 
-  bindForm('deadlineForm',()=>{
-    const date=val('editDeadline');
-    if(date<today())return;
-    c.deadline=date;
+  bindForm('deadlineForm', () => {
+    const date = val('editDeadline');
+    if (date < today()) return;
+
+    c.deadline = date;
     save();
     closeModal();
     renderOngCampaigns();
   });
 }
 
-function deleteCampaign(id){
-  const c=campaigns.find(c=>c.id===id);
-  if(!c||(!ownsCampaign(c)&&currentUser?.role!=='admin'))return;
+function deleteCampaign(id) {
+  const c = campaigns.find(c => c.id === id);
 
-  if(donations.some(d=>d.campaignId===id)||reports.some(r=>r.campaignId===id)){
+  if (!c || (!ownsCampaign(c) && currentUser?.role !== 'admin')) return;
+
+  if (donations.some(d => d.campaignId === id) ||
+      reports.some(r => r.campaignId === id)) {
     alert('Esta campanha possui contribuições ou prestação de contas. Encerre-a para preservar o histórico.');
     return;
   }
 
-  if(!confirm('Excluir esta campanha sem histórico?'))return;
-  campaigns=campaigns.filter(c=>c.id!==id);
+  if (!confirm('Excluir esta campanha sem histórico?')) return;
+
+  campaigns = campaigns.filter(c => c.id !== id);
   save();
 
-  if(currentUser.role==='admin')renderAdmin('campaigns');
+  if (currentUser.role === 'admin') renderAdmin('campaigns');
   else renderOngCampaigns();
 }
 
-/* PUBLICAR ATUALIZAÇÕES E PRESTAÇÃO DE CONTAS */
-function openReportForm(id){
-  const c=campaigns.find(c=>c.id===id);
-  const o=ongs.find(o=>o.id===c?.ongId);
+/* Publicações da ONG. */
+function openReportForm(id) {
+  const c = campaigns.find(c => c.id === id);
+  const o = ongs.find(o => o.id === c?.ongId);
 
-  if(!ownsCampaign(c)||o?.status!=='Aprovada'){
+  if (!ownsCampaign(c) || o?.status !== 'Aprovada') {
     alert('A ONG precisa estar aprovada para publicar atualizações.');
     return;
   }
 
-  openModal('Atualização e prestação de contas',`
+  openModal('Atualização e prestação de contas', `
     <p>${esc(c.title)}</p>
     <p>Saldo ainda não aplicado: ${campaignValue(c,Math.max(0,c.raised-applied(c)))}</p>
-    ${formHTML('reportForm',
+    ${formHTML(
+      'reportForm',
       field('reportType','Tipo de publicação',{
         required:true,
         options:['Atualização','Prestação de contas'],
         attrs:'onchange="updateReportFields()"'
-      })+
-      field('reportTitle','Título',{required:true})+
+      }) +
+      field('reportTitle','Título',{required:true}) +
       field('reportDate','Data da atualização',{
-        type:'date',required:true,value:today(),
-        attrs:`max="${today()}"`
-      })+
+        type:'date',required:true,value:today(),attrs:`max="${today()}"`
+      }) +
       field('reportText','O que aconteceu e como a ajuda foi utilizada?',{
         type:'textarea',required:true
-      })+
+      }) +
       `<div id="reportUsedBox">
-        ${field('reportUsed',
+        ${field(
+          'reportUsed',
           c.goalType==='money'?'Valor aplicado (R$)':`Quantidade utilizada (${c.unit})`,
           {
             type:'number',required:true,
@@ -1696,32 +1929,33 @@ function openReportForm(id){
       'Publicar'
     )}`);
 
-  bindForm('reportForm',()=>publishReport(c));
+  bindForm('reportForm', () => publishReport(c));
   updateReportFields();
 }
 
-function updateReportFields(){
-  const account=val('reportType')==='Prestação de contas';
-  $('reportUsedBox').classList.toggle('hidden',!account);
-  $('reportUsed').required=account;
-  $('reportUsed').disabled=!account;
+function updateReportFields() {
+  const account = val('reportType') === 'Prestação de contas';
+  $('reportUsedBox').classList.toggle('hidden', !account);
+  $('reportUsed').required = account;
+  $('reportUsed').disabled = !account;
 }
 
-function publishReport(c){
-  if(!ownsCampaign(c)||ongs.find(o=>o.id===c.ongId)?.status!=='Aprovada')return;
+function publishReport(c) {
+  if (!ownsCampaign(c) ||
+      ongs.find(o => o.id === c.ongId)?.status !== 'Aprovada') return;
 
-  const type=val('reportType');
-  const used=type==='Prestação de contas'?Number(val('reportUsed')):0;
+  const type = val('reportType');
+  const used = type === 'Prestação de contas' ? Number(val('reportUsed')) : 0;
 
-  if(type==='Prestação de contas'&&(
-    !Number.isFinite(used)||used<=0||
-    used>Math.round((c.raised-applied(c))*100)/100
-  )){
+  if (type === 'Prestação de contas' &&
+      (!Number.isFinite(used) || used <= 0 ||
+       used > Math.round((c.raised-applied(c))*100)/100)) {
     alert('A aplicação deve ser positiva e não pode ultrapassar o saldo recebido ainda não informado.');
     return;
   }
 
-  if(type==='Prestação de contas'&&['unidades','pacotes'].includes(c.unit)&&!Number.isInteger(used)){
+  if (type === 'Prestação de contas' &&
+      ['unidades','pacotes'].includes(c.unit) && !Number.isInteger(used)) {
     alert('Informe uma quantidade inteira.');
     return;
   }
@@ -1743,40 +1977,41 @@ function publishReport(c){
   alert('Publicação disponível nos detalhes da campanha.');
 }
 
-/* REGISTRO DE CONTRIBUIÇÕES */
-function helpCampaign(ongId,id){
-  const c=campaigns.find(c=>c.id===id&&c.ongId===ongId);
+/* Registro e acompanhamento das ajudas. */
+function helpCampaign(ongId, id) {
+  const c = campaigns.find(c => c.id === id && c.ongId === ongId);
 
-  if(!c||!campaignAvailable(c)){
+  if (!c || !campaignAvailable(c)) {
     alert('A campanha não aceita novas ajudas.');
     return;
   }
 
-  if(!currentUser){
-    pendingHelp={ongId,campaignId:id};
+  if (!currentUser) {
+    pendingHelp = { ongId, campaignId:id };
     showLogin('donor');
     return;
   }
 
-  if(currentUser.role!=='donor'){
+  if (currentUser.role !== 'donor') {
     alert('Entre como doador para registrar uma ajuda.');
     return;
   }
 
-  selectedOngId=ongId;
-  selectedCampaignId=id;
+  selectedOngId = ongId;
+  selectedCampaignId = id;
   renderDonationPage();
 }
 
-function renderDonationPage(){
-  const c=campaigns.find(c=>c.id===selectedCampaignId);
-  const o=ongs.find(o=>o.id===selectedOngId);
-  if(!c||!o)return;
+function renderDonationPage() {
+  const c = campaigns.find(c => c.id === selectedCampaignId);
+  const o = ongs.find(o => o.id === selectedOngId);
+
+  if (!c || !o) return;
 
   showOnly('app');
   updateHeader();
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="donationView">
       <button class="back-button" onclick="openCampaign(${c.id})">← Voltar à campanha</button>
       <div class="grid-two">
@@ -1791,14 +2026,15 @@ function renderDonationPage(){
         <div class="box">
           <h2>❤️ Como você deseja ajudar?</h2>
           <div class="notice">Demonstração: nenhum pagamento é realizado. A intenção ainda não soma à meta.</div>
-          ${formHTML('helpForm',
+          ${formHTML(
+            'helpForm',
             field('helpType','Forma de ajuda',{
               required:true,
               options:c.goalType==='items'
-                ?[['items','Material solicitado']]
-                :[['money','Doação financeira'],['items','Produtos ou materiais']],
+                ? [['items','Material solicitado']]
+                : [['money','Doação financeira'],['items','Produtos ou materiais']],
               attrs:'onchange="updateDonationFields()"'
-            })+
+            }) +
             `<div id="moneyFields">
               ${field('donationAmount','Valor (R$)',{
                 type:'number',required:true,
@@ -1810,7 +2046,8 @@ function renderDonationPage(){
             </div>
             <div id="itemFields">
               ${field('itemDescription','Material',{
-                required:true,value:c.goalType==='items'?c.item:'',
+                required:true,
+                value:c.goalType==='items'?c.item:'',
                 attrs:c.goalType==='items'?'readonly':''
               })}
               ${field('itemQuantity',`Quantidade (${c.goalType==='items'?c.unit:'unidades'})`,{
@@ -1826,31 +2063,33 @@ function renderDonationPage(){
       </div>
     </section>`;
 
-  bindForm('helpForm',confirmHelp);
+  bindForm('helpForm', confirmHelp);
   updateDonationFields();
 }
 
-function updateDonationFields(){
-  const items=val('helpType')==='items';
-  $('moneyFields').classList.toggle('hidden',items);
-  $('itemFields').classList.toggle('hidden',!items);
+function updateDonationFields() {
+  const items = val('helpType') === 'items';
 
-  ['donationAmount','paymentMethod'].forEach(id=>$(id).disabled=items);
-  ['itemDescription','itemQuantity'].forEach(id=>$(id).disabled=!items);
+  $('moneyFields').classList.toggle('hidden', items);
+  $('itemFields').classList.toggle('hidden', !items);
+
+  ['donationAmount','paymentMethod'].forEach(id => $(id).disabled = items);
+  ['itemDescription','itemQuantity'].forEach(id => $(id).disabled = !items);
 }
 
-function confirmHelp(){
-  const c=campaigns.find(c=>
-    c.id===selectedCampaignId&&c.ongId===selectedOngId
+function confirmHelp() {
+  const c = campaigns.find(c =>
+    c.id === selectedCampaignId && c.ongId === selectedOngId
   );
 
-  if(currentUser?.role!=='donor'||!c||!campaignAvailable(c)){
+  if (currentUser?.role !== 'donor' || !c || !campaignAvailable(c)) {
     alert('A campanha não aceita novas ajudas.');
     return;
   }
 
-  const type=val('helpType');
-  const d={
+  const type = val('helpType');
+
+  const d = {
     id:nextId(donations),
     donorName:currentUser.name,
     donorEmail:currentUser.email,
@@ -1859,41 +2098,42 @@ function confirmHelp(){
     campaignId:c.id,
     status:'intention',
     date:new Date().toLocaleDateString('pt-BR'),
-    history:[{status:'intention',at:new Date().toISOString()}]
+    history:[{ status:'intention', at:new Date().toISOString() }]
   };
 
-  if(type==='money'&&c.goalType==='money'){
-    const amount=Number(val('donationAmount'));
-    if(!Number.isFinite(amount)||amount<=0)return;
+  if (type === 'money' && c.goalType === 'money') {
+    const amount = Number(val('donationAmount'));
+    if (!Number.isFinite(amount) || amount <= 0) return;
 
-    Object.assign(d,{
+    Object.assign(d, {
       type:'Financeira',
       amount:Math.round(amount*100)/100,
       method:val('paymentMethod')
     });
 
-    if(d.amount<=0)return;
-  }else if(type==='items'){
-    const n=Number(val('itemQuantity'));
-    const unit=c.goalType==='items'?c.unit:'unidades';
+    if (d.amount <= 0) return;
+  } else if (type === 'items') {
+    const n = Number(val('itemQuantity'));
+    const unit = c.goalType === 'items' ? c.unit : 'unidades';
 
-    if(!Number.isFinite(n)||n<=0||
-      (['unidades','pacotes'].includes(unit)&&!Number.isInteger(n))
-    )return;
+    if (!Number.isFinite(n) || n <= 0 ||
+        (['unidades','pacotes'].includes(unit) && !Number.isInteger(n))) return;
 
-    Object.assign(d,{
+    Object.assign(d, {
       type:'Produto / material',
-      item:c.goalType==='items'?c.item:val('itemDescription'),
+      item:c.goalType === 'items' ? c.item : val('itemDescription'),
       quantity:n,
       unit
     });
-  }else return;
+  } else {
+    return;
+  }
 
   donations.push(d);
   save();
   renderDonationPage();
 
-  $('donationFeedback').innerHTML=`
+  $('donationFeedback').innerHTML = `
     <div class="notice success">
       <strong>Intenção registrada!</strong>
       <p>Informe o envio; depois, a ONG confirma o recebimento.</p>
@@ -1901,42 +2141,40 @@ function confirmHelp(){
     </div>`;
 }
 
-/* ACOMPANHAMENTO E RECEBIMENTO */
-function donationDetail(d){
-  return d.type==='Financeira'
-    ?`${money(d.amount)} • ${esc(d.method||'')}`
-    :`${quantity(d.quantity)} ${esc(d.unit||'unidades')} de ${esc(d.item)}`;
+function donationDetail(d) {
+  return d.type === 'Financeira'
+    ? `${money(d.amount)} • ${esc(d.method||'')}`
+    : `${quantity(d.quantity)} ${esc(d.unit||'unidades')} de ${esc(d.item)}`;
 }
 
-function ownsDonation(d){
-  return currentUser?.role==='donor'&&(
-    d.donorUserId===currentUser.id||
+function ownsDonation(d) {
+  return currentUser?.role === 'donor' &&
     (
-      !d.donorUserId&&
-      String(d.donorEmail||'').toLowerCase()===String(currentUser.email||'').toLowerCase()
-    )
-  );
+      d.donorUserId === currentUser.id ||
+      (
+        !d.donorUserId &&
+        String(d.donorEmail||'').toLowerCase() ===
+        String(currentUser.email||'').toLowerCase()
+      )
+    );
 }
 
-function trackingCard(d,isOng){
-  const c=campaigns.find(c=>c.id===d.campaignId);
-  const o=ongs.find(o=>o.id===d.ongId);
-  const index=HELP_STATES.indexOf(d.status);
+function trackingCard(d, isOng) {
+  const c = campaigns.find(c => c.id === d.campaignId);
+  const o = ongs.find(o => o.id === d.ongId);
+  const index = HELP_STATES.indexOf(d.status);
+  let action = '';
 
-  let action='';
-
-  if(!isOng&&d.status==='intention'&&c&&o?.status==='Aprovada'){
-    action=`
-      <button class="primary" onclick="advanceHelp(${d.id},'awaiting')">
-        ${d.type==='Financeira'?'Informar envio da contribuição':'Informar envio / entrega'}
-      </button>`;
+  if (!isOng && d.status === 'intention' && c && o?.status === 'Aprovada') {
+    action = `<button class="primary" onclick="advanceHelp(${d.id},'awaiting')">
+      ${d.type==='Financeira'?'Informar envio da contribuição':'Informar envio / entrega'}
+    </button>`;
   }
 
-  if(isOng&&d.status==='awaiting'&&c&&o?.status==='Aprovada'){
-    action=`
-      <button class="primary" onclick="advanceHelp(${d.id},'received')">
-        Confirmar recebimento
-      </button>`;
+  if (isOng && d.status === 'awaiting' && c && o?.status === 'Aprovada') {
+    action = `<button class="primary" onclick="advanceHelp(${d.id},'received')">
+      Confirmar recebimento
+    </button>`;
   }
 
   return `
@@ -1947,155 +2185,168 @@ function trackingCard(d,isOng){
       <ol class="tracking-steps">
         ${HELP_STATES.map((s,i)=>`
           <li class="${i<=index?'done':''} ${i===index?'current':''}"
-            ${i===index?'aria-current="step"':''}>
+              ${i===index?'aria-current="step"':''}>
             ${i+1}. ${HELP_LABELS[s]}
           </li>`).join('')}
       </ol>
       ${!isOng&&d.type!=='Financeira'
-        ?`<p>Combine a entrega: ${esc(o?.phone||o?.contact||'consulte a ONG')}.</p>`
-        :''}
+        ? `<p>Combine a entrega: ${esc(o?.phone||o?.contact||'consulte a ONG')}.</p>`
+        : ''}
       ${action}
       ${c&&o?.status==='Aprovada'
-        ?` <button class="ghost" onclick="openCampaign(${c.id})">Ver prestação de contas</button>`
-        :''}
+        ? ` <button class="ghost" onclick="openCampaign(${c.id})">Ver prestação de contas</button>`
+        : ''}
       <p><small>${esc((d.history||[]).map(h=>
         `${HELP_LABELS[h.status]}: ${new Date(h.at).toLocaleString('pt-BR')}`
       ).join(' • '))}</small></p>
     </article>`;
 }
 
-function renderHelpTracking(){
-  if(currentUser?.role==='donor'&&$('donorHelpTracking')){
-    const list=donations.filter(ownsDonation).slice().reverse();
-    $('donorHelpTracking').innerHTML=
-      list.map(d=>trackingCard(d,false)).join('')||
+function renderHelpTracking() {
+  if (currentUser?.role === 'donor' && $('donorHelpTracking')) {
+    const list = donations.filter(ownsDonation).slice().reverse();
+
+    $('donorHelpTracking').innerHTML = list.map(d => trackingCard(d,false)).join('') ||
       '<div class="empty">Você ainda não registrou uma ajuda.</div>';
   }
 
-  if(currentUser?.role==='ong'&&$('ongHelpTracking')){
-    const list=donations.filter(d=>d.ongId===currentUser.ongId).slice().reverse();
-    $('ongHelpTracking').innerHTML=
-      list.map(d=>trackingCard(d,true)).join('')||
+  if (currentUser?.role === 'ong' && $('ongHelpTracking')) {
+    const list = donations.filter(
+      d => d.ongId === currentUser.ongId
+    ).slice().reverse();
+
+    $('ongHelpTracking').innerHTML = list.map(d => trackingCard(d,true)).join('') ||
       '<div class="empty">Nenhuma intenção de ajuda registrada.</div>';
   }
 }
 
-function goToHelpTracking(){
+function goToHelpTracking() {
   goHome();
-  $('donorHelpBox').scrollIntoView({behavior:'smooth'});
+  $('donorHelpBox').scrollIntoView({ behavior:'smooth' });
 }
 
-function matchesGoal(d,c){
-  return c.goalType==='money'
-    ?d.type==='Financeira'
-    :d.type==='Produto / material'&&
-      d.unit===c.unit&&
-      String(d.item).trim().toLowerCase()===String(c.item).trim().toLowerCase();
+function matchesGoal(d, c) {
+  return c.goalType === 'money'
+    ? d.type === 'Financeira'
+    : d.type === 'Produto / material' &&
+      d.unit === c.unit &&
+      String(d.item).trim().toLowerCase() === String(c.item).trim().toLowerCase();
 }
 
-function recalculate(c){
-  c.raised=Math.round((
-    Number(c.confirmedBase||0)+
-    donations.filter(d=>
-      d.campaignId===c.id&&
-      d.ongId===c.ongId&&
-      d.status==='received'&&
-      matchesGoal(d,c)
-    ).reduce((s,d)=>
-      s+Number(c.goalType==='money'?d.amount:d.quantity),0
-    )
-  )*100)/100;
+function recalculate(c) {
+  const received = donations.filter(d =>
+    d.campaignId === c.id &&
+    d.ongId === c.ongId &&
+    d.status === 'received' &&
+    matchesGoal(d, c)
+  ).reduce(
+    (s, d) => s + Number(c.goalType === 'money' ? d.amount : d.quantity),
+    0
+  );
+
+  c.raised = Math.round((Number(c.confirmedBase || 0) + received)*100)/100;
 }
 
-function advanceHelp(id,next){
-  const d=donations.find(d=>d.id===id);
-  const c=d&&campaigns.find(c=>c.id===d.campaignId&&c.ongId===d.ongId);
-  const o=d&&ongs.find(o=>o.id===d.ongId);
+function advanceHelp(id, next) {
+  const d = donations.find(d => d.id === id);
 
-  if(!d||!c||o?.status!=='Aprovada')return;
+  const c = d && campaigns.find(c =>
+    c.id === d.campaignId && c.ongId === d.ongId
+  );
 
-  const send=next==='awaiting'&&d.status==='intention'&&ownsDonation(d);
-  const receive=next==='received'&&
-    d.status==='awaiting'&&
-    currentUser?.role==='ong'&&
-    currentUser.ongId===d.ongId;
+  const o = d && ongs.find(o => o.id === d.ongId);
 
-  if(!send&&!receive){
+  if (!d || !c || o?.status !== 'Aprovada') return;
+
+  const send = next === 'awaiting' &&
+    d.status === 'intention' &&
+    ownsDonation(d);
+
+  const receive = next === 'received' &&
+    d.status === 'awaiting' &&
+    currentUser?.role === 'ong' &&
+    currentUser.ongId === d.ongId;
+
+  if (!send && !receive) {
     alert('Alteração indisponível para esta conta ou etapa.');
     return;
   }
 
-  if(!confirm(next==='received'
-    ?'A ONG recebeu esta contribuição? A confirmação atualizará a meta quando compatível.'
-    :'Você enviou ou entregou a contribuição? Nesta demonstração não há pagamento real.'
-  ))return;
+  if (!confirm(
+    next === 'received'
+      ? 'A ONG recebeu esta contribuição? A confirmação atualizará a meta quando compatível.'
+      : 'Você enviou ou entregou a contribuição? Nesta demonstração não há pagamento real.'
+  )) return;
 
-  d.status=next;
-  d.history=[
-    ...(d.history||[]),
-    {status:next,at:new Date().toISOString()}
+  d.status = next;
+  d.history = [
+    ...(d.history || []),
+    { status:next, at:new Date().toISOString() }
   ];
 
   recalculate(c);
   save();
   renderHelpTracking();
-  if(currentUser.role==='ong')renderOngCampaigns();
+
+  if (currentUser.role === 'ong') renderOngCampaigns();
 }
 
-/* ADMINISTRAÇÃO */
-function renderAdmin(section=adminSection){
-  adminSection=section;
-  $('headerDescription').textContent='Administração da plataforma';
+/* Painel administrativo. */
+function renderAdmin(section=adminSection) {
+  if (!isActiveAdmin()) return;
 
-  const menus=[
+  adminSection = section;
+  $('headerDescription').textContent = 'Administração da plataforma';
+
+  const menus = [
     ['dashboard','📊 Visão geral'],
     ['ongs','🏠 ONGs'],
     ['campaigns','📢 Campanhas'],
     ['donations','❤️ Doações'],
     ['donors','👤 Doadores'],
+    ['admins','⚙️ Administradores'],
     ['newOng','➕ Cadastrar ONG']
   ];
 
-  $('views').innerHTML=`
+  $('views').innerHTML = `
     <section id="adminView" class="admin-shell">
       <aside class="box">
         <h3>Administração</h3>
         <div class="admin-nav">
           ${menus.map(([id,label])=>`
             <button class="secondary ${section===id?'active':''}"
-              onclick="renderAdmin('${id}')">${label}</button>
+                    onclick="renderAdmin('${id}')">${label}</button>
           `).join('')}
         </div>
       </aside>
       <div id="adminContent"></div>
     </section>`;
 
-  if(section==='dashboard')renderAdminDashboard();
-  if(section==='ongs')renderAdminOngs();
-  if(section==='campaigns')renderAdminCampaigns();
-  if(section==='donations')renderAdminDonations();
-  if(section==='donors')renderAdminDonors();
-  if(section==='newOng')renderAdminNewOng();
+  if (section === 'dashboard') renderAdminDashboard();
+  if (section === 'ongs') renderAdminOngs();
+  if (section === 'campaigns') renderAdminCampaigns();
+  if (section === 'donations') renderAdminDonations();
+  if (section === 'donors') renderAdminDonors();
+  if (section === 'newOng') renderAdminNewOng();
+  if (section === 'admins') renderAdminAdministrators();
 }
 
-function table(headers,body){
+function table(headers, body) {
   return `
     <div class="table-container">
       <table>
         <thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>${body||
-          `<tr><td colspan="${headers.length}" class="empty">Nenhum registro encontrado.</td></tr>`}
-        </tbody>
+        <tbody>${body||`<tr><td colspan="${headers.length}" class="empty">Nenhum registro encontrado.</td></tr>`}</tbody>
       </table>
     </div>`;
 }
 
-function renderAdminDashboard(){
-  const received=donations.filter(d=>
-    d.type==='Financeira'&&d.status==='received'
-  ).reduce((s,d)=>s+Number(d.amount),0);
+function renderAdminDashboard() {
+  const received = donations.filter(d =>
+    d.type === 'Financeira' && d.status === 'received'
+  ).reduce((s, d) => s + Number(d.amount), 0);
 
-  const stats=[
+  const stats = [
     ['ONGs cadastradas',ongs.length],
     ['Aguardando aprovação',ongs.filter(o=>o.status==='Pendente').length],
     ['Campanhas abertas',campaigns.filter(campaignAvailable).length],
@@ -2106,7 +2357,7 @@ function renderAdminDashboard(){
     ['Prestações de contas',reports.filter(r=>r.type==='Prestação de contas').length]
   ];
 
-  $('adminContent').innerHTML=`
+  $('adminContent').innerHTML = `
     <div class="welcome">
       <h2>⚙️ Painel Administrativo</h2>
       <p>Valores recebidos correspondem a contribuições confirmadas no protótipo.</p>
@@ -2118,7 +2369,8 @@ function renderAdminDashboard(){
     </div>
     <div class="box">
       <h2>ONGs aguardando aprovação</h2>
-      ${table(['ONG','Responsável','Cidade','Ação'],
+      ${table(
+        ['ONG','Responsável','Cidade','Ação'],
         ongs.filter(o=>o.status==='Pendente').map(o=>`
           <tr>
             <td>${esc(o.name)}</td>
@@ -2134,17 +2386,17 @@ function renderAdminDashboard(){
     </div>`;
 }
 
-function renderAdminOngs(){
-  const existing=$('adminOngSearch')?.value||'';
-  const status=$('adminOngStatusFilter')?.value||'';
+function renderAdminOngs() {
+  const existing = $('adminOngSearch')?.value || '';
+  const status = $('adminOngStatusFilter')?.value || '';
 
-  if(!$('adminOngList')){
-    $('adminContent').innerHTML=`
+  if (!$('adminOngList')) {
+    $('adminContent').innerHTML = `
       <div class="box">
         <h2>Gerenciar ONGs</h2>
         <div class="search">
           <input id="adminOngSearch" aria-label="Buscar ONGs"
-            placeholder="Nome, cidade ou CNPJ" oninput="renderAdminOngs()">
+                 placeholder="Nome, cidade ou CNPJ" oninput="renderAdminOngs()">
           <select id="adminOngStatusFilter" aria-label="Status" onchange="renderAdminOngs()">
             <option value="">Todos os status</option>
             <option>Pendente</option><option>Aprovada</option><option>Suspensa</option>
@@ -2154,12 +2406,12 @@ function renderAdminOngs(){
       </div>`;
   }
 
-  const list=ongs.filter(o=>
-    `${o.name} ${o.city} ${o.cnpj}`.toLowerCase().includes(existing.toLowerCase())&&
-    (!status||o.status===status)
+  const list = ongs.filter(o =>
+    `${o.name} ${o.city} ${o.cnpj}`.toLowerCase().includes(existing.toLowerCase()) &&
+    (!status || o.status === status)
   );
 
-  $('adminOngList').innerHTML=table(
+  $('adminOngList').innerHTML = table(
     ['ONG','Responsável','Status','Motivo da análise','Ações'],
     list.map(o=>`
       <tr>
@@ -2176,14 +2428,14 @@ function renderAdminOngs(){
   );
 }
 
-/* ANÁLISE, APROVAÇÃO E MOTIVOS */
-function openReview(id){
-  if(currentUser?.role!=='admin')return;
-  const o=ongs.find(o=>o.id===id);
-  if(!o)return;
-  const checks=o.reviewChecks||{};
+function openReview(id) {
+  if (currentUser?.role !== 'admin') return;
 
-  openModal('Análise do cadastro da ONG',`
+  const o = ongs.find(o => o.id === id);
+  if (!o) return;
+  const checks = o.reviewChecks || {};
+
+  openModal('Análise do cadastro da ONG', `
     <h3>${esc(o.name)}</h3>
     <p>
       Responsável: ${esc(o.responsible)}<br>
@@ -2195,7 +2447,6 @@ function openReview(id){
     </p>
     <p class="profile-text">${esc(o.description)}</p>
     <details><summary>Critérios de aprovação</summary>${approvalInfo()}</details>
-
     <form id="reviewForm">
       ${note()}
       ${field('reviewDecision','Decisão',{
@@ -2224,87 +2475,95 @@ function openReview(id){
       <button class="primary">Salvar análise</button>
     </form>`);
 
-  bindForm('reviewForm',()=>saveReview(o));
+  bindForm('reviewForm', () => saveReview(o));
   updateReviewFields();
 }
 
-function updateReviewFields(){
-  const approve=val('reviewDecision')==='Aprovada';
-  $('reviewChecks').classList.toggle('hidden',!approve);
+function updateReviewFields() {
+  const approve = val('reviewDecision') === 'Aprovada';
+  $('reviewChecks').classList.toggle('hidden', !approve);
 
-  ['identity','contact','cause'].forEach(k=>{
-    $('review-'+k).required=approve;
-    $('review-'+k).disabled=!approve;
+  ['identity','contact','cause'].forEach(k => {
+    $('review-'+k).required = approve;
+    $('review-'+k).disabled = !approve;
   });
 
-  $('reviewReason').required=!approve;
-  document.querySelector('label[for="reviewReason"]').innerHTML=
+  $('reviewReason').required = !approve;
+
+  document.querySelector('label[for="reviewReason"]').innerHTML =
     `Motivo / observação da análise${!approve?' <span class="required">*</span>':''}`;
 }
 
-function saveReview(o){
-  if(currentUser?.role!=='admin')return;
-  const decision=val('reviewDecision');
-  const reason=val('reviewReason');
+function saveReview(o) {
+  if (currentUser?.role !== 'admin') return;
 
-  if(decision==='Aprovada'){
-    if(!['identity','contact','cause'].every(k=>$('review-'+k).checked)){
+  const decision = val('reviewDecision');
+  const reason = val('reviewReason');
+
+  if (decision === 'Aprovada') {
+    if (!['identity','contact','cause'].every(k => $('review-'+k).checked)) {
       alert('Confirme os três critérios antes de aprovar.');
       return;
     }
 
-    if(
-      !o.name||!o.responsible||!o.city||!o.cause||!o.description||
-      !/^\d{14}$/.test(o.cnpj)||
-      !/^\d{10,11}$/.test(o.phone)||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(o.email||'')
-    ){
+    if (!o.name || !o.responsible || !o.city || !o.cause || !o.description ||
+        !/^\d{14}$/.test(o.cnpj) ||
+        !/^\d{10,11}$/.test(o.phone) ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(o.email||'')) {
       alert('O cadastro está incompleto. Solicite correções antes de aprovar.');
       return;
     }
-  }else if(!reason){
+  } else if (!reason) {
     alert('Informe o motivo da recusa ou suspensão.');
     return;
   }
 
-  o.status=decision;
-  o.reviewReason=reason||'Cadastro aprovado após análise manual dos três critérios.';
-  o.reviewChecks={
-    identity:decision==='Aprovada'&&$('review-identity').checked,
-    contact:decision==='Aprovada'&&$('review-contact').checked,
-    cause:decision==='Aprovada'&&$('review-cause').checked
+  o.status = decision;
+  o.reviewReason = reason || 'Cadastro aprovado após análise manual dos três critérios.';
+
+  o.reviewChecks = {
+    identity:decision === 'Aprovada' && $('review-identity').checked,
+    contact:decision === 'Aprovada' && $('review-contact').checked,
+    cause:decision === 'Aprovada' && $('review-cause').checked
   };
-  o.reviewedAt=new Date().toISOString();
-  o.reviewedBy=currentUser.name;
+
+  o.reviewedAt = new Date().toISOString();
+  o.reviewedBy = currentUser.name;
 
   save();
   closeModal();
   renderAdmin(adminSection);
 }
 
-function openAdminOngEdit(id){
-  const o=ongs.find(o=>o.id===id);
-  if(currentUser?.role!=='admin'||!o)return;
-  const u=users.find(u=>u.role==='ong'&&u.ongId===id);
+function openAdminOngEdit(id) {
+  const o = ongs.find(o => o.id === id);
+  if (currentUser?.role !== 'admin' || !o) return;
 
-  openModal('Editar cadastro da ONG',formHTML(
-    'adminEditForm',
-    ongFields('adminEdit',o)+
-    field('adminEditUsername','Nome de acesso',{
-      required:!!u,value:u?.username||'',
-      attrs:'pattern="[a-z0-9._-]{3,30}"'
-    })+
-    '<p>A aprovação e o motivo são definidos em “Analisar”.</p>',
-    'Salvar alterações'
-  ));
+  const u = users.find(u => u.role === 'ong' && u.ongId === id);
 
-  bindForm('adminEditForm',()=>{
-    const data=readOngFields('adminEdit');
-    const username=normalizeUsername(val('adminEditUsername'));
-    if(u&&!accountValid(username,data.email,u.id))return;
+  openModal(
+    'Editar cadastro da ONG',
+    formHTML(
+      'adminEditForm',
+      ongFields('adminEdit',o) +
+      field('adminEditUsername','Nome de acesso',{
+        required:!!u,
+        value:u?.username||'',
+        attrs:'pattern="[a-z0-9._-]{3,30}"'
+      }) +
+      '<p>A aprovação e o motivo são definidos em “Analisar”.</p>',
+      'Salvar alterações'
+    )
+  );
 
-    Object.assign(o,data,{contact:data.email});
-    if(u)Object.assign(u,{name:o.name,email:o.email,username});
+  bindForm('adminEditForm', () => {
+    const data = readOngFields('adminEdit');
+    const username = normalizeUsername(val('adminEditUsername'));
+
+    if (u && !accountValid(username, data.email, u.id)) return;
+
+    Object.assign(o, data, { contact:data.email });
+    if (u) Object.assign(u, { name:o.name, email:o.email, username });
 
     save();
     closeModal();
@@ -2312,48 +2571,57 @@ function openAdminOngEdit(id){
   });
 }
 
-function adminDeleteOng(id){
-  if(currentUser?.role!=='admin')return;
+function adminDeleteOng(id) {
+  if (currentUser?.role !== 'admin') return;
 
-  if(
-    campaigns.some(c=>c.ongId===id)||
-    donations.some(d=>d.ongId===id)||
-    reports.some(r=>r.ongId===id)
-  ){
+  if (campaigns.some(c => c.ongId === id) ||
+      donations.some(d => d.ongId === id) ||
+      reports.some(r => r.ongId === id)) {
     alert('Esta ONG possui histórico. Utilize a suspensão para preservá-lo.');
     return;
   }
 
-  if(!confirm('Excluir a ONG sem histórico e sua conta?'))return;
-  ongs=ongs.filter(o=>o.id!==id);
-  users=users.filter(u=>!(u.role==='ong'&&u.ongId===id));
+  if (!confirm('Excluir a ONG sem histórico e sua conta?')) return;
+
+  ongs = ongs.filter(o => o.id !== id);
+  users = users.filter(u => !(u.role === 'ong' && u.ongId === id));
   save();
   renderAdmin(adminSection);
 }
 
-function renderAdminNewOng(){
-  $('adminContent').innerHTML=`
+function renderAdminNewOng() {
+  $('adminContent').innerHTML = `
     <div class="box">
       <h2>Cadastrar ONG</h2>
       <p>O cadastro começa pendente. Depois, analise os critérios para aprovar.</p>
       ${formHTML('adminNewForm',ongFields('adminNewOng',{},true),'Cadastrar ONG')}
     </div>`;
 
-  bindForm('adminNewForm',()=>{
-    const o=readOngFields('adminNewOng');
-    const username=normalizeUsername(val('adminNewOngUsername'));
-    if(!accountValid(username,o.email))return;
+  bindForm('adminNewForm', () => {
+    const o = readOngFields('adminNewOng');
+    const username = normalizeUsername(val('adminNewOngUsername'));
+    if (!accountValid(username, o.email)) return;
 
-    const id=nextId(ongs);
+    const id = nextId(ongs);
+
     ongs.push({
-      ...o,id,contact:o.email,status:'Pendente',
-      reviewChecks:{identity:false,contact:false,cause:false},
+      ...o,
+      id,
+      contact:o.email,
+      status:'Pendente',
+      reviewChecks:{ identity:false, contact:false, cause:false },
       reviewReason:''
     });
+
     users.push({
-      id:nextId(users),name:o.name,email:o.email,username,
+      id:nextId(users),
+      name:o.name,
+      email:o.email,
+      username,
       password:$('adminNewOngPassword').value,
-      role:'ong',ongId:id,active:true
+      role:'ong',
+      ongId:id,
+      active:true
     });
 
     save();
@@ -2361,20 +2629,19 @@ function renderAdminNewOng(){
   });
 }
 
-/* CAMPANHAS NO ADMINISTRADOR */
-function renderAdminCampaigns(){
-  const search=$('adminCampaignSearch')?.value||'';
-  const status=$('adminCampaignStatusFilter')?.value||'';
+function renderAdminCampaigns() {
+  const search = $('adminCampaignSearch')?.value || '';
+  const status = $('adminCampaignStatusFilter')?.value || '';
 
-  if(!$('adminCampaignList')){
-    $('adminContent').innerHTML=`
+  if (!$('adminCampaignList')) {
+    $('adminContent').innerHTML = `
       <div class="box">
         <h2>Gerenciar campanhas</h2>
         <div class="search">
           <input id="adminCampaignSearch" aria-label="Buscar campanhas"
-            placeholder="Campanha ou ONG" oninput="renderAdminCampaigns()">
+                 placeholder="Campanha ou ONG" oninput="renderAdminCampaigns()">
           <select id="adminCampaignStatusFilter" aria-label="Status das campanhas"
-            onchange="renderAdminCampaigns()">
+                  onchange="renderAdminCampaigns()">
             <option value="">Todos os status</option>
             <option>Ativa</option><option>Pausada</option><option>Encerrada</option>
           </select>
@@ -2383,12 +2650,13 @@ function renderAdminCampaigns(){
       </div>`;
   }
 
-  const list=campaigns.filter(c=>
-    `${c.title} ${ongs.find(o=>o.id===c.ongId)?.name||''}`.toLowerCase().includes(search.toLowerCase())&&
-    (!status||campaignStatus(c)===status)
+  const list = campaigns.filter(c =>
+    `${c.title} ${ongs.find(o=>o.id===c.ongId)?.name||''}`
+      .toLowerCase().includes(search.toLowerCase()) &&
+    (!status || campaignStatus(c) === status)
   );
 
-  $('adminCampaignList').innerHTML=table(
+  $('adminCampaignList').innerHTML = table(
     ['Campanha / ONG','Recebido / meta','Prazo','Status','Ações'],
     list.map(c=>`
       <tr>
@@ -2407,24 +2675,25 @@ function renderAdminCampaigns(){
   );
 }
 
-function adminCampaignAction(id,action){
-  const c=campaigns.find(c=>c.id===id);
-  if(currentUser?.role!=='admin'||!c||campaignStatus(c)==='Encerrada')return;
+function adminCampaignAction(id, action) {
+  const c = campaigns.find(c => c.id === id);
 
-  if(action==='close'){
-    if(!confirm('Encerrar a campanha e preservar o histórico?'))return;
-    c.status='Encerrada';
-    c.closedAt=new Date().toISOString();
-  }else{
-    c.status=c.status==='Ativa'?'Pausada':'Ativa';
+  if (currentUser?.role !== 'admin' || !c ||
+      campaignStatus(c) === 'Encerrada') return;
+
+  if (action === 'close') {
+    if (!confirm('Encerrar a campanha e preservar o histórico?')) return;
+    c.status = 'Encerrada';
+    c.closedAt = new Date().toISOString();
+  } else {
+    c.status = c.status === 'Ativa' ? 'Pausada' : 'Ativa';
   }
 
   save();
   renderAdminCampaigns();
 }
 
-/* DOAÇÕES E DOADORES NO ADMINISTRADOR */
-function donationTable(list){
+function donationTable(list) {
   return table(
     ['Doador','ONG','Campanha','Detalhe','Data','Etapa'],
     list.map(d=>`
@@ -2439,19 +2708,19 @@ function donationTable(list){
   );
 }
 
-function renderAdminDonations(){
-  const search=$('adminDonationSearch')?.value||'';
-  const type=$('adminDonationTypeFilter')?.value||'';
+function renderAdminDonations() {
+  const search = $('adminDonationSearch')?.value || '';
+  const type = $('adminDonationTypeFilter')?.value || '';
 
-  if(!$('adminDonationList')){
-    $('adminContent').innerHTML=`
+  if (!$('adminDonationList')) {
+    $('adminContent').innerHTML = `
       <div class="box">
         <h2>Doações registradas</h2>
         <div class="search">
           <input id="adminDonationSearch" aria-label="Buscar doações"
-            placeholder="Doador, ONG ou campanha" oninput="renderAdminDonations()">
+                 placeholder="Doador, ONG ou campanha" oninput="renderAdminDonations()">
           <select id="adminDonationTypeFilter" aria-label="Tipo da doação"
-            onchange="renderAdminDonations()">
+                  onchange="renderAdminDonations()">
             <option value="">Todos os tipos</option>
             <option>Financeira</option><option>Produto / material</option>
           </select>
@@ -2460,125 +2729,250 @@ function renderAdminDonations(){
       </div>`;
   }
 
-  const list=donations.filter(d=>
+  const list = donations.filter(d =>
     `${d.donorName} ${d.donorEmail} ${ongs.find(o=>o.id===d.ongId)?.name||''} ${campaigns.find(c=>c.id===d.campaignId)?.title||''}`
-      .toLowerCase().includes(search.toLowerCase())&&
-    (!type||d.type===type)
+      .toLowerCase().includes(search.toLowerCase()) &&
+    (!type || d.type === type)
   );
 
-  $('adminDonationList').innerHTML=donationTable(list.slice().reverse());
+  $('adminDonationList').innerHTML = donationTable(list.slice().reverse());
 }
 
-function renderAdminDonors(){
-  $('adminContent').innerHTML=`
+function renderAdminDonors() {
+  $('adminContent').innerHTML = `
     <div class="box">
       <h2>Doadores</h2>
       ${table(
         ['Nome','Nome de acesso','E-mail','Ajudas','Total recebido'],
         users.filter(u=>u.role==='donor').map(u=>{
-          const list=donations.filter(d=>
-            d.donorUserId===u.id||(!d.donorUserId&&d.donorEmail===u.email)
+          const list = donations.filter(d =>
+            d.donorUserId === u.id ||
+            (!d.donorUserId && d.donorEmail === u.email)
           );
 
-          const total=list.filter(d=>
-            d.type==='Financeira'&&d.status==='received'
-          ).reduce((s,d)=>s+Number(d.amount),0);
-
-          return `
-            <tr>
-              <td>${esc(u.name)}</td>
-              <td>@${esc(u.username)}</td>
-              <td>${esc(u.email)}</td>
-              <td>${list.length}</td>
-              <td>${money(total)}</td>
-            </tr>`;
+          return `<tr>
+            <td>${esc(u.name)}</td>
+            <td>@${esc(u.username)}</td>
+            <td>${esc(u.email)}</td>
+            <td>${list.length}</td>
+            <td>${money(list.filter(d=>d.type==='Financeira'&&d.status==='received').reduce((s,d)=>s+Number(d.amount),0))}</td>
+          </tr>`;
         }).join('')
       )}
     </div>`;
 }
 
-/* VALIDAÇÃO, TECLADO NUMÉRICO E MODAIS */
-document.addEventListener('input',event=>{
-  const input=event.target;
+/* Cadastro de outros administradores. */
+function isActiveAdmin() {
+  return !!currentUser &&
+    currentUser.role === 'admin' &&
+    users.some(u =>
+      u.id === currentUser.id &&
+      u.role === 'admin' &&
+      u.active !== false
+    );
+}
 
-  if(input.matches('[data-digits]')){
-    input.value=digits(input.value);
+function renderAdminAdministrators(message='') {
+  if (!isActiveAdmin()) return;
+
+  const list = users.filter(u => u.role === 'admin');
+
+  $('adminContent').innerHTML = `
+    <div class="box">
+      <div class="admin-list-heading">
+        <h2>Administradores</h2>
+        <button class="primary" onclick="openAdminRegistration()">
+          Cadastrar administrador
+        </button>
+      </div>
+      <p>Somente um administrador conectado pode cadastrar outro administrador.</p>
+      ${message?'<p class="admin-feedback" role="status">'+esc(message)+'</p>':''}
+      ${table(
+        ['Nome','Nome de acesso','E-mail','Cadastrado por','Status'],
+        list.map(u => {
+          const creator = users.find(v => v.id === u.createdBy);
+
+          return `<tr>
+            <td>
+              ${esc(u.name)}
+              ${u.id===currentUser.id?' <span class="tag">Você</span>':''}
+            </td>
+            <td>@${esc(u.username)}</td>
+            <td>${esc(u.email)}</td>
+            <td>${esc(creator?.name||'Conta inicial')}</td>
+            <td>${statusBadge(u.active===false?'Desativado':'Ativo')}</td>
+          </tr>`;
+        }).join('')
+      )}
+    </div>`;
+}
+
+function openAdminRegistration() {
+  if (!isActiveAdmin()) return;
+
+  openModal(
+    'Cadastrar administrador',
+    formHTML('adminRegisterForm', `
+      <div class="grid-two">
+        ${field('adminRegisterName','Nome completo',{
+          required:true,
+          attrs:'autocomplete="name" maxlength="100"'
+        })}
+        ${field('adminRegisterEmail','E-mail',{
+          type:'email',
+          required:true,
+          attrs:'autocomplete="email" maxlength="254"'
+        })}
+        ${field('adminRegisterUsername','Nome de acesso',{
+          required:true,
+          attrs:'minlength="3" maxlength="30" pattern="[a-z0-9._-]{3,30}" autocomplete="off"',
+          help:'3 a 30 caracteres: letras minúsculas, números, ponto, hífen ou underline.'
+        })}
+        ${field('adminRegisterPassword','Senha',{
+          type:'password',
+          required:true,
+          attrs:'minlength="6" autocomplete="new-password"',
+          help:'Pelo menos 6 caracteres.'
+        })}
+        ${field('adminRegisterPasswordConfirm','Confirme a senha',{
+          type:'password',
+          required:true,
+          attrs:'minlength="6" autocomplete="new-password"'
+        })}
+      </div>
+      <p>O novo administrador terá acesso à análise de ONGs, campanhas e ao cadastro de outros administradores.</p>
+    `, 'Cadastrar administrador')
+  );
+
+  bindForm('adminRegisterForm', saveAdminRegistration);
+}
+
+function saveAdminRegistration() {
+  if (!isActiveAdmin()) {
+    alert('Somente um administrador ativo pode cadastrar outro administrador.');
+    return;
   }
 
-  if(input.setCustomValidity){
-    input.setCustomValidity('');
+  const form = $('adminRegisterForm');
+  if (!form || !form.reportValidity()) return;
+
+  const name = val('adminRegisterName');
+  const email = val('adminRegisterEmail').toLowerCase();
+  const username = val('adminRegisterUsername');
+  const password = $('adminRegisterPassword').value;
+  const confirmation = $('adminRegisterPasswordConfirm');
+
+  if (!name) {
+    $('adminRegisterName').setCustomValidity('Informe o nome completo.');
+    $('adminRegisterName').reportValidity();
+    return;
   }
 
-  if(input.id==='donorRegisterPassword'&&$('donorRegisterPasswordConfirm')){
-    $('donorRegisterPasswordConfirm').setCustomValidity('');
+  if (!accountValid(username, email)) return;
+
+  if (password !== confirmation.value) {
+    confirmation.setCustomValidity('As senhas não coincidem.');
+    confirmation.reportValidity();
+    return;
+  }
+
+  users.push({
+    id:nextId(users),
+    name,
+    email,
+    username,
+    password,
+    role:'admin',
+    active:true,
+    createdBy:currentUser.id,
+    createdAt:new Date().toISOString()
+  });
+
+  save();
+  closeModal();
+  renderAdmin('admins');
+  renderAdminAdministrators('Administrador cadastrado com sucesso.');
+}
+
+/* Validação dos formulários, teclado numérico e diálogos. */
+document.addEventListener('input', event => {
+  const input = event.target;
+
+  if (input.matches('[data-digits]')) input.value = digits(input.value);
+  if (input.setCustomValidity) input.setCustomValidity('');
+
+  if (['donorRegisterPassword','adminRegisterPassword'].includes(input.id) &&
+      $(input.id+'Confirm')) {
+    $(input.id+'Confirm').setCustomValidity('');
   }
 });
 
-document.addEventListener('paste',event=>{
-  const input=event.target;
-  if(!input.matches('[data-digits]')||!event.clipboardData)return;
+document.addEventListener('paste', event => {
+  const input = event.target;
+
+  if (!input.matches('[data-digits]') || !event.clipboardData) return;
 
   event.preventDefault();
 
-  const start=input.selectionStart??input.value.length;
-  const end=input.selectionEnd??start;
-  const text=digits(event.clipboardData.getData('text'));
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? start;
+  const text = digits(event.clipboardData.getData('text'));
 
-  input.value=(
-    input.value.slice(0,start)+text+input.value.slice(end)
-  ).slice(0,input.maxLength>0?input.maxLength:Infinity);
+  input.value = (
+    input.value.slice(0,start) + text + input.value.slice(end)
+  ).slice(0, input.maxLength > 0 ? input.maxLength : Infinity);
 
-  const cursor=Math.min(start+text.length,input.value.length);
-  input.setSelectionRange(cursor,cursor);
-  input.dispatchEvent(new Event('input',{bubbles:true}));
+  const cursor = Math.min(start+text.length, input.value.length);
+  input.setSelectionRange(cursor, cursor);
+  input.dispatchEvent(new Event('input', { bubbles:true }));
 });
 
-document.addEventListener('keydown',event=>{
-  const input=event.target;
+document.addEventListener('keydown', event => {
+  const input = event.target;
 
-  if(input.matches('input[type="number"]')&&['e','E','+','-'].includes(event.key)){
+  if (input.matches('input[type="number"]') &&
+      ['e','E','+','-'].includes(event.key)) {
     event.preventDefault();
   }
 
-  if(
-    input.matches('[data-digits]')&&
-    !event.ctrlKey&&!event.metaKey&&
-    event.key.length===1&&!/\d/.test(event.key)
-  ){
+  if (input.matches('[data-digits]') &&
+      !event.ctrlKey && !event.metaKey &&
+      event.key.length === 1 && !/\d/.test(event.key)) {
     event.preventDefault();
   }
 
-  if(event.key==='Escape'&&$('modalBackdrop').classList.contains('active')){
+  if (event.key === 'Escape' &&
+      $('modalBackdrop').classList.contains('active')) {
     closeModal();
   }
 
-  if(event.key==='Tab'&&$('modalBackdrop').classList.contains('active')){
-    const focusables=[
+  if (event.key === 'Tab' &&
+      $('modalBackdrop').classList.contains('active')) {
+    const focusables = [
       ...$('modalBackdrop').querySelectorAll('button,input,select,textarea,summary')
-    ].filter(el=>!el.disabled&&el.getClientRects().length);
+    ].filter(el => !el.disabled && el.getClientRects().length);
 
-    const first=focusables[0];
-    const last=focusables.at(-1);
+    const first = focusables[0];
+    const last = focusables.at(-1);
 
-    if(event.shiftKey&&document.activeElement===first){
+    if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();
-    }else if(!event.shiftKey&&document.activeElement===last){
+    } else if (!event.shiftKey && document.activeElement === last) {
       event.preventDefault();
       first.focus();
     }
   }
 });
 
-document.addEventListener('submit',event=>{
-  const form=event.target;
+document.addEventListener('submit', event => {
+  const form = event.target;
 
-  for(const input of form.querySelectorAll('[required]:not(:disabled)')){
-    if(
-      input.type!=='checkbox'&&
-      typeof input.value==='string'&&
-      !input.value.trim()
-    ){
+  for (const input of form.querySelectorAll('[required]:not(:disabled)')) {
+    if (input.type !== 'checkbox' &&
+        typeof input.value === 'string' &&
+        !input.value.trim()) {
       event.preventDefault();
       event.stopImmediatePropagation();
       input.setCustomValidity('Preencha este campo.');
@@ -2586,36 +2980,42 @@ document.addEventListener('submit',event=>{
       return;
     }
   }
-},true);
+}, true);
 
-$('modalBackdrop').addEventListener('click',event=>{
-  if(event.target===$('modalBackdrop'))closeModal();
+$('modalBackdrop').addEventListener('click', event => {
+  if (event.target === $('modalBackdrop')) closeModal();
 });
 
-/* INICIALIZAÇÃO */
-$('loginFields').innerHTML=note()+
+/* Inicialização. */
+$('loginFields').innerHTML = note() +
   field('loginUsername','Nome de acesso ou e-mail',{
-    required:true,attrs:'autocomplete="username"'
-  })+
+    required:true,
+    attrs:'autocomplete="username"'
+  }) +
   field('loginPassword','Senha',{
-    type:'password',required:true,attrs:'autocomplete="current-password"'
+    type:'password',
+    required:true,
+    attrs:'autocomplete="current-password"'
   });
 
-bindForm('loginForm',login);
+bindForm('loginForm', login);
 
 migrate();
 selectRole('donor');
 renderLandingCampaigns();
 
-try{
-  const session=JSON.parse(sessionStorage.getItem('conectaVetUser'));
-  const u=session&&users.find(u=>u.id===session.id&&u.active!==false);
+try {
+  const session = JSON.parse(sessionStorage.getItem('conectaVetUser'));
 
-  if(u){
-    currentUser=u;
+  const u = session && users.find(u =>
+    u.id === session.id && u.active !== false
+  );
+
+  if (u) {
+    currentUser = u;
     openSystem();
   }
-}catch{
+} catch {
   sessionStorage.removeItem('conectaVetUser');
 }
 </script>
