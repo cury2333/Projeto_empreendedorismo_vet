@@ -596,6 +596,99 @@ footer {
 
 .ong-chart-legend span:last-child::before { background: var(--border); }
 .ong-campaign-summary h3 { overflow-wrap: anywhere; }
+
+/* Faixas compactas de patrocinadores. */
+.sponsors-band {
+  width: 100%;
+  padding: 10px 4% 12px;
+  background: var(--surface);
+  border-block: 1px solid var(--border);
+}
+
+.sponsors-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto 6px;
+}
+
+.sponsors-heading h2 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--deep);
+}
+
+.sponsors-heading small {
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+.sponsors-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.sponsors-controls button {
+  padding: 2px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--deep);
+  font-size: 12px;
+  min-height: 26px;
+}
+
+.sponsors-window {
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.sponsors-track {
+  display: flex;
+  transition: transform .5s ease;
+}
+
+.sponsors-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 16px;
+}
+
+.sponsor-logo {
+  display: block;
+  width: 100%;
+  height: 42px;
+  object-fit: contain;
+}
+
+.sponsor-logo[alt="McDonald’s"] {
+  filter: invert(76%) sepia(95%) saturate(1139%) hue-rotate(340deg) brightness(107%) contrast(101%);
+}
+
+.sponsor-logo[alt="Burger King"] {
+  filter: invert(20%) sepia(96%) saturate(4165%) hue-rotate(355deg) brightness(84%) contrast(94%);
+}
+
+.sponsor-logo[alt="Coca-Cola"] {
+  filter: invert(16%) sepia(98%) saturate(6808%) hue-rotate(351deg) brightness(100%) contrast(113%);
+}
+
+@media (max-width: 700px) {
+  .sponsors-band { padding-inline: 4%; }
+  .sponsors-slide { gap: 8px; }
+  .sponsor-logo { height: 34px; }
+  .sponsors-heading small { display: block; margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsors-track { transition: none; }
+}
 </style>
 </head>
 
@@ -608,6 +701,8 @@ footer {
       <button class="primary" onclick="showLogin('donor')">Entrar</button>
     </div>
   </nav>
+
+  <section class="sponsors-band" aria-label="Patrocinadores — faixa superior"></section>
 
   <main class="wrap">
     <div class="hero landing-hero">
@@ -651,6 +746,8 @@ footer {
 </section>
 
 <section id="loginPage" class="hidden">
+  <section class="sponsors-band" aria-label="Patrocinadores — faixa superior"></section>
+
   <div class="login-shell">
     <div class="login-hero">
       <div class="brand">🐾 ConectaVet</div>
@@ -719,6 +816,9 @@ footer {
       <button id="sessionButton" class="ghost">Sair</button>
     </div>
   </header>
+
+  <section class="sponsors-band" aria-label="Patrocinadores — faixa superior"></section>
+
   <main id="views" class="wrap"></main>
 </div>
 
@@ -732,6 +832,8 @@ footer {
     <div id="modalBody"></div>
   </div>
 </div>
+
+<section class="sponsors-band" aria-label="Patrocinadores — faixa inferior"></section>
 
 <footer>Projeto acadêmico de Empreendedorismo • Medicina Veterinária</footer>
 
@@ -1634,6 +1736,7 @@ function showOngSection(section) {
   document.querySelectorAll('[data-ong-section]').forEach(panel => {
     panel.classList.toggle('hidden', panel.dataset.ongSection !== section);
   });
+
   document.querySelectorAll('[data-ong-nav]').forEach(button => {
     if (button.dataset.ongNav === section) button.setAttribute('aria-current', 'page');
     else button.removeAttribute('aria-current');
@@ -1648,6 +1751,7 @@ function renderOngDashboard() {
   const received = financial.reduce((sum,c) => sum + Number(c.raised || 0), 0);
   const used = financial.reduce((sum,c) => sum + applied(c), 0);
   const open = list.filter(c => campaignStatus(c) !== 'Encerrada');
+
   const needed = open.filter(c => c.goalType !== 'items').reduce(
     (sum,c) => sum + Math.max(0, Number(c.goal || 0) - Number(c.raised || 0)), 0
   );
@@ -1689,6 +1793,7 @@ function renderOngDashboard() {
       const percent = c.goal > 0
         ? Math.min(100, Math.max(0, Number(c.raised || 0)/Number(c.goal)*100))
         : 0;
+
       const label = quantity(Math.round(percent*10)/10);
 
       return `<article class="box ong-campaign-summary">
@@ -1741,6 +1846,7 @@ function renderOngArea() {
           <h2>🏠 Área da ONG</h2>
           <p>Gerencie campanhas, recebimentos e prestações de contas.</p>
         </div>
+
         <div class="box">
           <h2>${esc(o.name)}</h2>
           ${statusBadge(o.status)}
@@ -1752,6 +1858,7 @@ function renderOngArea() {
           </details>
           ${o.status!=='Aprovada'?'<p>Campanhas ficam indisponíveis ao público até a aprovação.</p>':''}
         </div>
+
         <div id="ongDashboard"></div>
       </div>
 
@@ -1864,6 +1971,7 @@ function campaignForm(c={}) {
         help:'A campanha encerra ao final desta data, no horário local.'
       })}
     </div>
+
     <div id="campaignMaterialFields" class="grid-two">
       ${field('campaignItem','Material solicitado',{value:c.item||''})}
       ${field('campaignUnit','Unidade da meta',{
@@ -1871,6 +1979,7 @@ function campaignForm(c={}) {
         options:[['kg','Quilos (kg)'],['unidades','Unidades'],['litros','Litros'],['pacotes','Pacotes']]
       })}
     </div>
+
     ${field('campaignDescription','Descrição',{
       type:'textarea',required:true,value:c.description||''
     })}
@@ -2181,6 +2290,7 @@ function renderDonationPage() {
           ${progress(c)}
           <p>Meta: ${campaignValue(c,c.goal)}</p>
         </div>
+
         <div class="box">
           <h2>❤️ Como você deseja ajudar?</h2>
           <div class="notice">Demonstração: nenhum pagamento é realizado. A intenção ainda não soma à meta.</div>
@@ -2202,6 +2312,7 @@ function renderDonationPage() {
                 required:true,options:['PIX','Cartão','Transferência bancária']
               })}
             </div>
+
             <div id="itemFields">
               ${field('itemDescription','Material',{
                 required:true,
@@ -2520,11 +2631,13 @@ function renderAdminDashboard() {
       <h2>⚙️ Painel Administrativo</h2>
       <p>Valores recebidos correspondem a contribuições confirmadas no protótipo.</p>
     </div>
+
     <div class="cards">
       ${stats.map(([name,n])=>`
         <div class="card"><small>${name}</small><strong>${n}</strong></div>
       `).join('')}
     </div>
+
     <div class="box">
       <h2>ONGs aguardando aprovação</h2>
       ${table(
@@ -2538,6 +2651,7 @@ function renderAdminDashboard() {
           </tr>`).join('')
       )}
     </div>
+
     <div class="box">
       <h2>Atividade recente</h2>
       ${donationTable(donations.slice(-5).reverse())}
@@ -2603,8 +2717,10 @@ function openReview(id) {
       Cidade: ${esc(o.city)}<br>
       Atuação: ${esc(o.cause)}
     </p>
+
     <p class="profile-text">${esc(o.description)}</p>
     <details><summary>Critérios de aprovação</summary>${approvalInfo()}</details>
+
     <form id="reviewForm">
       ${note()}
       ${field('reviewDecision','Decisão',{
@@ -2615,6 +2731,7 @@ function openReview(id) {
         ],
         attrs:'onchange="updateReviewFields()"'
       })}
+
       <div id="reviewChecks">
         ${[
           ['identity','Conferi nome, responsável e identificação da organização.'],
@@ -2626,10 +2743,12 @@ function openReview(id) {
             <span>${text} <span class="required">*</span></span>
           </label>`).join('')}
       </div>
+
       ${field('reviewReason','Motivo / observação da análise',{
         type:'textarea',value:'',
         help:'O motivo é obrigatório ao recusar ou suspender e ficará visível para a ONG.'
       })}
+
       <button class="primary">Salvar análise</button>
     </form>`);
 
@@ -2944,8 +3063,10 @@ function renderAdminAdministrators(message='') {
           Cadastrar administrador
         </button>
       </div>
+
       <p>Somente um administrador conectado pode cadastrar outro administrador.</p>
       ${message?'<p class="admin-feedback" role="status">'+esc(message)+'</p>':''}
+
       ${table(
         ['Nome','Nome de acesso','E-mail','Cadastrado por','Status'],
         list.map(u => {
@@ -3144,7 +3265,132 @@ $('modalBackdrop').addEventListener('click', event => {
   if (event.target === $('modalBackdrop')) closeModal();
 });
 
+/* Logotipos externos: simple-icons@11.15.0 e Guaraná Antarctica. */
+function sponsorPlaceholder(name, color) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="280" height="52" viewBox="0 0 280 52">
+    <rect width="280" height="52" rx="10" fill="#fff9e8"/>
+    <circle cx="25" cy="26" r="16" fill="${color}"/>
+    <path d="M18 29h14M25 22v14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <text x="50" y="24" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#3f3a32">${esc(name)}</text>
+    <text x="50" y="41" font-family="Arial, sans-serif" font-size="11" fill="#7a746b">Patrocinador</text>
+  </svg>`;
+
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+const sponsors = [
+  {
+    name:'McDonald’s',
+    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/mcdonalds.svg'
+  },
+  {
+    name:'Burger King',
+    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/burgerking.svg'
+  },
+  {
+    name:'Coca-Cola',
+    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/cocacola.svg'
+  },
+  {
+    name:'Guaraná Antarctica',
+    logo:'https://raw.githubusercontent.com/vboehm09/Card-produto-Guarana/HEAD/assets/images/logoGuarana.png'
+  }
+];
+
+function initializeSponsors() {
+  const groups = [];
+
+  for (let i = 0; i < sponsors.length; i += 2) {
+    groups.push(sponsors.slice(i, i+2));
+  }
+
+  const carousels = [...document.querySelectorAll('.sponsors-band')].map(band => {
+    let index = 0;
+    let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    band.setAttribute('aria-roledescription', 'carrossel');
+
+    band.innerHTML = `
+      <div class="sponsors-heading">
+        <div><h2>Patrocinadores</h2></div>
+        <div class="sponsors-controls">
+          <button type="button" data-sponsor-prev aria-label="Patrocinadores anteriores">‹</button>
+          <button type="button" data-sponsor-pause></button>
+          <button type="button" data-sponsor-next aria-label="Próximos patrocinadores">›</button>
+        </div>
+      </div>
+
+      <div class="sponsors-window">
+        <div class="sponsors-track">
+          ${groups.map((group,i) => `
+            <div class="sponsors-slide" role="group" aria-roledescription="slide"
+                 aria-label="Grupo ${i+1} de ${groups.length}" aria-hidden="${i!==0}">
+              ${group.map(s => `
+                <img class="sponsor-logo" src="${esc(s.logo)}"
+                     alt="${esc(s.name)}" width="280" height="52">
+              `).join('')}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+
+    const track = band.querySelector('.sponsors-track');
+    const pauseButton = band.querySelector('[data-sponsor-pause]');
+
+    const updatePause = () => {
+      pauseButton.textContent = paused ? 'Reproduzir' : 'Pausar';
+      pauseButton.setAttribute('aria-label', paused
+        ? 'Reproduzir troca automática dos patrocinadores'
+        : 'Pausar troca automática dos patrocinadores');
+    };
+
+    const move = direction => {
+      index = (index + direction + groups.length) % groups.length;
+      track.style.transform = `translateX(-${index*100}%)`;
+
+      track.querySelectorAll('.sponsors-slide').forEach((slide,i) => {
+        slide.setAttribute('aria-hidden', String(i!==index));
+      });
+    };
+
+    band.querySelector('[data-sponsor-prev]').addEventListener('click', () => move(-1));
+    band.querySelector('[data-sponsor-next]').addEventListener('click', () => move(1));
+
+    pauseButton.addEventListener('click', () => {
+      paused = !paused;
+      updatePause();
+    });
+
+    updatePause();
+
+    band.querySelectorAll('.sponsor-logo').forEach(img => {
+      img.addEventListener('error', () => {
+        if (img.dataset.fallback) return;
+        img.dataset.fallback = 'true';
+        img.src = sponsorPlaceholder(img.alt, '#7a746b');
+      });
+    });
+
+    return {
+      advance() {
+        if (!paused && band.getClientRects().length &&
+            !band.matches(':hover, :focus-within')) {
+          move(1);
+        }
+      }
+    };
+  });
+
+  window.setInterval(() => {
+    if (!document.hidden) {
+      carousels.forEach(carousel => carousel.advance());
+    }
+  }, 5000);
+}
+
 /* Inicialização. */
+initializeSponsors();
+
 $('loginFields').innerHTML = note() +
   field('loginUsername','Nome de acesso ou e-mail',{
     required:true,
