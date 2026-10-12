@@ -545,6 +545,57 @@ footer {
   .section-heading .link { font-size: 14px; }
   .landing-section { margin: 20px 0 28px; }
 }
+
+/* Navegação e indicadores da ONG. */
+.ong-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.ong-nav button { flex: 1 1 150px; }
+
+.ong-nav button[aria-current="page"] {
+  background: var(--primary);
+  color: #4c390d;
+}
+
+.ong-chart {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background: conic-gradient(
+    var(--green) 0 var(--received),
+    var(--border) var(--received) 100%
+  );
+}
+
+.ong-chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.ong-chart-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: var(--green);
+}
+
+.ong-chart-legend span:last-child::before { background: var(--border); }
+.ong-campaign-summary h3 { overflow-wrap: anywhere; }
 </style>
 </head>
 
@@ -1579,6 +1630,88 @@ function openCampaign(id) {
 }
 
 /* Área da ONG. */
+function showOngSection(section) {
+  document.querySelectorAll('[data-ong-section]').forEach(panel => {
+    panel.classList.toggle('hidden', panel.dataset.ongSection !== section);
+  });
+  document.querySelectorAll('[data-ong-nav]').forEach(button => {
+    if (button.dataset.ongNav === section) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
+  });
+}
+
+function renderOngDashboard() {
+  if (!$('ongDashboard') || currentUser?.role !== 'ong') return;
+
+  const list = campaigns.filter(c => c.ongId === currentUser.ongId);
+  const financial = list.filter(c => c.goalType !== 'items');
+  const received = financial.reduce((sum,c) => sum + Number(c.raised || 0), 0);
+  const used = financial.reduce((sum,c) => sum + applied(c), 0);
+  const open = list.filter(c => campaignStatus(c) !== 'Encerrada');
+  const needed = open.filter(c => c.goalType !== 'items').reduce(
+    (sum,c) => sum + Math.max(0, Number(c.goal || 0) - Number(c.raised || 0)), 0
+  );
+
+  $('ongDashboard').innerHTML = `
+    <div class="cards">
+      <div class="card">
+        <small>Caixa total da ONG</small>
+        <strong>${money(Math.max(0,received-used))}</strong>
+        <small>Recebido menos aplicações registradas</small>
+      </div>
+      <div class="card">
+        <small>Dinheiro necessário</small>
+        <strong>${money(needed)}</strong>
+        <small>Falta para as metas financeiras em aberto</small>
+      </div>
+      <div class="card">
+        <small>Campanhas já criadas</small>
+        <strong>${list.length}</strong>
+        <small>Total de campanhas cadastradas</small>
+      </div>
+      <div class="card">
+        <small>Campanhas abertas</small>
+        <strong>${open.length}</strong>
+        <small>Ativas e pausadas, dentro do prazo</small>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Resumo financeiro</h2>
+      <p>Total recebido: <strong>${money(received)}</strong> · Total aplicado: <strong>${money(used)}</strong></p>
+      <small>Campanhas de materiais são acompanhadas em suas próprias unidades e não entram no caixa.</small>
+    </div>
+
+    <h2>Recebimento por campanha</h2>
+    <p>Percentual da meta já recebido e confirmado pela ONG.</p>
+
+    <div class="grid-three">${list.map(c => {
+      const percent = c.goal > 0
+        ? Math.min(100, Math.max(0, Number(c.raised || 0)/Number(c.goal)*100))
+        : 0;
+      const label = quantity(Math.round(percent*10)/10);
+
+      return `<article class="box ong-campaign-summary">
+        <h3>${esc(c.title)}</h3>
+        ${statusBadge(campaignStatus(c))}
+        <div class="ong-chart" style="--received:${percent}%"
+             role="img"
+             aria-label="${esc(c.title)}: ${label}% da meta recebida; ${quantity(Math.round((100-percent)*10)/10)}% restante"></div>
+        <div class="ong-chart-legend">
+          <span>Recebido</span>
+          <span>Restante</span>
+        </div>
+        <p><strong>${label}% da meta recebida</strong></p>
+        <p>
+          Recebido: ${campaignValue(c,c.raised)}<br>
+          Meta: ${campaignValue(c,c.goal)}<br>
+          Falta: ${campaignValue(c,Math.max(0,c.goal-c.raised))}
+        </p>
+        <button class="ghost" onclick="openCampaign(${c.id})">Ver campanha</button>
+      </article>`;
+    }).join('') || '<div class="empty">Nenhuma campanha cadastrada. Use Cadastrar campanha para começar.</div>'}</div>`;
+}
+
 function renderOngArea() {
   const o = ongs.find(o => o.id === currentUser.ongId);
 
@@ -1591,22 +1724,38 @@ function renderOngArea() {
 
   $('views').innerHTML = `
     <section id="ongView">
-      <div class="welcome">
-        <h2>🏠 Área da ONG</h2>
-        <p>Gerencie campanhas, recebimentos e prestações de contas.</p>
+      <nav class="ong-nav" aria-label="Navegação da ONG">
+        ${[
+          ['dashboard','Visão geral'],
+          ['profile','Editar perfil'],
+          ['create','Cadastrar campanha'],
+          ['campaigns','Minhas campanhas'],
+          ['help','Recebimento de ajudas']
+        ].map(([key,label]) =>
+          `<button class="ghost" data-ong-nav="${key}" onclick="showOngSection('${key}')">${label}</button>`
+        ).join('')}
+      </nav>
+
+      <div data-ong-section="dashboard">
+        <div class="welcome">
+          <h2>🏠 Área da ONG</h2>
+          <p>Gerencie campanhas, recebimentos e prestações de contas.</p>
+        </div>
+        <div class="box">
+          <h2>${esc(o.name)}</h2>
+          ${statusBadge(o.status)}
+          ${o.reviewReason?`<div class="notice"><strong>Motivo da análise:</strong> ${esc(o.reviewReason)}</div>`:''}
+          ${o.reviewedAt?`<p>Análise registrada em ${new Date(o.reviewedAt).toLocaleString('pt-BR')}.</p>`:''}
+          <details>
+            <summary>Critérios de aprovação</summary>
+            ${approvalInfo()}
+          </details>
+          ${o.status!=='Aprovada'?'<p>Campanhas ficam indisponíveis ao público até a aprovação.</p>':''}
+        </div>
+        <div id="ongDashboard"></div>
       </div>
-      <div class="box">
-        <h2>${esc(o.name)}</h2>
-        ${statusBadge(o.status)}
-        ${o.reviewReason?`<div class="notice"><strong>Motivo da análise:</strong> ${esc(o.reviewReason)}</div>`:''}
-        ${o.reviewedAt?`<p>Análise registrada em ${new Date(o.reviewedAt).toLocaleString('pt-BR')}.</p>`:''}
-        <details>
-          <summary>Critérios de aprovação</summary>
-          ${approvalInfo()}
-        </details>
-        ${o.status!=='Aprovada'?'<p>Campanhas ficam indisponíveis ao público até a aprovação.</p>':''}
-      </div>
-      <div class="box">
+
+      <div class="box hidden" data-ong-section="profile">
         <h2>Editar perfil da ONG</h2>
         ${formHTML('ongProfileForm',ongFields('ongEdit',o),'Salvar alterações')}
         ${o.status==='Suspensa'?`
@@ -1614,16 +1763,23 @@ function renderOngArea() {
             Solicitar nova análise após corrigir o cadastro
           </button>`:''}
       </div>
+
       ${o.status==='Aprovada'?`
-        <div class="box">
-          <h2>Nova campanha / necessidade</h2>
+        <div class="box hidden" data-ong-section="create">
+          <h2>Cadastrar campanha</h2>
           ${campaignForm()}
-        </div>`:''}
-      <div class="box">
+        </div>`:`
+        <div class="box hidden" data-ong-section="create">
+          <h2>Cadastrar campanha</h2>
+          <p>A ONG precisa estar aprovada para cadastrar campanhas.</p>
+        </div>`}
+
+      <div class="box hidden" data-ong-section="campaigns">
         <h2>Minhas campanhas</h2>
         <div id="ongCampaigns"></div>
       </div>
-      <div class="box">
+
+      <div class="box hidden" data-ong-section="help">
         <h2>Recebimento de ajudas</h2>
         <p>Somente contribuições recebidas e compatíveis com a meta aumentam o progresso.</p>
         <div id="ongHelpTracking" class="tracking-list"></div>
@@ -1639,6 +1795,7 @@ function renderOngArea() {
 
   renderOngCampaigns();
   renderHelpTracking();
+  showOngSection('dashboard');
 }
 
 function saveOngProfile(o) {
@@ -1781,6 +1938,7 @@ function createCampaign() {
 }
 
 function renderOngCampaigns() {
+  renderOngDashboard();
   const list = campaigns.filter(c => c.ongId === currentUser.ongId);
 
   $('ongCampaigns').innerHTML = list.length
