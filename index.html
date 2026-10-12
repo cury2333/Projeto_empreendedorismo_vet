@@ -597,12 +597,14 @@ footer {
 .ong-chart-legend span:last-child::before { background: var(--border); }
 .ong-campaign-summary h3 { overflow-wrap: anywhere; }
 
-/* Faixas compactas de patrocinadores. */
+/* Um patrocinador por vez, com fundo e logo em destaque. */
 .sponsors-band {
   width: 100%;
-  padding: 10px 4% 12px;
-  background: var(--surface);
-  border-block: 1px solid var(--border);
+  padding: 6px 4% 8px;
+  background: var(--sponsor-bg, #DA291C);
+  color: var(--sponsor-fg, #fff);
+  border-block: 1px solid #00000012;
+  transition: background-color .5s ease, color .5s ease;
 }
 
 .sponsors-heading {
@@ -611,18 +613,13 @@ footer {
   align-items: center;
   gap: 12px;
   max-width: 1200px;
-  margin: 0 auto 6px;
+  margin: 0 auto 4px;
 }
 
 .sponsors-heading h2 {
   margin: 0;
   font-size: 14px;
-  color: var(--deep);
-}
-
-.sponsors-heading small {
-  font-size: 11px;
-  margin-left: 8px;
+  color: inherit;
 }
 
 .sponsors-controls {
@@ -632,12 +629,16 @@ footer {
 
 .sponsors-controls button {
   padding: 2px 9px;
-  border: 1px solid var(--border);
+  border: 1px solid currentColor;
   border-radius: 6px;
-  background: var(--bg);
-  color: var(--deep);
+  background: transparent;
+  color: inherit;
   font-size: 12px;
   min-height: 26px;
+}
+
+.sponsors-controls button:focus-visible {
+  outline-color: currentColor;
 }
 
 .sponsors-window {
@@ -654,40 +655,60 @@ footer {
 .sponsors-slide {
   flex: 0 0 100%;
   min-width: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 54px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
+  background: var(--slide-bg);
 }
 
 .sponsor-logo {
   display: block;
-  width: 100%;
-  height: 42px;
+  flex-shrink: 0;
+  width: min(320px, 80%);
+  height: 54px;
   object-fit: contain;
 }
 
-.sponsor-logo[alt="McDonald’s"] {
-  filter: invert(76%) sepia(95%) saturate(1139%) hue-rotate(340deg) brightness(107%) contrast(101%);
+/* McDonald's: logo amarelo sobre fundo vermelho. */
+.sponsors-slide[data-sponsor="0"] .sponsor-logo {
+  filter: invert(76%) sepia(95%) saturate(1139%)
+          hue-rotate(340deg) brightness(107%) contrast(101%);
 }
 
-.sponsor-logo[alt="Burger King"] {
-  filter: invert(20%) sepia(96%) saturate(4165%) hue-rotate(355deg) brightness(84%) contrast(94%);
+/* Burger King: logo vermelho sobre fundo creme. */
+.sponsors-slide[data-sponsor="1"] .sponsor-logo {
+  filter: invert(20%) sepia(96%) saturate(4165%)
+          hue-rotate(355deg) brightness(84%) contrast(94%);
 }
 
-.sponsor-logo[alt="Coca-Cola"] {
-  filter: invert(16%) sepia(98%) saturate(6808%) hue-rotate(351deg) brightness(100%) contrast(113%);
+/* Coca-Cola: recorte do espaço vazio do SVG e logo branco. */
+.sponsors-slide[data-sponsor="2"] .sponsor-logo {
+  width: 172px;
+  height: 172px;
+  filter: brightness(0) invert(1);
+}
+
+/* Guaraná Antarctica: logo branco sobre fundo verde. */
+.sponsors-slide[data-sponsor="3"] .sponsor-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Caso uma imagem externa não carregue, preserva o nome da marca. */
+.sponsors-slide .sponsor-logo[data-fallback="true"] {
+  width: min(320px, 85%);
+  height: 54px;
+  filter: none;
 }
 
 @media (max-width: 700px) {
   .sponsors-band { padding-inline: 4%; }
-  .sponsors-slide { gap: 8px; }
-  .sponsor-logo { height: 34px; }
-  .sponsors-heading small { display: block; margin-left: 0; }
+  .sponsor-logo { width: min(280px, 85%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sponsors-track { transition: none; }
+  .sponsors-track, .sponsors-band { transition: none; }
 }
 </style>
 </head>
@@ -3265,14 +3286,12 @@ $('modalBackdrop').addEventListener('click', event => {
   if (event.target === $('modalBackdrop')) closeModal();
 });
 
-/* Logotipos externos: simple-icons@11.15.0 e Guaraná Antarctica. */
+/* Patrocinadores. */
 function sponsorPlaceholder(name, color) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="280" height="52" viewBox="0 0 280 52">
-    <rect width="280" height="52" rx="10" fill="#fff9e8"/>
-    <circle cx="25" cy="26" r="16" fill="${color}"/>
-    <path d="M18 29h14M25 22v14" stroke="white" stroke-width="3" stroke-linecap="round"/>
-    <text x="50" y="24" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#3f3a32">${esc(name)}</text>
-    <text x="50" y="41" font-family="Arial, sans-serif" font-size="11" fill="#7a746b">Patrocinador</text>
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="54" viewBox="0 0 320 54">
+    <text x="160" y="35" text-anchor="middle"
+          font-family="Arial, sans-serif" font-size="25"
+          font-weight="700" fill="${color}">${esc(name)}</text>
   </svg>`;
 
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
@@ -3298,37 +3317,50 @@ const sponsors = [
 ];
 
 function initializeSponsors() {
-  const groups = [];
+  const palettes = [
+    { background:'#DA291C', foreground:'#FFFFFF' },
+    { background:'#FFF1D6', foreground:'#92210F' },
+    { background:'#F40009', foreground:'#FFFFFF' },
+    { background:'#006B3F', foreground:'#FFFFFF' }
+  ];
 
-  for (let i = 0; i < sponsors.length; i += 2) {
-    groups.push(sponsors.slice(i, i+2));
-  }
+  const setPalette = (band, index) => {
+    band.style.setProperty('--sponsor-bg', palettes[index].background);
+    band.style.setProperty('--sponsor-fg', palettes[index].foreground);
+  };
 
   const carousels = [...document.querySelectorAll('.sponsors-band')].map(band => {
     let index = 0;
     let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    setPalette(band, index);
     band.setAttribute('aria-roledescription', 'carrossel');
 
     band.innerHTML = `
       <div class="sponsors-heading">
         <div><h2>Patrocinadores</h2></div>
         <div class="sponsors-controls">
-          <button type="button" data-sponsor-prev aria-label="Patrocinadores anteriores">‹</button>
+          <button type="button" data-sponsor-prev aria-label="Patrocinador anterior">‹</button>
           <button type="button" data-sponsor-pause></button>
-          <button type="button" data-sponsor-next aria-label="Próximos patrocinadores">›</button>
+          <button type="button" data-sponsor-next aria-label="Próximo patrocinador">›</button>
         </div>
       </div>
 
       <div class="sponsors-window">
         <div class="sponsors-track">
-          ${groups.map((group,i) => `
-            <div class="sponsors-slide" role="group" aria-roledescription="slide"
-                 aria-label="Grupo ${i+1} de ${groups.length}" aria-hidden="${i!==0}">
-              ${group.map(s => `
-                <img class="sponsor-logo" src="${esc(s.logo)}"
-                     alt="${esc(s.name)}" width="280" height="52">
-              `).join('')}
+          ${sponsors.map((s,i) => `
+            <div class="sponsors-slide"
+                 data-sponsor="${i}"
+                 style="--slide-bg:${palettes[i].background}"
+                 role="group"
+                 aria-roledescription="slide"
+                 aria-label="${esc(s.name)} — ${i+1} de ${sponsors.length}"
+                 aria-hidden="${i!==0}">
+              <img class="sponsor-logo"
+                   src="${esc(s.logo)}"
+                   alt="${esc(s.name)}"
+                   width="320"
+                   height="54">
             </div>
           `).join('')}
         </div>
@@ -3345,7 +3377,8 @@ function initializeSponsors() {
     };
 
     const move = direction => {
-      index = (index + direction + groups.length) % groups.length;
+      index = (index + direction + sponsors.length) % sponsors.length;
+      setPalette(band, index);
       track.style.transform = `translateX(-${index*100}%)`;
 
       track.querySelectorAll('.sponsors-slide').forEach((slide,i) => {
@@ -3363,11 +3396,11 @@ function initializeSponsors() {
 
     updatePause();
 
-    band.querySelectorAll('.sponsor-logo').forEach(img => {
+    band.querySelectorAll('.sponsor-logo').forEach((img,i) => {
       img.addEventListener('error', () => {
         if (img.dataset.fallback) return;
         img.dataset.fallback = 'true';
-        img.src = sponsorPlaceholder(img.alt, '#7a746b');
+        img.src = sponsorPlaceholder(img.alt, palettes[i].foreground);
       });
     });
 
