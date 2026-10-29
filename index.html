@@ -115,7 +115,12 @@ small { color: var(--muted); }
   padding: 18px;
 }
 
-.card strong { font-size: 27px; color: var(--deep); display: block; }
+.card strong {
+  font-size: 27px;
+  color: var(--deep);
+  display: block;
+}
+
 .field { margin-bottom: 17px; }
 
 .field label {
@@ -127,7 +132,11 @@ small { color: var(--muted); }
 
 .required { color: var(--red); }
 
-.field input, .field select, .field textarea, .search input, .search select {
+.field input,
+.field select,
+.field textarea,
+.search input,
+.search select {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--border);
@@ -139,7 +148,9 @@ small { color: var(--muted); }
 
 .field textarea { min-height: 105px; resize: vertical; }
 
-.field input:focus, .field select:focus, .field textarea:focus {
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px #f4b9422e;
 }
@@ -156,7 +167,11 @@ small { color: var(--muted); }
   margin: 14px 0;
 }
 
-.success { background: #e4f5e9; color: var(--green); border-color: #bfe1ca; }
+.success {
+  background: #e4f5e9;
+  color: var(--green);
+  border-color: #bfe1ca;
+}
 
 .status, .tag {
   display: inline-block;
@@ -184,7 +199,11 @@ th {
   font-size: 13px;
 }
 
-th, td { padding: 12px; border-bottom: 1px solid var(--border); }
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
 td { font-size: 14px; vertical-align: top; }
 
 .link {
@@ -196,7 +215,13 @@ td { font-size: 14px; vertical-align: top; }
   text-decoration: underline;
 }
 
-.search { display: flex; gap: 12px; margin: 18px 0; flex-wrap: wrap; }
+.search {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
 .search input { flex: 1; min-width: 180px; }
 .search select { width: auto; }
 
@@ -257,7 +282,11 @@ td { font-size: 14px; vertical-align: top; }
   font-size: 13px;
 }
 
-.tracking-steps .done { background: #e4f5e9; color: var(--green); }
+.tracking-steps .done {
+  background: #e4f5e9;
+  color: var(--green);
+}
+
 .tracking-steps .current { outline: 2px solid var(--primary); }
 
 .report {
@@ -272,8 +301,18 @@ td { font-size: 14px; vertical-align: top; }
   overflow-wrap: anywhere;
 }
 
-.check { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0; }
-.check input { margin-top: 5px; width: 18px; height: 18px; }
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 14px 0;
+}
+
+.check input {
+  margin-top: 5px;
+  width: 18px;
+  height: 18px;
+}
 
 .header, .landing-nav {
   display: flex;
@@ -305,7 +344,10 @@ td { font-size: 14px; vertical-align: top; }
   margin-bottom: 24px;
 }
 
-.landing-nav { width: min(1200px, 100%); margin: auto; }
+.landing-nav {
+  width: min(1200px, 100%);
+  margin: auto;
+}
 
 .hero {
   display: grid;
@@ -315,8 +357,16 @@ td { font-size: 14px; vertical-align: top; }
   padding: 45px 0;
 }
 
-.hero h1 { font-size: clamp(35px, 5vw, 60px); margin: 16px 0 22px; }
-.hero p { font-size: 17px; line-height: 1.75; margin-bottom: 22px; }
+.hero h1 {
+  font-size: clamp(35px, 5vw, 60px);
+  margin: 16px 0 22px;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
 
 .illustration {
   background: linear-gradient(135deg, #ffdf87, #fff3c7);
@@ -325,7 +375,12 @@ td { font-size: 14px; vertical-align: top; }
   padding: 34px;
 }
 
-.animals { font-size: 75px; text-align: center; margin: 14px 0; }
+.animals {
+  font-size: 75px;
+  text-align: center;
+  margin: 14px 0;
+}
+
 .landing-section { margin: 30px 0 42px; }
 
 .step-number {
@@ -379,7 +434,11 @@ td { font-size: 14px; vertical-align: top; }
   padding: 12px 6px;
 }
 
-.login-type.active { background: var(--soft); border-color: var(--primary); }
+.login-type.active {
+  background: var(--soft);
+  border-color: var(--primary);
+}
+
 .login-type span { display: block; font-size: 22px; }
 
 .test-accounts {
@@ -441,7 +500,10 @@ footer {
   margin: 14px 0 18px;
 }
 
-.landing-hero p { max-width: 440px; margin-bottom: 22px; }
+.landing-hero p {
+  max-width: 440px;
+  margin-bottom: 22px;
+}
 
 .landing-visual {
   position: relative;
@@ -451,7 +513,10 @@ footer {
   align-content: center;
 }
 
-.landing-visual .animals { font-size: 80px; margin: 0; }
+.landing-visual .animals {
+  font-size: 80px;
+  margin: 0;
+}
 
 .landing-visual p {
   font-size: 16px;
@@ -504,7 +569,11 @@ footer {
   padding: 13px 0;
 }
 
-.landing-details summary { cursor: pointer; font-weight: 700; }
+.landing-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
 .landing-details details p { max-width: 800px; }
 .landing-details > small { display: block; margin-top: 16px; }
 
@@ -517,7 +586,10 @@ footer {
   margin-bottom: 18px;
 }
 
-.admin-feedback { color: var(--green); margin-bottom: 16px; }
+.admin-feedback {
+  color: var(--green);
+  margin-bottom: 16px;
+}
 
 @media (max-width: 980px) {
   .cards { grid-template-columns: 1fr 1fr; }
@@ -594,14 +666,17 @@ footer {
   background: var(--green);
 }
 
-.ong-chart-legend span:last-child::before { background: var(--border); }
+.ong-chart-legend span:last-child::before {
+  background: var(--border);
+}
+
 .ong-campaign-summary h3 { overflow-wrap: anywhere; }
 
-/* Um patrocinador por vez, com fundo e logo em destaque. */
+/* Faixas de patrocinadores e apoiadores. */
 .sponsors-band {
   width: 100%;
   padding: 6px 4% 8px;
-  background: var(--sponsor-bg, #DA291C);
+  background: var(--sponsor-bg, #007E72);
   color: var(--sponsor-fg, #fff);
   border-block: 1px solid #00000012;
   transition: background-color .5s ease, color .5s ease;
@@ -666,37 +741,35 @@ footer {
 .sponsor-logo {
   display: block;
   flex-shrink: 0;
-  width: min(320px, 80%);
+  width: min(320px, 85%);
   height: 54px;
   object-fit: contain;
+  filter: none;
 }
 
-/* McDonald's: logo amarelo sobre fundo vermelho. */
-.sponsors-slide[data-sponsor="0"] .sponsor-logo {
-  filter: invert(76%) sepia(95%) saturate(1139%)
-          hue-rotate(340deg) brightness(107%) contrast(101%);
-}
-
-/* Burger King: logo vermelho sobre fundo creme. */
-.sponsors-slide[data-sponsor="1"] .sponsor-logo {
-  filter: invert(20%) sepia(96%) saturate(4165%)
-          hue-rotate(355deg) brightness(84%) contrast(94%);
-}
-
-/* Coca-Cola: recorte do espaço vazio do SVG e logo branco. */
-.sponsors-slide[data-sponsor="2"] .sponsor-logo {
-  width: 172px;
-  height: 172px;
-  filter: brightness(0) invert(1);
-}
-
-/* Guaraná Antarctica: logo branco sobre fundo verde. */
+/* Cobasi, Petlove e Petland: logos brancos no fundo da marca. */
+.sponsors-band:not(.supporters-band)
+.sponsors-slide[data-sponsor="0"] .sponsor-logo,
+.sponsors-band:not(.supporters-band)
+.sponsors-slide[data-sponsor="2"] .sponsor-logo,
+.sponsors-band:not(.supporters-band)
 .sponsors-slide[data-sponsor="3"] .sponsor-logo {
   filter: brightness(0) invert(1);
 }
 
-/* Caso uma imagem externa não carregue, preserva o nome da marca. */
-.sponsors-slide .sponsor-logo[data-fallback="true"] {
+/* Petz: mantém as cores do logo sobre o fundo amarelo. */
+.sponsors-band:not(.supporters-band)
+.sponsors-slide[data-sponsor="1"] .sponsor-logo {
+  filter: none;
+}
+
+/* Os apoiadores no rodapé mantêm os logos em suas cores originais. */
+.supporters-band .sponsor-logo {
+  filter: none;
+}
+
+.sponsors-band .sponsors-slide
+.sponsor-logo[data-fallback="true"] {
   width: min(320px, 85%);
   height: 54px;
   filter: none;
@@ -854,7 +927,9 @@ footer {
   </div>
 </div>
 
-<section class="sponsors-band" aria-label="Patrocinadores — faixa inferior"></section>
+<section class="sponsors-band supporters-band"
+         data-band="supporters"
+         aria-label="Apoio — faixa inferior"></section>
 
 <footer>Projeto acadêmico de Empreendedorismo • Medicina Veterinária</footer>
 
@@ -3286,75 +3361,109 @@ $('modalBackdrop').addEventListener('click', event => {
   if (event.target === $('modalBackdrop')) closeModal();
 });
 
-/* Patrocinadores. */
+/* Patrocinadores e apoiadores. */
 function sponsorPlaceholder(name, color) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="54" viewBox="0 0 320 54">
-    <text x="160" y="35" text-anchor="middle"
-          font-family="Arial, sans-serif" font-size="25"
-          font-weight="700" fill="${color}">${esc(name)}</text>
+    <text x="160" y="35"
+          text-anchor="middle"
+          font-family="Arial, sans-serif"
+          font-size="25"
+          font-weight="700"
+          fill="${color}">${esc(name)}</text>
   </svg>`;
 
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
+/* Marcas exibidas no topo. */
 const sponsors = [
   {
-    name:'McDonald’s',
-    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/mcdonalds.svg'
+    name:'Cobasi',
+    logo:'https://www.cobasi.com.br/arquivos/2018-01-11-7w-logo-cobasi.png?v=636512657006500000'
   },
   {
-    name:'Burger King',
-    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/burgerking.svg'
+    name:'Petz',
+    logo:'https://www.petz.com.br/novaLoja/images/logo.png'
   },
   {
-    name:'Coca-Cola',
-    logo:'https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/cocacola.svg'
+    name:'Petlove',
+    logo:'imagens/petlove.png'
   },
   {
-    name:'Guaraná Antarctica',
-    logo:'https://raw.githubusercontent.com/vboehm09/Card-produto-Guarana/HEAD/assets/images/logoGuarana.png'
+    name:'Petland',
+    logo:'imagens/petland.png'
+  }
+];
+
+/* Marcas exibidas na faixa Apoio do rodapé. */
+const supporters = [
+  {
+    name:'Cobasi',
+    logo:'https://www.cobasi.com.br/arquivos/2018-01-11-7w-logo-cobasi.png?v=636512657006500000'
+  },
+  {
+    name:'Petz',
+    logo:'https://www.petz.com.br/novaLoja/images/logo.png'
   }
 ];
 
 function initializeSponsors() {
   const palettes = [
-    { background:'#DA291C', foreground:'#FFFFFF' },
-    { background:'#FFF1D6', foreground:'#92210F' },
-    { background:'#F40009', foreground:'#FFFFFF' },
-    { background:'#006B3F', foreground:'#FFFFFF' }
+    { background:'#007E72', foreground:'#FFFFFF' },
+    { background:'#FFD600', foreground:'#003E7E' },
+    { background:'#582C83', foreground:'#FFFFFF' },
+    { background:'#00549E', foreground:'#FFFFFF' }
   ];
 
-  const setPalette = (band, index) => {
-    band.style.setProperty('--sponsor-bg', palettes[index].background);
-    band.style.setProperty('--sponsor-fg', palettes[index].foreground);
-  };
+  const supporterPalettes = [
+    { background:'#FFFFFF', foreground:'#007E72' },
+    { background:'#FFFFFF', foreground:'#003E7E' }
+  ];
 
   const carousels = [...document.querySelectorAll('.sponsors-band')].map(band => {
+    const isSupport = band.dataset.band === 'supporters';
+    const entries = isSupport ? supporters : sponsors;
+    const colors = isSupport ? supporterPalettes : palettes;
+    const title = isSupport ? 'Apoio' : 'Patrocinadores';
+    const label = isSupport ? 'apoiadores' : 'patrocinadores';
+
     let index = 0;
     let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    setPalette(band, index);
+    const setPalette = currentIndex => {
+      band.style.setProperty('--sponsor-bg', colors[currentIndex].background);
+      band.style.setProperty('--sponsor-fg', colors[currentIndex].foreground);
+    };
+
+    setPalette(index);
     band.setAttribute('aria-roledescription', 'carrossel');
 
     band.innerHTML = `
       <div class="sponsors-heading">
-        <div><h2>Patrocinadores</h2></div>
+        <div><h2>${title}</h2></div>
         <div class="sponsors-controls">
-          <button type="button" data-sponsor-prev aria-label="Patrocinador anterior">‹</button>
-          <button type="button" data-sponsor-pause></button>
-          <button type="button" data-sponsor-next aria-label="Próximo patrocinador">›</button>
+          <button type="button"
+                  data-sponsor-prev
+                  aria-label="${isSupport?'Apoiador anterior':'Patrocinador anterior'}">‹</button>
+
+          <button type="button"
+                  data-sponsor-pause></button>
+
+          <button type="button"
+                  data-sponsor-next
+                  aria-label="${isSupport?'Próximo apoiador':'Próximo patrocinador'}">›</button>
         </div>
       </div>
 
       <div class="sponsors-window">
         <div class="sponsors-track">
-          ${sponsors.map((s,i) => `
+          ${entries.map((s,i) => `
             <div class="sponsors-slide"
                  data-sponsor="${i}"
-                 style="--slide-bg:${palettes[i].background}"
+                 style="--slide-bg:${colors[i].background}"
                  role="group"
                  aria-roledescription="slide"
-                 aria-label="${esc(s.name)} — ${i+1} de ${sponsors.length}"
+                 aria-label="${esc(s.name)} — ${i+1} de ${entries.length}"
                  aria-hidden="${i!==0}">
               <img class="sponsor-logo"
                    src="${esc(s.logo)}"
@@ -3371,14 +3480,18 @@ function initializeSponsors() {
 
     const updatePause = () => {
       pauseButton.textContent = paused ? 'Reproduzir' : 'Pausar';
-      pauseButton.setAttribute('aria-label', paused
-        ? 'Reproduzir troca automática dos patrocinadores'
-        : 'Pausar troca automática dos patrocinadores');
+
+      pauseButton.setAttribute(
+        'aria-label',
+        paused
+          ? `Reproduzir troca automática dos ${label}`
+          : `Pausar troca automática dos ${label}`
+      );
     };
 
     const move = direction => {
-      index = (index + direction + sponsors.length) % sponsors.length;
-      setPalette(band, index);
+      index = (index + direction + entries.length) % entries.length;
+      setPalette(index);
       track.style.transform = `translateX(-${index*100}%)`;
 
       track.querySelectorAll('.sponsors-slide').forEach((slide,i) => {
@@ -3386,8 +3499,15 @@ function initializeSponsors() {
       });
     };
 
-    band.querySelector('[data-sponsor-prev]').addEventListener('click', () => move(-1));
-    band.querySelector('[data-sponsor-next]').addEventListener('click', () => move(1));
+    band.querySelector('[data-sponsor-prev]').addEventListener(
+      'click',
+      () => move(-1)
+    );
+
+    band.querySelector('[data-sponsor-next]').addEventListener(
+      'click',
+      () => move(1)
+    );
 
     pauseButton.addEventListener('click', () => {
       paused = !paused;
@@ -3397,16 +3517,23 @@ function initializeSponsors() {
     updatePause();
 
     band.querySelectorAll('.sponsor-logo').forEach((img,i) => {
-      img.addEventListener('error', () => {
+      const useFallback = () => {
         if (img.dataset.fallback) return;
         img.dataset.fallback = 'true';
-        img.src = sponsorPlaceholder(img.alt, palettes[i].foreground);
-      });
+        img.src = sponsorPlaceholder(img.alt, colors[i].foreground);
+      };
+
+      img.addEventListener('error', useFallback);
+
+      if (img.complete && img.naturalWidth === 0) {
+        useFallback();
+      }
     });
 
     return {
       advance() {
-        if (!paused && band.getClientRects().length &&
+        if (!paused &&
+            band.getClientRects().length &&
             !band.matches(':hover, :focus-within')) {
           move(1);
         }
