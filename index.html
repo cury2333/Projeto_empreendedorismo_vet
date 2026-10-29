@@ -676,8 +676,8 @@ footer {
 .sponsors-band {
   width: 100%;
   padding: 6px 4% 8px;
-  background: var(--sponsor-bg, #007E72);
-  color: var(--sponsor-fg, #fff);
+  background: var(--sponsor-bg, #FFFFFF);
+  color: var(--sponsor-fg, #007E72);
   border-block: 1px solid #00000012;
   transition: background-color .5s ease, color .5s ease;
 }
@@ -747,9 +747,12 @@ footer {
   filter: none;
 }
 
-/* Cobasi, Petlove e Petland: logos brancos no fundo da marca. */
-.sponsors-band:not(.supporters-band)
-.sponsors-slide[data-sponsor="0"] .sponsor-logo,
+/* Cobasi: cores originais sobre fundo branco no topo e no rodapé. */
+.sponsors-slide[data-sponsor="0"] .sponsor-logo {
+  filter: none;
+}
+
+/* Petlove e Petland: logos brancos nos fundos coloridos do topo. */
 .sponsors-band:not(.supporters-band)
 .sponsors-slide[data-sponsor="2"] .sponsor-logo,
 .sponsors-band:not(.supporters-band)
@@ -757,17 +760,12 @@ footer {
   filter: brightness(0) invert(1);
 }
 
-/* Petz: mantém as cores do logo sobre o fundo amarelo. */
-.sponsors-band:not(.supporters-band)
-.sponsors-slide[data-sponsor="1"] .sponsor-logo {
-  filter: none;
-}
-
-/* Os apoiadores no rodapé mantêm os logos em suas cores originais. */
+/* No rodapé, todos os logos mantêm as cores originais. */
 .supporters-band .sponsor-logo {
   filter: none;
 }
 
+/* Se uma imagem falhar, apresenta o nome da marca. */
 .sponsors-band .sponsors-slide
 .sponsor-logo[data-fallback="true"] {
   width: min(320px, 85%);
@@ -3375,7 +3373,7 @@ function sponsorPlaceholder(name, color) {
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
-/* Marcas exibidas no topo. */
+/* As quatro marcas do topo. */
 const sponsors = [
   {
     name:'Cobasi',
@@ -3395,29 +3393,24 @@ const sponsors = [
   }
 ];
 
-/* Marcas exibidas na faixa Apoio do rodapé. */
-const supporters = [
-  {
-    name:'Cobasi',
-    logo:'https://www.cobasi.com.br/arquivos/2018-01-11-7w-logo-cobasi.png?v=636512657006500000'
-  },
-  {
-    name:'Petz',
-    logo:'https://www.petz.com.br/novaLoja/images/logo.png'
-  }
-];
+/* As mesmas quatro marcas na faixa Apoio do rodapé. */
+const supporters = sponsors.map(s => ({ ...s }));
 
 function initializeSponsors() {
+  /* Cobasi branca; demais patrocinadores com fundo da marca. */
   const palettes = [
-    { background:'#007E72', foreground:'#FFFFFF' },
+    { background:'#FFFFFF', foreground:'#007E72' },
     { background:'#FFD600', foreground:'#003E7E' },
     { background:'#582C83', foreground:'#FFFFFF' },
     { background:'#00549E', foreground:'#FFFFFF' }
   ];
 
+  /* Rodapé branco para preservar as cores originais dos logos. */
   const supporterPalettes = [
     { background:'#FFFFFF', foreground:'#007E72' },
-    { background:'#FFFFFF', foreground:'#003E7E' }
+    { background:'#FFFFFF', foreground:'#003E7E' },
+    { background:'#FFFFFF', foreground:'#582C83' },
+    { background:'#FFFFFF', foreground:'#00549E' }
   ];
 
   const carousels = [...document.querySelectorAll('.sponsors-band')].map(band => {
